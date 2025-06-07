@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -160,7 +159,7 @@ const translations = {
   },
 };
 
-const Index = () => {
+export default function App() {
   const [locale, setLocale] = useState('en'); // State for current language: 'en' or 'ar'
   const t = translations[locale]; // Shorthand for current translations
 
@@ -405,6 +404,14 @@ const Index = () => {
         className="fixed top-4 left-4 bg-blue-600 text-white hover:bg-blue-700 rounded-full px-4 py-2 text-sm shadow-md z-50"
       >
         {locale === 'en' ? 'العربية' : 'English'}
+      </Button>
+
+      {/* PRD Link Button */}
+      <Button
+        onClick={() => window.open('/prd', '_blank')}
+        className="fixed top-16 left-4 bg-green-600 text-white hover:bg-green-700 rounded-full px-4 py-2 text-sm shadow-md z-50"
+      >
+        View PRD
       </Button>
 
       {/* User ID and Logout Button */}
@@ -656,6 +663,4 @@ const Index = () => {
       </section>
     </main>
   );
-};
-
-export default Index;
+}
