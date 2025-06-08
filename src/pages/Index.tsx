@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Avatar } from "@/components/ui/avatar";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Navigation } from "@/components/Navigation";
 import { useState, useEffect } from "react";
 
 // Firebase imports
@@ -429,361 +430,365 @@ export default function App() {
 
   // If user is logged in, show the main application content
   return (
-    <main className="min-h-screen bg-gradient-to-br from-orange-500 via-orange-400 to-white p-8 space-y-12 font-inter" dir={locale === 'ar' ? 'rtl' : 'ltr'}>
-      {/* Language Toggle Button */}
-      <Button
-        onClick={toggleLocale}
-        className="fixed top-4 left-4 bg-white text-orange-600 hover:bg-orange-50 rounded-full px-4 py-2 text-sm shadow-md z-50 border border-orange-200"
-      >
-        {locale === 'en' ? 'العربية' : 'English'}
-      </Button>
+    <div className="min-h-screen bg-gray-50" dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+      <Navigation />
+      
+      <main className="container mx-auto px-4 py-8 space-y-12">
+        {/* Language Toggle Button */}
+        <Button
+          onClick={toggleLocale}
+          className="fixed top-20 left-4 bg-white text-orange-600 hover:bg-orange-50 rounded-full px-4 py-2 text-sm shadow-md z-40 border border-orange-200"
+        >
+          {locale === 'en' ? 'العربية' : 'English'}
+        </Button>
 
-      {/* PRD Link Button */}
-      <Button
-        onClick={() => window.open('/prd', '_blank')}
-        className="fixed top-16 left-4 bg-green-600 text-white hover:bg-green-700 rounded-full px-4 py-2 text-sm shadow-md z-50"
-      >
-        View PRD
-      </Button>
+        {/* PRD Link Button */}
+        <Button
+          onClick={() => window.open('/prd', '_blank')}
+          className="fixed top-32 left-4 bg-green-600 text-white hover:bg-green-700 rounded-full px-4 py-2 text-sm shadow-md z-40"
+        >
+          View PRD
+        </Button>
 
-      {/* User ID and Logout Button */}
-      {userId && (
-        <div className="fixed top-4 right-4 flex items-center space-x-2 bg-white text-orange-800 p-2 rounded-md text-sm shadow-md z-50 border border-orange-200">
-          <span className="flex items-center">
-            {t.userId} <span className="font-mono font-semibold mx-1">{userId.substring(0, 8)}...</span>
-          </span>
-          <Button onClick={handleLogout} className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-md text-xs">
-            {t.logout}
-          </Button>
-        </div>
-      )}
+        {/* User ID and Logout Button */}
+        {userId && (
+          <div className="fixed top-4 right-4 flex items-center space-x-2 bg-white text-orange-800 p-2 rounded-md text-sm shadow-md z-40 border border-orange-200">
+            <span className="flex items-center">
+              {t.userId} <span className="font-mono font-semibold mx-1">{userId.substring(0, 8)}...</span>
+            </span>
+            <Button onClick={handleLogout} className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-md text-xs">
+              {t.logout}
+            </Button>
+          </div>
+        )}
 
-      {/* Hero Section with Background Image */}
-      <section className="text-center py-20 bg-white bg-opacity-90 backdrop-blur-sm text-gray-800 rounded-lg shadow-lg relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-white/80 z-0"></div>
-        <div className="relative z-10">
-          <h1 className="text-5xl font-bold mb-4 text-gray-900">{t.heroTitle}</h1>
-          <p className="text-xl mb-8 text-gray-700 max-w-3xl mx-auto">
-            {t.heroSubtitle}
-          </p>
-          <div className="flex justify-center items-center space-x-4 mb-8">
+        {/* Hero Section with Background Image */}
+        <section className="text-center py-20 bg-white bg-opacity-90 backdrop-blur-sm text-gray-800 rounded-lg shadow-lg relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-white/80 z-0"></div>
+          <div className="relative z-10">
+            <h1 className="text-5xl font-bold mb-4 text-gray-900">{t.heroTitle}</h1>
+            <p className="text-xl mb-8 text-gray-700 max-w-3xl mx-auto">
+              {t.heroSubtitle}
+            </p>
+            <div className="flex justify-center items-center space-x-4 mb-8">
+              <img 
+                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" 
+                alt="Business networking" 
+                className="w-16 h-16 rounded-full object-cover shadow-md"
+              />
+              <img 
+                src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81" 
+                alt="Technology solutions" 
+                className="w-16 h-16 rounded-full object-cover shadow-md"
+              />
+              <img 
+                src="https://images.unsplash.com/photo-1497604401993-f2e922e5cb0a" 
+                alt="Global reach" 
+                className="w-16 h-16 rounded-full object-cover shadow-md"
+              />
+            </div>
+            <Button size="lg" className="bg-orange-600 text-white hover:bg-orange-700 rounded-full px-8 py-3 text-lg font-semibold shadow-md transition-all duration-300 ease-in-out hover:scale-105">
+              {t.registerSupplier}
+            </Button>
+          </div>
+        </section>
+
+        {/* Stats Section */}
+        <section className="py-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {stats.map((stat, index) => (
+              <Card key={index} className="text-center bg-white bg-opacity-90 backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <CardContent className="p-6">
+                  <div className="text-3xl font-bold text-orange-600 mb-2">{stat.number}</div>
+                  <p className="text-gray-700 font-medium">{stat.label}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* Industry Showcase Carousel */}
+        <section className="py-12">
+          <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Industries We Serve</h2>
+          <Carousel className="w-full max-w-5xl mx-auto">
+            <CarouselContent className="-ml-1">
+              {industryShowcase.map((industry, index) => (
+                <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3">
+                  <Card className="bg-white bg-opacity-90 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                    <CardContent className="p-0">
+                      <img 
+                        src={industry.image} 
+                        alt={industry.title}
+                        className="w-full h-48 object-cover rounded-t-lg"
+                      />
+                      <div className="p-6">
+                        <h3 className="text-lg font-semibold mb-2 text-gray-800">{industry.title}</h3>
+                        <p className="text-gray-600 text-sm">{industry.description}</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </section>
+
+        {/* How It Works Section */}
+        <section className="py-12">
+          <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">{t.howItWorks}</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { 
+                title: t.step1Title, 
+                desc: t.step1Desc,
+                image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6"
+              },
+              { 
+                title: t.step2Title, 
+                desc: t.step2Desc,
+                image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7"
+              },
+              { 
+                title: t.step3Title, 
+                desc: t.step3Desc,
+                image: "https://images.unsplash.com/photo-1483058712412-4245e9b90334"
+              },
+            ].map((step, i) => (
+              <Card key={i} className="text-center shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg overflow-hidden bg-white bg-opacity-90 backdrop-blur-sm hover:scale-105">
+                <CardContent className="p-0">
+                  <img 
+                    src={step.image} 
+                    alt={step.title}
+                    className="w-full h-32 object-cover"
+                  />
+                  <div className="p-6">
+                    <div className="text-orange-600 text-4xl font-bold mb-4">0{i + 1}</div>
+                    <h3 className="text-xl font-semibold mb-2 text-gray-700">{step.title}</h3>
+                    <p className="text-gray-600">{step.desc}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section className="py-12 bg-white bg-opacity-90 backdrop-blur-sm rounded-lg shadow-lg">
+          <div className="flex justify-center mb-8">
             <img 
-              src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" 
-              alt="Business networking" 
-              className="w-16 h-16 rounded-full object-cover shadow-md"
-            />
-            <img 
-              src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81" 
-              alt="Technology solutions" 
-              className="w-16 h-16 rounded-full object-cover shadow-md"
-            />
-            <img 
-              src="https://images.unsplash.com/photo-1497604401993-f2e922e5cb0a" 
-              alt="Global reach" 
-              className="w-16 h-16 rounded-full object-cover shadow-md"
+              src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5" 
+              alt="Digital technology" 
+              className="w-full max-w-2xl h-40 object-cover rounded-lg shadow-md"
             />
           </div>
-          <Button size="lg" className="bg-orange-600 text-white hover:bg-orange-700 rounded-full px-8 py-3 text-lg font-semibold shadow-md transition-all duration-300 ease-in-out hover:scale-105">
-            {t.registerSupplier}
-          </Button>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {stats.map((stat, index) => (
-            <Card key={index} className="text-center bg-white bg-opacity-90 backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <CardContent className="p-6">
-                <div className="text-3xl font-bold text-orange-600 mb-2">{stat.number}</div>
-                <p className="text-gray-700 font-medium">{stat.label}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      {/* Industry Showcase Carousel */}
-      <section className="py-12">
-        <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Industries We Serve</h2>
-        <Carousel className="w-full max-w-5xl mx-auto">
-          <CarouselContent className="-ml-1">
-            {industryShowcase.map((industry, index) => (
-              <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3">
-                <Card className="bg-white bg-opacity-90 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                  <CardContent className="p-0">
-                    <img 
-                      src={industry.image} 
-                      alt={industry.title}
-                      className="w-full h-48 object-cover rounded-t-lg"
-                    />
-                    <div className="p-6">
-                      <h3 className="text-lg font-semibold mb-2 text-gray-800">{industry.title}</h3>
-                      <p className="text-gray-600 text-sm">{industry.description}</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </CarouselItem>
+          <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">{t.platformFeatures}</h2>
+          <ul className="grid md:grid-cols-2 gap-6 list-none p-0 text-gray-700 max-w-4xl mx-auto">
+            {[
+              t.feature1,
+              t.feature2,
+              t.feature3,
+              t.feature4,
+              t.feature5,
+              t.feature6,
+            ].map((feature, i) => (
+              <li key={i} className="flex items-start space-x-3 bg-gray-50 p-4 rounded-md shadow-sm border border-gray-100 hover:border-orange-300 transition-colors duration-200"
+                  style={{ direction: locale === 'ar' ? 'rtl' : 'ltr' }}>
+                <svg xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 text-green-500 flex-shrink-0 mt-1 ${locale === 'ar' ? 'ml-3' : 'mr-3'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <p>{feature}</p>
+              </li>
             ))}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
-      </section>
+          </ul>
+        </section>
 
-      {/* How It Works Section */}
-      <section className="py-12">
-        <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">{t.howItWorks}</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {[
-            { 
-              title: t.step1Title, 
-              desc: t.step1Desc,
-              image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6"
-            },
-            { 
-              title: t.step2Title, 
-              desc: t.step2Desc,
-              image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7"
-            },
-            { 
-              title: t.step3Title, 
-              desc: t.step3Desc,
-              image: "https://images.unsplash.com/photo-1483058712412-4245e9b90334"
-            },
-          ].map((step, i) => (
-            <Card key={i} className="text-center shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg overflow-hidden bg-white bg-opacity-90 backdrop-blur-sm hover:scale-105">
-              <CardContent className="p-0">
-                <img 
-                  src={step.image} 
-                  alt={step.title}
-                  className="w-full h-32 object-cover"
-                />
-                <div className="p-6">
-                  <div className="text-orange-600 text-4xl font-bold mb-4">0{i + 1}</div>
-                  <h3 className="text-xl font-semibold mb-2 text-gray-700">{step.title}</h3>
-                  <p className="text-gray-600">{step.desc}</p>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-12 bg-white bg-opacity-90 backdrop-blur-sm rounded-lg shadow-lg">
-        <div className="flex justify-center mb-8">
-          <img 
-            src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5" 
-            alt="Digital technology" 
-            className="w-full max-w-2xl h-40 object-cover rounded-lg shadow-md"
-          />
-        </div>
-        <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">{t.platformFeatures}</h2>
-        <ul className="grid md:grid-cols-2 gap-6 list-none p-0 text-gray-700 max-w-4xl mx-auto">
-          {[
-            t.feature1,
-            t.feature2,
-            t.feature3,
-            t.feature4,
-            t.feature5,
-            t.feature6,
-          ].map((feature, i) => (
-            <li key={i} className="flex items-start space-x-3 bg-gray-50 p-4 rounded-md shadow-sm border border-gray-100 hover:border-orange-300 transition-colors duration-200"
-                style={{ direction: locale === 'ar' ? 'rtl' : 'ltr' }}>
-              <svg xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 text-green-500 flex-shrink-0 mt-1 ${locale === 'ar' ? 'ml-3' : 'mr-3'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-              <p>{feature}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {/* Supplier Registration Form Section */}
-      <section className="bg-gradient-to-r from-orange-600 to-orange-500 p-10 rounded-xl shadow-lg text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-black bg-opacity-10"></div>
-        <div className="relative z-10">
-          <h2 className="text-3xl font-bold mb-6 text-center">{t.supplierRegistration}</h2>
-          <p className="text-center mb-8 text-orange-100">
-            {t.supplierRegistrationDesc}
-          </p>
-          <form onSubmit={handleRegistrationSubmit} className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-            <Input
-              placeholder={t.companyName}
-              className="bg-white text-gray-900 border-none p-3 rounded-md focus:ring-2 focus:ring-orange-300"
-              value={companyName}
-              onChange={(e) => setCompanyName(e.target.value)}
-              required
-            />
-            <Input
-              placeholder={t.emailAddress}
-              type="email"
-              className="bg-white text-gray-900 border-none p-3 rounded-md focus:ring-2 focus:ring-orange-300"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <Input
-              placeholder={t.phoneNumber}
-              className="bg-white text-gray-900 border-none p-3 rounded-md focus:ring-2 focus:ring-orange-300"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              required
-            />
-            <Input
-              placeholder={t.websiteURL}
-              className="bg-white text-gray-900 border-none p-3 rounded-md focus:ring-2 focus:ring-orange-300"
-              value={websiteURL}
-              onChange={(e) => setWebsiteURL(e.target.value)}
-            />
-            <Textarea
-              placeholder={t.businessDescription}
-              className="md:col-span-2 bg-white text-gray-900 border-none p-3 rounded-md min-h-[120px] focus:ring-2 focus:ring-orange-300"
-              value={businessDescription}
-              onChange={(e) => setBusinessDescription(e.target.value)}
-              required
-            />
-            <Button
-              type="submit"
-              className="md:col-span-2 bg-white text-orange-700 hover:bg-gray-100 text-lg font-semibold py-3 rounded-md shadow-md hover:shadow-lg transition-all duration-300 ease-in-out"
-              disabled={registrationStatus === 'loading'}
-            >
-              {registrationStatus === 'loading' ? t.submitting : t.submitApplication}
-            </Button>
-          </form>
-          {registrationStatus && (
-            <p className={`mt-4 text-center font-semibold ${registrationStatus === 'success' ? 'text-green-200' : 'text-red-200'}`}>
-              {registrationMessage}
+        {/* Supplier Registration Form Section */}
+        <section className="bg-gradient-to-r from-orange-600 to-orange-500 p-10 rounded-xl shadow-lg text-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-black bg-opacity-10"></div>
+          <div className="relative z-10">
+            <h2 className="text-3xl font-bold mb-6 text-center">{t.supplierRegistration}</h2>
+            <p className="text-center mb-8 text-orange-100">
+              {t.supplierRegistrationDesc}
             </p>
-          )}
-        </div>
-      </section>
-
-      {/* Contact & Chat Section */}
-      <section className="space-y-6 py-12 bg-white bg-opacity-90 backdrop-blur-sm rounded-lg shadow-lg">
-        <h2 className="text-3xl font-bold text-center text-gray-800">{t.contactUs}</h2>
-        <div className="flex flex-col space-y-4 p-4 border border-gray-200 rounded-lg max-w-2xl mx-auto shadow-sm bg-gray-50">
-          <div className="flex-1 h-64 overflow-y-auto border border-gray-200 rounded-md p-4 bg-white scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
-            {messages.length === 0 ? (
-              <p className="text-center text-gray-500">{t.startChat}</p>
-            ) : (
-              messages.map((msg, index) => (
-                <div key={index} className={`mb-2 ${msg.senderId === userId ? 'text-right' : 'text-left'}`}>
-                  <span className={`inline-block p-2 rounded-lg ${msg.senderId === userId ? 'bg-orange-500 text-white' : 'bg-gray-200 text-gray-800'}`}>
-                    {msg.text}
-                  </span>
-                  <div className="text-xs text-gray-400 mt-1">
-                    {msg.senderId === userId ? t.you : `${t.user} ${msg.senderId.substring(0, 8)}...`}
-                    {msg.timestamp && ` - ${new Date(msg.timestamp).toLocaleTimeString()}`}
-                  </div>
-                </div>
-              ))
+            <form onSubmit={handleRegistrationSubmit} className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+              <Input
+                placeholder={t.companyName}
+                className="bg-white text-gray-900 border-none p-3 rounded-md focus:ring-2 focus:ring-orange-300"
+                value={companyName}
+                onChange={(e) => setCompanyName(e.target.value)}
+                required
+              />
+              <Input
+                placeholder={t.emailAddress}
+                type="email"
+                className="bg-white text-gray-900 border-none p-3 rounded-md focus:ring-2 focus:ring-orange-300"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <Input
+                placeholder={t.phoneNumber}
+                className="bg-white text-gray-900 border-none p-3 rounded-md focus:ring-2 focus:ring-orange-300"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                required
+              />
+              <Input
+                placeholder={t.websiteURL}
+                className="bg-white text-gray-900 border-none p-3 rounded-md focus:ring-2 focus:ring-orange-300"
+                value={websiteURL}
+                onChange={(e) => setWebsiteURL(e.target.value)}
+              />
+              <Textarea
+                placeholder={t.businessDescription}
+                className="md:col-span-2 bg-white text-gray-900 border-none p-3 rounded-md min-h-[120px] focus:ring-2 focus:ring-orange-300"
+                value={businessDescription}
+                onChange={(e) => setBusinessDescription(e.target.value)}
+                required
+              />
+              <Button
+                type="submit"
+                className="md:col-span-2 bg-white text-orange-700 hover:bg-gray-100 text-lg font-semibold py-3 rounded-md shadow-md hover:shadow-lg transition-all duration-300 ease-in-out"
+                disabled={registrationStatus === 'loading'}
+              >
+                {registrationStatus === 'loading' ? t.submitting : t.submitApplication}
+              </Button>
+            </form>
+            {registrationStatus && (
+              <p className={`mt-4 text-center font-semibold ${registrationStatus === 'success' ? 'text-green-200' : 'text-red-200'}`}>
+                {registrationMessage}
+              </p>
             )}
           </div>
-          <div className="flex items-center space-x-4">
-            <Avatar className="h-12 w-12 border-2 border-orange-500 flex-shrink-0" />
-            <Input
-              className="flex-1 p-3 rounded-md border border-gray-300 focus:border-orange-500 focus:ring focus:ring-orange-200 transition-all duration-200"
-              placeholder={t.typeMessage}
-              value={chatInput}
-              onChange={(e) => setChatInput(e.target.value)}
-              onKeyPress={(e) => {
-                if (e.key === 'Enter') {
-                  handleSendMessage();
-                }
-              }}
-            />
-            <Button
-              onClick={handleSendMessage}
-              className="bg-orange-600 hover:bg-orange-700 text-white p-3 rounded-md shadow-md hover:shadow-lg transition-all duration-300 ease-in-out"
-            >
-              {t.send}
-            </Button>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Dashboard Preview Section */}
-      <section className="py-12 bg-white bg-opacity-90 backdrop-blur-sm rounded-lg shadow-lg">
-        <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">{t.dashboard}</h2>
-        <Tabs defaultValue="supplier" className="w-full max-w-4xl mx-auto">
-          <TabsList className="grid w-full grid-cols-3 bg-orange-100 rounded-lg p-1 shadow-inner">
-            <TabsTrigger value="supplier" className="data-[state=active]:bg-orange-600 data-[state=active]:text-white rounded-md text-lg px-6 py-2 font-semibold transition-colors duration-200">
-              {t.supplierView}
-            </TabsTrigger>
-            <TabsTrigger value="buyer" className="data-[state=active]:bg-orange-600 data-[state=active]:text-white rounded-md text-lg px-6 py-2 font-semibold transition-colors duration-200">
-              {t.buyerView}
-            </TabsTrigger>
-            <TabsTrigger value="analytics" className="data-[state=active]:bg-orange-600 data-[state=active]:text-white rounded-md text-lg px-6 py-2 font-semibold transition-colors duration-200" onClick={fetchAnalytics}>
-              {t.analyticsView}
-            </TabsTrigger>
-          </TabsList>
-          {/* Content for the Supplier View tab */}
-          <TabsContent value="supplier">
-            <Card className="mt-6 border-orange-400 border-2 shadow-lg rounded-lg">
-              <CardContent className="p-8 space-y-6">
-                <h3 className="text-2xl font-bold text-orange-700">{t.welcomeSupplier}</h3>
-                <p className="text-gray-700">
-                  {t.supplierDashboardDesc}
-                </p>
-                <ul className="list-disc list-inside text-gray-600 space-y-2">
-                  <li>Easily <span className="font-semibold text-orange-600">{t.manageListings}</span> and update your offerings to attract more buyers.</li>
-                  <li><span className="font-semibold text-orange-600">{t.respondInquiries}</span> promptly to secure new deals and build strong relationships.</li>
-                  <li><span className="font-semibold text-orange-600">{t.trackOrders}</span> to monitor your performance and enhance your reputation on the platform.</li>
-                </ul>
-                <Button className="bg-orange-600 hover:bg-orange-700 text-white text-lg py-3 px-6 rounded-md shadow-md hover:shadow-lg transition-all duration-300 ease-in-out">
-                  {t.goToSupplierPanel}
-                </Button>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          {/* Content for the Buyer View tab */}
-          <TabsContent value="buyer">
-            <Card className="mt-6 border-green-400 border-2 shadow-lg rounded-lg">
-              <CardContent className="p-8 space-y-6">
-                <h3 className="text-2xl font-bold text-green-700">{t.welcomeBuyer}</h3>
-                <p className="text-gray-700">
-                  {t.buyerDashboardDesc}
-                </p>
-                <ul className="list-disc list-inside text-gray-600 space-y-2">
-                  <li><span className="font-semibold text-green-600">{t.browseSuppliers}</span> and discover reliable partners for all your business needs.</li>
-                  <li><span className="font-semibold text-green-600">{t.sendInquiries}</span> directly to suppliers for custom quotes and detailed information.</li>
-                  <li><span className="font-semibold text-green-600">{t.manageOrders}</span> to keep track of your transactions and provide valuable feedback.</li>
-                </ul>
-                <Button className="bg-green-600 hover:bg-green-700 text-white text-lg py-3 px-6 rounded-md shadow-md hover:shadow-lg transition-all duration-300 ease-in-out">
-                  {t.goToBuyerPanel}
-                </Button>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          {/* Content for the Analytics & Reports tab (simulating MongoDB data) */}
-          <TabsContent value="analytics">
-            <Card className="mt-6 border-purple-400 border-2 shadow-lg rounded-lg">
-              <CardContent className="p-8 space-y-6">
-                <h3 className="text-2xl font-bold text-purple-700">{t.analyticsTitle}</h3>
-                <p className="text-gray-700">
-                  {t.analyticsDesc}
-                </p>
-                <Button onClick={fetchAnalytics} disabled={loadingAnalytics} className="bg-purple-600 hover:bg-purple-700 text-white text-lg py-3 px-6 rounded-md shadow-md hover:shadow-lg transition-all duration-300 ease-in-out">
-                  {loadingAnalytics ? t.loadingAnalytics : "Fetch Analytics Data"}
-                </Button>
-                {analyticsError && (
-                  <p className="text-red-500 mt-4">{analyticsError}</p>
-                )}
-                {analyticsData && (
-                  <div className="mt-6 p-4 bg-purple-50 rounded-md border border-purple-200">
-                    <h4 className="text-xl font-semibold mb-2">{t.sampleReport}</h4>
-                    <p>{t.totalSales} {analyticsData.totalSales}</p>
-                    <p>{t.topProduct} {analyticsData.topProduct}</p>
-                    <p>{t.customerGrowth} {analyticsData.customerGrowth}</p>
+        {/* Contact & Chat Section */}
+        <section className="space-y-6 py-12 bg-white bg-opacity-90 backdrop-blur-sm rounded-lg shadow-lg">
+          <h2 className="text-3xl font-bold text-center text-gray-800">{t.contactUs}</h2>
+          <div className="flex flex-col space-y-4 p-4 border border-gray-200 rounded-lg max-w-2xl mx-auto shadow-sm bg-gray-50">
+            <div className="flex-1 h-64 overflow-y-auto border border-gray-200 rounded-md p-4 bg-white scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+              {messages.length === 0 ? (
+                <p className="text-center text-gray-500">{t.startChat}</p>
+              ) : (
+                messages.map((msg, index) => (
+                  <div key={index} className={`mb-2 ${msg.senderId === userId ? 'text-right' : 'text-left'}`}>
+                    <span className={`inline-block p-2 rounded-lg ${msg.senderId === userId ? 'bg-orange-500 text-white' : 'bg-gray-200 text-gray-800'}`}>
+                      {msg.text}
+                    </span>
+                    <div className="text-xs text-gray-400 mt-1">
+                      {msg.senderId === userId ? t.you : `${t.user} ${msg.senderId.substring(0, 8)}...`}
+                      {msg.timestamp && ` - ${new Date(msg.timestamp).toLocaleTimeString()}`}
+                    </div>
                   </div>
-                )}
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
-      </section>
-    </main>
+                ))
+              )}
+            </div>
+            <div className="flex items-center space-x-4">
+              <Avatar className="h-12 w-12 border-2 border-orange-500 flex-shrink-0" />
+              <Input
+                className="flex-1 p-3 rounded-md border border-gray-300 focus:border-orange-500 focus:ring focus:ring-orange-200 transition-all duration-200"
+                placeholder={t.typeMessage}
+                value={chatInput}
+                onChange={(e) => setChatInput(e.target.value)}
+                onKeyPress={(e) => {
+                  if (e.key === 'Enter') {
+                    handleSendMessage();
+                  }
+                }}
+              />
+              <Button
+                onClick={handleSendMessage}
+                className="bg-orange-600 hover:bg-orange-700 text-white p-3 rounded-md shadow-md hover:shadow-lg transition-all duration-300 ease-in-out"
+              >
+                {t.send}
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Dashboard Preview Section */}
+        <section className="py-12 bg-white bg-opacity-90 backdrop-blur-sm rounded-lg shadow-lg">
+          <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">{t.dashboard}</h2>
+          <Tabs defaultValue="supplier" className="w-full max-w-4xl mx-auto">
+            <TabsList className="grid w-full grid-cols-3 bg-orange-100 rounded-lg p-1 shadow-inner">
+              <TabsTrigger value="supplier" className="data-[state=active]:bg-orange-600 data-[state=active]:text-white rounded-md text-lg px-6 py-2 font-semibold transition-colors duration-200">
+                {t.supplierView}
+              </TabsTrigger>
+              <TabsTrigger value="buyer" className="data-[state=active]:bg-orange-600 data-[state=active]:text-white rounded-md text-lg px-6 py-2 font-semibold transition-colors duration-200">
+                {t.buyerView}
+              </TabsTrigger>
+              <TabsTrigger value="analytics" className="data-[state=active]:bg-orange-600 data-[state=active]:text-white rounded-md text-lg px-6 py-2 font-semibold transition-colors duration-200" onClick={fetchAnalytics}>
+                {t.analyticsView}
+              </TabsTrigger>
+            </TabsList>
+            {/* Content for the Supplier View tab */}
+            <TabsContent value="supplier">
+              <Card className="mt-6 border-orange-400 border-2 shadow-lg rounded-lg">
+                <CardContent className="p-8 space-y-6">
+                  <h3 className="text-2xl font-bold text-orange-700">{t.welcomeSupplier}</h3>
+                  <p className="text-gray-700">
+                    {t.supplierDashboardDesc}
+                  </p>
+                  <ul className="list-disc list-inside text-gray-600 space-y-2">
+                    <li>Easily <span className="font-semibold text-orange-600">{t.manageListings}</span> and update your offerings to attract more buyers.</li>
+                    <li><span className="font-semibold text-orange-600">{t.respondInquiries}</span> promptly to secure new deals and build strong relationships.</li>
+                    <li><span className="font-semibold text-orange-600">{t.trackOrders}</span> to monitor your performance and enhance your reputation on the platform.</li>
+                  </ul>
+                  <Button className="bg-orange-600 hover:bg-orange-700 text-white text-lg py-3 px-6 rounded-md shadow-md hover:shadow-lg transition-all duration-300 ease-in-out">
+                    {t.goToSupplierPanel}
+                  </Button>
+                </CardContent>
+              </Card>
+            </TabsContent>
+            {/* Content for the Buyer View tab */}
+            <TabsContent value="buyer">
+              <Card className="mt-6 border-green-400 border-2 shadow-lg rounded-lg">
+                <CardContent className="p-8 space-y-6">
+                  <h3 className="text-2xl font-bold text-green-700">{t.welcomeBuyer}</h3>
+                  <p className="text-gray-700">
+                    {t.buyerDashboardDesc}
+                  </p>
+                  <ul className="list-disc list-inside text-gray-600 space-y-2">
+                    <li><span className="font-semibold text-green-600">{t.browseSuppliers}</span> and discover reliable partners for all your business needs.</li>
+                    <li><span className="font-semibold text-green-600">{t.sendInquiries}</span> directly to suppliers for custom quotes and detailed information.</li>
+                    <li><span className="font-semibold text-green-600">{t.manageOrders}</span> to keep track of your transactions and provide valuable feedback.</li>
+                  </ul>
+                  <Button className="bg-green-600 hover:bg-green-700 text-white text-lg py-3 px-6 rounded-md shadow-md hover:shadow-lg transition-all duration-300 ease-in-out">
+                    {t.goToBuyerPanel}
+                  </Button>
+                </CardContent>
+              </Card>
+            </TabsContent>
+            {/* Content for the Analytics & Reports tab (simulating MongoDB data) */}
+            <TabsContent value="analytics">
+              <Card className="mt-6 border-purple-400 border-2 shadow-lg rounded-lg">
+                <CardContent className="p-8 space-y-6">
+                  <h3 className="text-2xl font-bold text-purple-700">{t.analyticsTitle}</h3>
+                  <p className="text-gray-700">
+                    {t.analyticsDesc}
+                  </p>
+                  <Button onClick={fetchAnalytics} disabled={loadingAnalytics} className="bg-purple-600 hover:bg-purple-700 text-white text-lg py-3 px-6 rounded-md shadow-md hover:shadow-lg transition-all duration-300 ease-in-out">
+                    {loadingAnalytics ? t.loadingAnalytics : "Fetch Analytics Data"}
+                  </Button>
+                  {analyticsError && (
+                    <p className="text-red-500 mt-4">{analyticsError}</p>
+                  )}
+                  {analyticsData && (
+                    <div className="mt-6 p-4 bg-purple-50 rounded-md border border-purple-200">
+                      <h4 className="text-xl font-semibold mb-2">{t.sampleReport}</h4>
+                      <p>{t.totalSales} {analyticsData.totalSales}</p>
+                      <p>{t.topProduct} {analyticsData.topProduct}</p>
+                      <p>{t.customerGrowth} {analyticsData.customerGrowth}</p>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            </TabsContent>
+          </Tabs>
+        </section>
+      </main>
+    </div>
   );
 }
