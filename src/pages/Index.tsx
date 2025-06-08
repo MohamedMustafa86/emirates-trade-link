@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Avatar } from "@/components/ui/avatar";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useState, useEffect } from "react";
 
 // Firebase imports
@@ -191,6 +192,37 @@ export default function App() {
   const [loginLoading, setLoginLoading] = useState(false);
   const [loginError, setLoginError] = useState(null);
 
+  // Industry showcase data
+  const industryShowcase = [
+    {
+      title: "Manufacturing & Industrial Equipment",
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+      description: "Advanced manufacturing solutions and industrial equipment for global distribution"
+    },
+    {
+      title: "Technology & Electronics",
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+      description: "Cutting-edge technology products and electronic components worldwide"
+    },
+    {
+      title: "Construction & Building Materials",
+      image: "https://images.unsplash.com/photo-1496307653780-42ee777d4833",
+      description: "Quality construction materials and building solutions for every project"
+    },
+    {
+      title: "Healthcare & Medical Supplies",
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
+      description: "Essential medical equipment and healthcare products for global markets"
+    }
+  ];
+
+  const stats = [
+    { number: "10,000+", label: "Verified Suppliers" },
+    { number: "50+", label: "Countries Served" },
+    { number: "$2.5B+", label: "Annual Transactions" },
+    { number: "99.8%", label: "Customer Satisfaction" }
+  ];
+
   // Firebase Initialization and Authentication
   useEffect(() => {
     try {
@@ -346,8 +378,8 @@ export default function App() {
   // If user is not logged in (userId is null after auth check), show login form
   if (!userId) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-teal-500 p-4">
-        <Card className="w-full max-w-md p-8 shadow-2xl rounded-lg bg-white">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-500 via-orange-400 to-white p-4">
+        <Card className="w-full max-w-md p-8 shadow-2xl rounded-lg bg-white backdrop-blur-sm bg-opacity-95">
           <CardContent className="space-y-6">
             <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
               {t.loginTitle}
@@ -397,11 +429,11 @@ export default function App() {
 
   // If user is logged in, show the main application content
   return (
-    <main className="min-h-screen bg-gray-50 p-8 space-y-12 font-inter" dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+    <main className="min-h-screen bg-gradient-to-br from-orange-500 via-orange-400 to-white p-8 space-y-12 font-inter" dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       {/* Language Toggle Button */}
       <Button
         onClick={toggleLocale}
-        className="fixed top-4 left-4 bg-orange-600 text-white hover:bg-orange-700 rounded-full px-4 py-2 text-sm shadow-md z-50"
+        className="fixed top-4 left-4 bg-white text-orange-600 hover:bg-orange-50 rounded-full px-4 py-2 text-sm shadow-md z-50 border border-orange-200"
       >
         {locale === 'en' ? 'العربية' : 'English'}
       </Button>
@@ -416,7 +448,7 @@ export default function App() {
 
       {/* User ID and Logout Button */}
       {userId && (
-        <div className="fixed top-4 right-4 flex items-center space-x-2 bg-orange-100 text-orange-800 p-2 rounded-md text-sm shadow-md z-50">
+        <div className="fixed top-4 right-4 flex items-center space-x-2 bg-white text-orange-800 p-2 rounded-md text-sm shadow-md z-50 border border-orange-200">
           <span className="flex items-center">
             {t.userId} <span className="font-mono font-semibold mx-1">{userId.substring(0, 8)}...</span>
           </span>
@@ -426,15 +458,77 @@ export default function App() {
         </div>
       )}
 
-      {/* Hero Section */}
-      <section className="text-center py-20 bg-gradient-to-r from-orange-500 to-white text-gray-800 rounded-lg shadow-lg">
-        <h1 className="text-5xl font-bold mb-4">{t.heroTitle}</h1>
-        <p className="text-xl mb-8">
-          {t.heroSubtitle}
-        </p>
-        <Button size="lg" className="bg-orange-600 text-white hover:bg-orange-700 rounded-full px-8 py-3 text-lg font-semibold shadow-md transition-all duration-300 ease-in-out hover:scale-105">
-          {t.registerSupplier}
-        </Button>
+      {/* Hero Section with Background Image */}
+      <section className="text-center py-20 bg-white bg-opacity-90 backdrop-blur-sm text-gray-800 rounded-lg shadow-lg relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-white/80 z-0"></div>
+        <div className="relative z-10">
+          <h1 className="text-5xl font-bold mb-4 text-gray-900">{t.heroTitle}</h1>
+          <p className="text-xl mb-8 text-gray-700 max-w-3xl mx-auto">
+            {t.heroSubtitle}
+          </p>
+          <div className="flex justify-center items-center space-x-4 mb-8">
+            <img 
+              src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" 
+              alt="Business networking" 
+              className="w-16 h-16 rounded-full object-cover shadow-md"
+            />
+            <img 
+              src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81" 
+              alt="Technology solutions" 
+              className="w-16 h-16 rounded-full object-cover shadow-md"
+            />
+            <img 
+              src="https://images.unsplash.com/photo-1497604401993-f2e922e5cb0a" 
+              alt="Global reach" 
+              className="w-16 h-16 rounded-full object-cover shadow-md"
+            />
+          </div>
+          <Button size="lg" className="bg-orange-600 text-white hover:bg-orange-700 rounded-full px-8 py-3 text-lg font-semibold shadow-md transition-all duration-300 ease-in-out hover:scale-105">
+            {t.registerSupplier}
+          </Button>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {stats.map((stat, index) => (
+            <Card key={index} className="text-center bg-white bg-opacity-90 backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <CardContent className="p-6">
+                <div className="text-3xl font-bold text-orange-600 mb-2">{stat.number}</div>
+                <p className="text-gray-700 font-medium">{stat.label}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* Industry Showcase Carousel */}
+      <section className="py-12">
+        <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Industries We Serve</h2>
+        <Carousel className="w-full max-w-5xl mx-auto">
+          <CarouselContent className="-ml-1">
+            {industryShowcase.map((industry, index) => (
+              <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3">
+                <Card className="bg-white bg-opacity-90 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                  <CardContent className="p-0">
+                    <img 
+                      src={industry.image} 
+                      alt={industry.title}
+                      className="w-full h-48 object-cover rounded-t-lg"
+                    />
+                    <div className="p-6">
+                      <h3 className="text-lg font-semibold mb-2 text-gray-800">{industry.title}</h3>
+                      <p className="text-gray-600 text-sm">{industry.description}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </section>
 
       {/* How It Works Section */}
@@ -442,15 +536,34 @@ export default function App() {
         <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">{t.howItWorks}</h2>
         <div className="grid md:grid-cols-3 gap-8">
           {[
-            { title: t.step1Title, desc: t.step1Desc },
-            { title: t.step2Title, desc: t.step2Desc },
-            { title: t.step3Title, desc: t.step3Desc },
+            { 
+              title: t.step1Title, 
+              desc: t.step1Desc,
+              image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6"
+            },
+            { 
+              title: t.step2Title, 
+              desc: t.step2Desc,
+              image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7"
+            },
+            { 
+              title: t.step3Title, 
+              desc: t.step3Desc,
+              image: "https://images.unsplash.com/photo-1483058712412-4245e9b90334"
+            },
           ].map((step, i) => (
-            <Card key={i} className="text-center shadow-md hover:shadow-xl transition-shadow duration-300 rounded-lg overflow-hidden">
-              <CardContent className="p-8">
-                <div className="text-orange-600 text-4xl font-bold mb-4">0{i + 1}</div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-700">{step.title}</h3>
-                <p className="text-gray-600">{step.desc}</p>
+            <Card key={i} className="text-center shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg overflow-hidden bg-white bg-opacity-90 backdrop-blur-sm hover:scale-105">
+              <CardContent className="p-0">
+                <img 
+                  src={step.image} 
+                  alt={step.title}
+                  className="w-full h-32 object-cover"
+                />
+                <div className="p-6">
+                  <div className="text-orange-600 text-4xl font-bold mb-4">0{i + 1}</div>
+                  <h3 className="text-xl font-semibold mb-2 text-gray-700">{step.title}</h3>
+                  <p className="text-gray-600">{step.desc}</p>
+                </div>
               </CardContent>
             </Card>
           ))}
@@ -458,7 +571,14 @@ export default function App() {
       </section>
 
       {/* Features Section */}
-      <section className="py-12 bg-white rounded-lg shadow-md">
+      <section className="py-12 bg-white bg-opacity-90 backdrop-blur-sm rounded-lg shadow-lg">
+        <div className="flex justify-center mb-8">
+          <img 
+            src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5" 
+            alt="Digital technology" 
+            className="w-full max-w-2xl h-40 object-cover rounded-lg shadow-md"
+          />
+        </div>
         <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">{t.platformFeatures}</h2>
         <ul className="grid md:grid-cols-2 gap-6 list-none p-0 text-gray-700 max-w-4xl mx-auto">
           {[
@@ -481,64 +601,67 @@ export default function App() {
       </section>
 
       {/* Supplier Registration Form Section */}
-      <section className="bg-gradient-to-r from-orange-600 to-orange-400 p-10 rounded-xl shadow-lg text-white">
-        <h2 className="text-3xl font-bold mb-6 text-center">{t.supplierRegistration}</h2>
-        <p className="text-center mb-8 text-orange-100">
-          {t.supplierRegistrationDesc}
-        </p>
-        <form onSubmit={handleRegistrationSubmit} className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-          <Input
-            placeholder={t.companyName}
-            className="bg-white text-gray-900 border-none p-3 rounded-md focus:ring-2 focus:ring-orange-300"
-            value={companyName}
-            onChange={(e) => setCompanyName(e.target.value)}
-            required
-          />
-          <Input
-            placeholder={t.emailAddress}
-            type="email"
-            className="bg-white text-gray-900 border-none p-3 rounded-md focus:ring-2 focus:ring-orange-300"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <Input
-            placeholder={t.phoneNumber}
-            className="bg-white text-gray-900 border-none p-3 rounded-md focus:ring-2 focus:ring-orange-300"
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            required
-          />
-          <Input
-            placeholder={t.websiteURL}
-            className="bg-white text-gray-900 border-none p-3 rounded-md focus:ring-2 focus:ring-orange-300"
-            value={websiteURL}
-            onChange={(e) => setWebsiteURL(e.target.value)}
-          />
-          <Textarea
-            placeholder={t.businessDescription}
-            className="md:col-span-2 bg-white text-gray-900 border-none p-3 rounded-md min-h-[120px] focus:ring-2 focus:ring-orange-300"
-            value={businessDescription}
-            onChange={(e) => setBusinessDescription(e.target.value)}
-            required
-          />
-          <Button
-            type="submit"
-            className="md:col-span-2 bg-white text-orange-700 hover:bg-gray-100 text-lg font-semibold py-3 rounded-md shadow-md hover:shadow-lg transition-all duration-300 ease-in-out"
-            disabled={registrationStatus === 'loading'}
-          >
-            {registrationStatus === 'loading' ? t.submitting : t.submitApplication}
-          </Button>
-        </form>
-        {registrationStatus && (
-          <p className={`mt-4 text-center font-semibold ${registrationStatus === 'success' ? 'text-green-200' : 'text-red-200'}`}>
-            {registrationMessage}
+      <section className="bg-gradient-to-r from-orange-600 to-orange-500 p-10 rounded-xl shadow-lg text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-black bg-opacity-10"></div>
+        <div className="relative z-10">
+          <h2 className="text-3xl font-bold mb-6 text-center">{t.supplierRegistration}</h2>
+          <p className="text-center mb-8 text-orange-100">
+            {t.supplierRegistrationDesc}
           </p>
-        )}
+          <form onSubmit={handleRegistrationSubmit} className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            <Input
+              placeholder={t.companyName}
+              className="bg-white text-gray-900 border-none p-3 rounded-md focus:ring-2 focus:ring-orange-300"
+              value={companyName}
+              onChange={(e) => setCompanyName(e.target.value)}
+              required
+            />
+            <Input
+              placeholder={t.emailAddress}
+              type="email"
+              className="bg-white text-gray-900 border-none p-3 rounded-md focus:ring-2 focus:ring-orange-300"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <Input
+              placeholder={t.phoneNumber}
+              className="bg-white text-gray-900 border-none p-3 rounded-md focus:ring-2 focus:ring-orange-300"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              required
+            />
+            <Input
+              placeholder={t.websiteURL}
+              className="bg-white text-gray-900 border-none p-3 rounded-md focus:ring-2 focus:ring-orange-300"
+              value={websiteURL}
+              onChange={(e) => setWebsiteURL(e.target.value)}
+            />
+            <Textarea
+              placeholder={t.businessDescription}
+              className="md:col-span-2 bg-white text-gray-900 border-none p-3 rounded-md min-h-[120px] focus:ring-2 focus:ring-orange-300"
+              value={businessDescription}
+              onChange={(e) => setBusinessDescription(e.target.value)}
+              required
+            />
+            <Button
+              type="submit"
+              className="md:col-span-2 bg-white text-orange-700 hover:bg-gray-100 text-lg font-semibold py-3 rounded-md shadow-md hover:shadow-lg transition-all duration-300 ease-in-out"
+              disabled={registrationStatus === 'loading'}
+            >
+              {registrationStatus === 'loading' ? t.submitting : t.submitApplication}
+            </Button>
+          </form>
+          {registrationStatus && (
+            <p className={`mt-4 text-center font-semibold ${registrationStatus === 'success' ? 'text-green-200' : 'text-red-200'}`}>
+              {registrationMessage}
+            </p>
+          )}
+        </div>
       </section>
 
       {/* Contact & Chat Section */}
-      <section className="space-y-6 py-12 bg-white rounded-lg shadow-md">
+      <section className="space-y-6 py-12 bg-white bg-opacity-90 backdrop-blur-sm rounded-lg shadow-lg">
         <h2 className="text-3xl font-bold text-center text-gray-800">{t.contactUs}</h2>
         <div className="flex flex-col space-y-4 p-4 border border-gray-200 rounded-lg max-w-2xl mx-auto shadow-sm bg-gray-50">
           <div className="flex-1 h-64 overflow-y-auto border border-gray-200 rounded-md p-4 bg-white scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
@@ -582,7 +705,7 @@ export default function App() {
       </section>
 
       {/* Dashboard Preview Section */}
-      <section className="py-12 bg-gray-100 rounded-lg shadow-md">
+      <section className="py-12 bg-white bg-opacity-90 backdrop-blur-sm rounded-lg shadow-lg">
         <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">{t.dashboard}</h2>
         <Tabs defaultValue="supplier" className="w-full max-w-4xl mx-auto">
           <TabsList className="grid w-full grid-cols-3 bg-orange-100 rounded-lg p-1 shadow-inner">
