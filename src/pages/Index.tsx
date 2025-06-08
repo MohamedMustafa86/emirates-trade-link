@@ -401,7 +401,7 @@ export default function App() {
       {/* Language Toggle Button */}
       <Button
         onClick={toggleLocale}
-        className="fixed top-4 left-4 bg-blue-600 text-white hover:bg-blue-700 rounded-full px-4 py-2 text-sm shadow-md z-50"
+        className="fixed top-4 left-4 bg-orange-600 text-white hover:bg-orange-700 rounded-full px-4 py-2 text-sm shadow-md z-50"
       >
         {locale === 'en' ? 'العربية' : 'English'}
       </Button>
@@ -416,7 +416,7 @@ export default function App() {
 
       {/* User ID and Logout Button */}
       {userId && (
-        <div className="fixed top-4 right-4 flex items-center space-x-2 bg-blue-100 text-blue-800 p-2 rounded-md text-sm shadow-md z-50">
+        <div className="fixed top-4 right-4 flex items-center space-x-2 bg-orange-100 text-orange-800 p-2 rounded-md text-sm shadow-md z-50">
           <span className="flex items-center">
             {t.userId} <span className="font-mono font-semibold mx-1">{userId.substring(0, 8)}...</span>
           </span>
@@ -427,12 +427,12 @@ export default function App() {
       )}
 
       {/* Hero Section */}
-      <section className="text-center py-20 bg-blue-700 text-white rounded-lg shadow-lg">
+      <section className="text-center py-20 bg-gradient-to-r from-orange-500 to-white text-gray-800 rounded-lg shadow-lg">
         <h1 className="text-5xl font-bold mb-4">{t.heroTitle}</h1>
         <p className="text-xl mb-8">
           {t.heroSubtitle}
         </p>
-        <Button size="lg" className="bg-white text-blue-700 hover:bg-gray-100 rounded-full px-8 py-3 text-lg font-semibold shadow-md transition-all duration-300 ease-in-out hover:scale-105">
+        <Button size="lg" className="bg-orange-600 text-white hover:bg-orange-700 rounded-full px-8 py-3 text-lg font-semibold shadow-md transition-all duration-300 ease-in-out hover:scale-105">
           {t.registerSupplier}
         </Button>
       </section>
@@ -448,7 +448,7 @@ export default function App() {
           ].map((step, i) => (
             <Card key={i} className="text-center shadow-md hover:shadow-xl transition-shadow duration-300 rounded-lg overflow-hidden">
               <CardContent className="p-8">
-                <div className="text-blue-600 text-4xl font-bold mb-4">0{i + 1}</div>
+                <div className="text-orange-600 text-4xl font-bold mb-4">0{i + 1}</div>
                 <h3 className="text-xl font-semibold mb-2 text-gray-700">{step.title}</h3>
                 <p className="text-gray-600">{step.desc}</p>
               </CardContent>
@@ -469,7 +469,7 @@ export default function App() {
             t.feature5,
             t.feature6,
           ].map((feature, i) => (
-            <li key={i} className="flex items-start space-x-3 bg-gray-50 p-4 rounded-md shadow-sm border border-gray-100 hover:border-blue-300 transition-colors duration-200"
+            <li key={i} className="flex items-start space-x-3 bg-gray-50 p-4 rounded-md shadow-sm border border-gray-100 hover:border-orange-300 transition-colors duration-200"
                 style={{ direction: locale === 'ar' ? 'rtl' : 'ltr' }}>
               <svg xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 text-green-500 flex-shrink-0 mt-1 ${locale === 'ar' ? 'ml-3' : 'mr-3'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -481,15 +481,15 @@ export default function App() {
       </section>
 
       {/* Supplier Registration Form Section */}
-      <section className="bg-blue-600 p-10 rounded-xl shadow-lg text-white">
+      <section className="bg-gradient-to-r from-orange-600 to-orange-400 p-10 rounded-xl shadow-lg text-white">
         <h2 className="text-3xl font-bold mb-6 text-center">{t.supplierRegistration}</h2>
-        <p className="text-center mb-8 text-blue-100">
+        <p className="text-center mb-8 text-orange-100">
           {t.supplierRegistrationDesc}
         </p>
         <form onSubmit={handleRegistrationSubmit} className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
           <Input
             placeholder={t.companyName}
-            className="bg-white text-gray-900 border-none p-3 rounded-md focus:ring-2 focus:ring-blue-300"
+            className="bg-white text-gray-900 border-none p-3 rounded-md focus:ring-2 focus:ring-orange-300"
             value={companyName}
             onChange={(e) => setCompanyName(e.target.value)}
             required
@@ -497,34 +497,34 @@ export default function App() {
           <Input
             placeholder={t.emailAddress}
             type="email"
-            className="bg-white text-gray-900 border-none p-3 rounded-md focus:ring-2 focus:ring-blue-300"
+            className="bg-white text-gray-900 border-none p-3 rounded-md focus:ring-2 focus:ring-orange-300"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
           <Input
             placeholder={t.phoneNumber}
-            className="bg-white text-gray-900 border-none p-3 rounded-md focus:ring-2 focus:ring-blue-300"
+            className="bg-white text-gray-900 border-none p-3 rounded-md focus:ring-2 focus:ring-orange-300"
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
             required
           />
           <Input
             placeholder={t.websiteURL}
-            className="bg-white text-gray-900 border-none p-3 rounded-md focus:ring-2 focus:ring-blue-300"
+            className="bg-white text-gray-900 border-none p-3 rounded-md focus:ring-2 focus:ring-orange-300"
             value={websiteURL}
             onChange={(e) => setWebsiteURL(e.target.value)}
           />
           <Textarea
             placeholder={t.businessDescription}
-            className="md:col-span-2 bg-white text-gray-900 border-none p-3 rounded-md min-h-[120px] focus:ring-2 focus:ring-blue-300"
+            className="md:col-span-2 bg-white text-gray-900 border-none p-3 rounded-md min-h-[120px] focus:ring-2 focus:ring-orange-300"
             value={businessDescription}
             onChange={(e) => setBusinessDescription(e.target.value)}
             required
           />
           <Button
             type="submit"
-            className="md:col-span-2 bg-white text-blue-700 hover:bg-gray-100 text-lg font-semibold py-3 rounded-md shadow-md hover:shadow-lg transition-all duration-300 ease-in-out"
+            className="md:col-span-2 bg-white text-orange-700 hover:bg-gray-100 text-lg font-semibold py-3 rounded-md shadow-md hover:shadow-lg transition-all duration-300 ease-in-out"
             disabled={registrationStatus === 'loading'}
           >
             {registrationStatus === 'loading' ? t.submitting : t.submitApplication}
@@ -547,7 +547,7 @@ export default function App() {
             ) : (
               messages.map((msg, index) => (
                 <div key={index} className={`mb-2 ${msg.senderId === userId ? 'text-right' : 'text-left'}`}>
-                  <span className={`inline-block p-2 rounded-lg ${msg.senderId === userId ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-800'}`}>
+                  <span className={`inline-block p-2 rounded-lg ${msg.senderId === userId ? 'bg-orange-500 text-white' : 'bg-gray-200 text-gray-800'}`}>
                     {msg.text}
                   </span>
                   <div className="text-xs text-gray-400 mt-1">
@@ -559,9 +559,9 @@ export default function App() {
             )}
           </div>
           <div className="flex items-center space-x-4">
-            <Avatar className="h-12 w-12 border-2 border-blue-500 flex-shrink-0" />
+            <Avatar className="h-12 w-12 border-2 border-orange-500 flex-shrink-0" />
             <Input
-              className="flex-1 p-3 rounded-md border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-all duration-200"
+              className="flex-1 p-3 rounded-md border border-gray-300 focus:border-orange-500 focus:ring focus:ring-orange-200 transition-all duration-200"
               placeholder={t.typeMessage}
               value={chatInput}
               onChange={(e) => setChatInput(e.target.value)}
@@ -573,7 +573,7 @@ export default function App() {
             />
             <Button
               onClick={handleSendMessage}
-              className="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-md shadow-md hover:shadow-lg transition-all duration-300 ease-in-out"
+              className="bg-orange-600 hover:bg-orange-700 text-white p-3 rounded-md shadow-md hover:shadow-lg transition-all duration-300 ease-in-out"
             >
               {t.send}
             </Button>
@@ -585,31 +585,31 @@ export default function App() {
       <section className="py-12 bg-gray-100 rounded-lg shadow-md">
         <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">{t.dashboard}</h2>
         <Tabs defaultValue="supplier" className="w-full max-w-4xl mx-auto">
-          <TabsList className="grid w-full grid-cols-3 bg-blue-100 rounded-lg p-1 shadow-inner">
-            <TabsTrigger value="supplier" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white rounded-md text-lg px-6 py-2 font-semibold transition-colors duration-200">
+          <TabsList className="grid w-full grid-cols-3 bg-orange-100 rounded-lg p-1 shadow-inner">
+            <TabsTrigger value="supplier" className="data-[state=active]:bg-orange-600 data-[state=active]:text-white rounded-md text-lg px-6 py-2 font-semibold transition-colors duration-200">
               {t.supplierView}
             </TabsTrigger>
-            <TabsTrigger value="buyer" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white rounded-md text-lg px-6 py-2 font-semibold transition-colors duration-200">
+            <TabsTrigger value="buyer" className="data-[state=active]:bg-orange-600 data-[state=active]:text-white rounded-md text-lg px-6 py-2 font-semibold transition-colors duration-200">
               {t.buyerView}
             </TabsTrigger>
-            <TabsTrigger value="analytics" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white rounded-md text-lg px-6 py-2 font-semibold transition-colors duration-200" onClick={fetchAnalytics}>
+            <TabsTrigger value="analytics" className="data-[state=active]:bg-orange-600 data-[state=active]:text-white rounded-md text-lg px-6 py-2 font-semibold transition-colors duration-200" onClick={fetchAnalytics}>
               {t.analyticsView}
             </TabsTrigger>
           </TabsList>
           {/* Content for the Supplier View tab */}
           <TabsContent value="supplier">
-            <Card className="mt-6 border-blue-400 border-2 shadow-lg rounded-lg">
+            <Card className="mt-6 border-orange-400 border-2 shadow-lg rounded-lg">
               <CardContent className="p-8 space-y-6">
-                <h3 className="text-2xl font-bold text-blue-700">{t.welcomeSupplier}</h3>
+                <h3 className="text-2xl font-bold text-orange-700">{t.welcomeSupplier}</h3>
                 <p className="text-gray-700">
                   {t.supplierDashboardDesc}
                 </p>
                 <ul className="list-disc list-inside text-gray-600 space-y-2">
-                  <li>Easily <span className="font-semibold text-blue-600">{t.manageListings}</span> and update your offerings to attract more buyers.</li>
-                  <li><span className="font-semibold text-blue-600">{t.respondInquiries}</span> promptly to secure new deals and build strong relationships.</li>
-                  <li><span className="font-semibold text-blue-600">{t.trackOrders}</span> to monitor your performance and enhance your reputation on the platform.</li>
+                  <li>Easily <span className="font-semibold text-orange-600">{t.manageListings}</span> and update your offerings to attract more buyers.</li>
+                  <li><span className="font-semibold text-orange-600">{t.respondInquiries}</span> promptly to secure new deals and build strong relationships.</li>
+                  <li><span className="font-semibold text-orange-600">{t.trackOrders}</span> to monitor your performance and enhance your reputation on the platform.</li>
                 </ul>
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white text-lg py-3 px-6 rounded-md shadow-md hover:shadow-lg transition-all duration-300 ease-in-out">
+                <Button className="bg-orange-600 hover:bg-orange-700 text-white text-lg py-3 px-6 rounded-md shadow-md hover:shadow-lg transition-all duration-300 ease-in-out">
                   {t.goToSupplierPanel}
                 </Button>
               </CardContent>
