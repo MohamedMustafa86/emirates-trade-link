@@ -1,4 +1,5 @@
 
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
@@ -89,7 +90,7 @@ const About = () => {
                 <div className="grid md:grid-cols-3 gap-8 items-center">
                   <div className="text-center">
                     <img 
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e" 
+                      src="/lovable-uploads/f4d19333-8a05-44bc-bcfa-76cc5bae4859.png" 
                       alt="Mohamed Mustafa" 
                       className="w-48 h-48 object-cover rounded-full mx-auto mb-4 shadow-lg"
                     />
@@ -212,3 +213,4 @@ const About = () => {
 };
 
 export default About;
+
