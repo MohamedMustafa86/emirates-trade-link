@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -17,30 +16,30 @@ import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTim
 // Translations object for multilingual support
 const translations = {
   en: {
-    heroTitle: "UAE B2B Hub",
-    heroSubtitle: "Connecting businesses in the UAE through a trusted and modern platform.",
+    heroTitle: "UAE Global Hub",
+    heroSubtitle: "Promoting Emirati and GCC products to global, African, and Middle Eastern markets.",
     registerSupplier: "Register as a Supplier",
     howItWorks: "How It Works",
     step1Title: "Register & Verify",
     step1Desc: "Create your business profile and get verified by our team to ensure trust and credibility.",
     step2Title: "List Products/Services",
-    step2Desc: "Showcase your products and services to a wide audience of potential buyers across the UAE.",
-    step3Title: "Connect & Transact",
-    step3Desc: "Engage with other businesses, negotiate deals, and complete secure transactions seamlessly.",
+    step2Desc: "Showcase your Emirati and GCC products to global markets including Africa and Middle East.",
+    step3Title: "Connect & Export",
+    step3Desc: "Connect with international buyers and expand your reach to global markets.",
     platformFeatures: "Platform Features",
-    feature1: "Verified Business Profiles: Ensuring trustworthiness and credibility for all members.",
-    feature2: "Advanced Product & Supplier Search: Find exactly what you need quickly with powerful filters.",
-    feature3: "Secure Messaging System: Communicate safely and directly with other businesses within the platform.",
-    feature4: "User Dashboard with Analytics: Gain valuable insights into your activity and performance metrics.",
-    feature5: "Product Listings with Ratings: Build reputation and make informed decisions based on peer reviews.",
-    feature6: "Secure Transactions Integration: Facilitate safe and efficient dealings with integrated payment solutions.",
-    supplierRegistration: "Register as a Supplier",
-    supplierRegistrationDesc: "Join our growing network of verified businesses. Fill out the form below to get started and unlock new opportunities!",
+    feature1: "Verified GCC Business Profiles: Ensuring trustworthiness and credibility for all members.",
+    feature2: "Global Market Access: Connect with buyers in Africa, Middle East, and worldwide.",
+    feature3: "Export Documentation Support: Complete assistance with international trade documentation.",
+    feature4: "Market Intelligence: Insights into target markets and buyer preferences.",
+    feature5: "Product Certification: Support for international quality standards and certifications.",
+    feature6: "Logistics Integration: End-to-end shipping and logistics solutions for global trade.",
+    supplierRegistration: "Register as a GCC Supplier",
+    supplierRegistrationDesc: "Join our network of verified GCC businesses and expand your reach to global markets!",
     companyName: "Company Name (e.g., ABC Trading LLC)",
     emailAddress: "Email Address (e.g., contact@abctrading.com)",
     phoneNumber: "Phone Number (e.g., +971 50 123 4567)",
     websiteURL: "Website URL (Optional, e.g., www.abctrading.com)",
-    businessDescription: "Business Description (e.g., industry, main products, target market, company size)",
+    businessDescription: "Business Description (e.g., industry, main products, target markets)",
     submitApplication: "Submit Application",
     submitting: "Submitting...",
     applicationSuccess: "Application submitted successfully! We will review your details shortly.",
@@ -51,30 +50,30 @@ const translations = {
     startChat: "Start a conversation...",
     you: "You",
     user: "User:",
-    dashboard: "Your Personalized Dashboard",
+    dashboard: "Your Export Dashboard",
     supplierView: "Supplier View",
     buyerView: "Buyer View",
     analyticsView: "Analytics & Reports",
-    welcomeSupplier: "Welcome, Supplier!",
-    supplierDashboardDesc: "From here, you can efficiently manage your business operations on the UAE B2B Hub.",
+    welcomeSupplier: "Welcome, GCC Supplier!",
+    supplierDashboardDesc: "Manage your global export operations from the UAE Global Hub platform.",
     manageListings: "Manage Product Listings",
-    respondInquiries: "Respond to Buyer Inquiries",
-    trackOrders: "Track Orders and Ratings",
+    respondInquiries: "Respond to International Inquiries",
+    trackOrders: "Track Global Orders",
     goToSupplierPanel: "Go to Supplier Panel",
-    welcomeBuyer: "Welcome, Buyer!",
-    buyerDashboardDesc: "Explore a vast network of verified suppliers and streamline your procurement process with ease.",
-    browseSuppliers: "Browse Verified Suppliers",
+    welcomeBuyer: "Welcome, International Buyer!",
+    buyerDashboardDesc: "Discover authentic Emirati and GCC products from verified suppliers.",
+    browseSuppliers: "Browse GCC Suppliers",
     sendInquiries: "Send Product Inquiries",
     manageOrders: "Manage Orders and Reviews",
     goToBuyerPanel: "Go to Buyer Panel",
-    analyticsTitle: "Business Analytics & Reports",
-    analyticsDesc: "View detailed reports and insights from your business operations. (Data from MongoDB via Backend API)",
+    analyticsTitle: "Export Analytics & Reports",
+    analyticsDesc: "View detailed reports on your global export operations and market performance.",
     loadingAnalytics: "Loading analytics data...",
     fetchAnalyticsError: "Error fetching analytics data:",
     sampleReport: "Sample Report:",
-    totalSales: "Total Sales:",
-    topProduct: "Top Product:",
-    customerGrowth: "Customer Growth:",
+    totalSales: "Total Export Sales:",
+    topProduct: "Top Export Product:",
+    customerGrowth: "Market Expansion:",
     userId: "User ID:",
     firebaseError: "Firebase not initialized or user not authenticated.",
     cannotSendEmpty: "Cannot send empty message or Firebase not ready.",
@@ -89,30 +88,30 @@ const translations = {
     logoutError: "Error logging out:",
   },
   ar: {
-    heroTitle: "مركز الإمارات للأعمال B2B",
-    heroSubtitle: "ربط الشركات في الإمارات العربية المتحدة عبر منصة موثوقة وحديثة.",
-    registerSupplier: "سجل كمورد",
+    heroTitle: "مركز الإمارات العالمي",
+    heroSubtitle: "تسويق المنتجات الإماراتية والخليجية إلى الأسواق العالمية والإفريقية والشرق أوسطية.",
+    registerSupplier: "سجل كمورد خليجي",
     howItWorks: "كيف تعمل المنصة",
     step1Title: "سجل وتحقق",
     step1Desc: "أنشئ ملف تعريف عملك واحصل على التحقق من فريقنا لضمان الثقة والمصداقية.",
-    step2Title: "اعرض المنتجات/الخدمات",
-    step2Desc: "اعرض منتجاتك وخدماتك لجمهور واسع من المشترين المحتملين في جميع أنحاء الإمارات.",
-    step3Title: "تواصل وتعامل",
-    step3Desc: "تفاعل مع الشركات الأخرى، تفاوض على الصفقات، وأكمل المعاملات الآمنة بسلاسة.",
+    step2Title: "اعرض منتجاتك الخليجية",
+    step2Desc: "اعرض منتجاتك الإماراتية والخليجية للأسواق العالمية بما في ذلك إفريقيا والشرق الأوسط.",
+    step3Title: "تواصل وصدّر",
+    step3Desc: "تواصل مع المشترين الدوليين ووسع نطاق وصولك إلى الأسواق العالمية.",
     platformFeatures: "ميزات المنصة",
-    feature1: "ملفات تعريف الأعمال الموثقة: لضمان الجدارة بالثقة والمصداقية لجميع الأعضاء.",
-    feature2: "بحث متقدم عن المنتجات والموردين: اعثر على ما تحتاجه بسرعة باستخدام فلاتر قوية.",
-    feature3: "نظام مراسلة آمن: تواصل بأمان ومباشرة مع الشركات الأخرى داخل المنصة.",
-    feature4: "لوحة تحكم المستخدم مع التحليلات: احصل على رؤى قيمة حول نشاطك ومقاييس الأداء.",
-    feature5: "قوائم المنتجات مع التقييمات: ابنِ سمعتك واتخذ قرارات مستنيرة بناءً على مراجعات الأقران.",
-    feature6: "تكامل المعاملات الآمنة: لتسهيل التعاملات الآمنة والفعالة مع حلول الدفع المتكاملة.",
-    supplierRegistration: "سجل كمورد",
-    supplierRegistrationDesc: "انضم إلى شبكتنا المتنامية من الشركات الموثقة. املأ النموذج أدناه للبدء وافتح فرصًا جديدة!",
+    feature1: "ملفات تعريف الأعمال الخليجية الموثقة: لضمان الجدارة بالثقة والمصداقية.",
+    feature2: "الوصول للأسواق العالمية: تواصل مع المشترين في إفريقيا والشرق الأوسط والعالم.",
+    feature3: "دعم وثائق التصدير: مساعدة شاملة في وثائق التجارة الدولية.",
+    feature4: "ذكاء السوق: رؤى حول الأسواق المستهدفة وتفضيلات المشترين.",
+    feature5: "شهادات المنتجات: دعم لمعايير الجودة والشهادات الدولية.",
+    feature6: "تكامل اللوجستيات: حلول شحن ولوجستيات شاملة للتجارة العالمية.",
+    supplierRegistration: "سجل كمورد خليجي",
+    supplierRegistrationDesc: "انضم إلى شبكتنا من الشركات الخليجية الموثقة ووسع نطاق وصولك إلى الأسواق العالمية!",
     companyName: "اسم الشركة (مثال: شركة ABC التجارية ذ.م.م)",
     emailAddress: "عنوان البريد الإلكتروني (مثال: contact@abctrading.com)",
     phoneNumber: "رقم الهاتف (مثال: +971 50 123 4567)",
     websiteURL: "رابط الموقع الإلكتروني (اختياري، مثال: www.abctrading.com)",
-    businessDescription: "وصف العمل (مثال: الصناعة، المنتجات الرئيسية، السوق المستهدف، حجم الشركة)",
+    businessDescription: "وصف العمل (مثال: الصناعة، المنتجات الرئيسية، الأسواق المستهدفة)",
     submitApplication: "إرسال الطلب",
     submitting: "جارٍ الإرسال...",
     applicationSuccess: "تم إرسال الطلب بنجاح! سنقوم بمراجعة التفاصيل الخاصة بك قريبًا.",
@@ -123,30 +122,30 @@ const translations = {
     startChat: "ابدأ محادثة...",
     you: "أنت",
     user: "المستخدم:",
-    dashboard: "لوحة التحكم المخصصة لك",
+    dashboard: "لوحة تحكم التصدير",
     supplierView: "عرض المورد",
     buyerView: "عرض المشتري",
     analyticsView: "التحليلات والتقارير",
-    welcomeSupplier: "أهلاً بك أيها المورد!",
-    supplierDashboardDesc: "من هنا، يمكنك إدارة عمليات عملك بكفاءة على مركز الإمارات للأعمال B2B.",
+    welcomeSupplier: "أهلاً بك أيها المورد الخليجي!",
+    supplierDashboardDesc: "أدر عمليات التصدير العالمية الخاصة بك من منصة مركز الإمارات العالمي.",
     manageListings: "إدارة قوائم المنتجات",
-    respondInquiries: "الرد على استفسارات المشترين",
-    trackOrders: "تتبع الطلبات والتقييمات",
+    respondInquiries: "الرد على الاستفسارات الدولية",
+    trackOrders: "تتبع الطلبات العالمية",
     goToSupplierPanel: "اذهب إلى لوحة تحكم المورد",
-    welcomeBuyer: "أهلاً بك أيها المشتري!",
-    buyerDashboardDesc: "استكشف شبكة واسعة من الموردين الموثقين وقم بتبسيط عملية الشراء الخاصة بك بسهولة.",
-    browseSuppliers: "تصفح الموردين الموثقين",
+    welcomeBuyer: "أهلاً بك أيها المشتري الدولي!",
+    buyerDashboardDesc: "اكتشف المنتجات الإماراتية والخليجية الأصيلة من الموردين الموثقين.",
+    browseSuppliers: "تصفح الموردين الخليجيين",
     sendInquiries: "إرسال استفسارات المنتجات",
     manageOrders: "إدارة الطلبات والمراجعات",
     goToBuyerPanel: "اذهب إلى لوحة تحكم المشتري",
-    analyticsTitle: "تحليلات وتقارير الأعمال",
-    analyticsDesc: "عرض التقارير والرؤى التفصيلية من عمليات عملك. (البيانات من MongoDB عبر واجهة برمجة تطبيقات الواجهة الخلفية)",
+    analyticsTitle: "تحليلات وتقارير التصدير",
+    analyticsDesc: "عرض التقارير التفصيلية حول عمليات التصدير العالمية وأداء السوق.",
     loadingAnalytics: "جارٍ تحميل بيانات التحليلات...",
     fetchAnalyticsError: "خطأ في جلب بيانات التحليلات:",
     sampleReport: "تقرير عينة:",
-    totalSales: "إجمالي المبيعات:",
-    topProduct: "المنتج الأكثر مبيعًا:",
-    customerGrowth: "نمو العملاء:",
+    totalSales: "إجمالي مبيعات التصدير:",
+    topProduct: "أفضل منتج للتصدير:",
+    customerGrowth: "توسع السوق:",
     userId: "معرف المستخدم:",
     firebaseError: "لم يتم تهيئة Firebase أو لم يتم مصادقة المستخدم.",
     cannotSendEmpty: "لا يمكن إرسال رسالة فارغة أو Firebase غير جاهز.",
@@ -194,35 +193,45 @@ export default function App() {
   const [loginLoading, setLoginLoading] = useState(false);
   const [loginError, setLoginError] = useState(null);
 
-  // Industry showcase data
+  // Industry showcase data with Emirati and GCC products
   const industryShowcase = [
     {
-      title: "Manufacturing & Industrial Equipment",
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475",
-      description: "Advanced manufacturing solutions and industrial equipment for global distribution"
+      title: "التمور الإماراتية الفاخرة",
+      image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9",
+      description: "تمور عالية الجودة من أجود المزارع الإماراتية للتصدير العالمي"
     },
     {
-      title: "Technology & Electronics",
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
-      description: "Cutting-edge technology products and electronic components worldwide"
+      title: "منتجات البترول والغاز",
+      image: "https://images.unsplash.com/photo-1574781330855-d0db2706b3d0",
+      description: "منتجات الطاقة والبتروكيماويات من دول مجلس التعاون الخليجي"
     },
     {
-      title: "Construction & Building Materials",
-      image: "https://images.unsplash.com/photo-1496307653780-42ee777d4833",
-      description: "Quality construction materials and building solutions for every project"
+      title: "الألومنيوم والمعادن",
+      image: "https://images.unsplash.com/photo-1565728744382-61accd4aa148",
+      description: "منتجات الألومنيوم والمعادن عالية الجودة من الإمارات"
     },
     {
-      title: "Healthcare & Medical Supplies",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
-      description: "Essential medical equipment and healthcare products for global markets"
+      title: "المنسوجات والأزياء التراثية",
+      image: "https://images.unsplash.com/photo-1590736969955-71cc94901144",
+      description: "الأزياء التراثية والمنسوجات الفاخرة من التراث الخليجي"
     }
   ];
 
   const stats = [
-    { number: "10,000+", label: "Verified Suppliers" },
-    { number: "50+", label: "Countries Served" },
-    { number: "$2.5B+", label: "Annual Transactions" },
-    { number: "99.8%", label: "Customer Satisfaction" }
+    { number: "6", label: "GCC Countries" },
+    { number: "50+", label: "Target Markets" },
+    { number: "$1.2B+", label: "Export Volume" },
+    { number: "95%", label: "Success Rate" }
+  ];
+
+  // GCC Flags data
+  const gccFlags = [
+    { name: "UAE", flag: "🇦🇪" },
+    { name: "Saudi Arabia", flag: "🇸🇦" },
+    { name: "Kuwait", flag: "🇰🇼" },
+    { name: "Qatar", flag: "🇶🇦" },
+    { name: "Bahrain", flag: "🇧🇭" },
+    { name: "Oman", flag: "🇴🇲" }
   ];
 
   // Firebase Initialization and Authentication
@@ -434,6 +443,21 @@ export default function App() {
     <div className="min-h-screen bg-gray-50" dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       <Navigation />
       
+      {/* GCC Flags Bar */}
+      <div className="bg-white border-b shadow-sm">
+        <div className="container mx-auto px-4 py-2">
+          <div className="flex justify-center items-center space-x-4 rtl:space-x-reverse">
+            <span className="text-sm font-medium text-gray-600 mr-4">دول مجلس التعاون:</span>
+            {gccFlags.map((country, index) => (
+              <div key={index} className="flex items-center space-x-1 rtl:space-x-reverse">
+                <span className="text-2xl">{country.flag}</span>
+                <span className="text-xs text-gray-500 hidden md:inline">{country.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      
       <main className="container mx-auto px-4 py-8 space-y-12">
         {/* Language Toggle Button */}
         <Button
@@ -463,9 +487,9 @@ export default function App() {
           </div>
         )}
 
-        {/* Hero Section with Background Image */}
+        {/* Hero Section */}
         <section className="text-center py-20 bg-white bg-opacity-90 backdrop-blur-sm text-gray-800 rounded-lg shadow-lg relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-white/80 z-0"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-emerald-500/20 z-0"></div>
           <div className="relative z-10">
             <h1 className="text-5xl font-bold mb-4 text-gray-900">{t.heroTitle}</h1>
             <p className="text-xl mb-8 text-gray-700 max-w-3xl mx-auto">
@@ -473,22 +497,22 @@ export default function App() {
             </p>
             <div className="flex justify-center items-center space-x-4 mb-8">
               <img 
-                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" 
-                alt="Business networking" 
+                src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9" 
+                alt="UAE Dates" 
                 className="w-16 h-16 rounded-full object-cover shadow-md"
               />
               <img 
-                src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81" 
-                alt="Technology solutions" 
+                src="https://images.unsplash.com/photo-1574781330855-d0db2706b3d0" 
+                alt="Oil Industry" 
                 className="w-16 h-16 rounded-full object-cover shadow-md"
               />
               <img 
-                src="https://images.unsplash.com/photo-1497604401993-f2e922e5cb0a" 
-                alt="Global reach" 
+                src="https://images.unsplash.com/photo-1565728744382-61accd4aa148" 
+                alt="Aluminum Products" 
                 className="w-16 h-16 rounded-full object-cover shadow-md"
               />
             </div>
-            <Button size="lg" className="bg-orange-600 text-white hover:bg-orange-700 rounded-full px-8 py-3 text-lg font-semibold shadow-md transition-all duration-300 ease-in-out hover:scale-105">
+            <Button size="lg" className="bg-green-600 text-white hover:bg-green-700 rounded-full px-8 py-3 text-lg font-semibold shadow-md transition-all duration-300 ease-in-out hover:scale-105">
               {t.registerSupplier}
             </Button>
           </div>
@@ -500,7 +524,7 @@ export default function App() {
             {stats.map((stat, index) => (
               <Card key={index} className="text-center bg-white bg-opacity-90 backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <CardContent className="p-6">
-                  <div className="text-3xl font-bold text-orange-600 mb-2">{stat.number}</div>
+                  <div className="text-3xl font-bold text-green-600 mb-2">{stat.number}</div>
                   <p className="text-gray-700 font-medium">{stat.label}</p>
                 </CardContent>
               </Card>
@@ -508,9 +532,9 @@ export default function App() {
           </div>
         </section>
 
-        {/* Industry Showcase Carousel */}
+        {/* Industry Showcase Carousel with GCC Products */}
         <section className="py-12">
-          <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Industries We Serve</h2>
+          <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">منتجاتنا الخليجية المميزة</h2>
           <Carousel className="w-full max-w-5xl mx-auto">
             <CarouselContent className="-ml-1">
               {industryShowcase.map((industry, index) => (
@@ -565,7 +589,7 @@ export default function App() {
                     className="w-full h-32 object-cover"
                   />
                   <div className="p-6">
-                    <div className="text-orange-600 text-4xl font-bold mb-4">0{i + 1}</div>
+                    <div className="text-green-600 text-4xl font-bold mb-4">0{i + 1}</div>
                     <h3 className="text-xl font-semibold mb-2 text-gray-700">{step.title}</h3>
                     <p className="text-gray-600">{step.desc}</p>
                   </div>
@@ -579,8 +603,8 @@ export default function App() {
         <section className="py-12 bg-white bg-opacity-90 backdrop-blur-sm rounded-lg shadow-lg">
           <div className="flex justify-center mb-8">
             <img 
-              src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5" 
-              alt="Digital technology" 
+              src="https://images.unsplash.com/photo-1496307653780-42ee777d4833" 
+              alt="Modern UAE architecture" 
               className="w-full max-w-2xl h-40 object-cover rounded-lg shadow-md"
             />
           </div>
@@ -594,7 +618,7 @@ export default function App() {
               t.feature5,
               t.feature6,
             ].map((feature, i) => (
-              <li key={i} className="flex items-start space-x-3 bg-gray-50 p-4 rounded-md shadow-sm border border-gray-100 hover:border-orange-300 transition-colors duration-200"
+              <li key={i} className="flex items-start space-x-3 bg-gray-50 p-4 rounded-md shadow-sm border border-gray-100 hover:border-green-300 transition-colors duration-200"
                   style={{ direction: locale === 'ar' ? 'rtl' : 'ltr' }}>
                 <svg xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 text-green-500 flex-shrink-0 mt-1 ${locale === 'ar' ? 'ml-3' : 'mr-3'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
