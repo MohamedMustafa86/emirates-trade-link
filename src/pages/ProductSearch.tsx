@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Navigation from "@/components/Navigation";
 import ProductCard from "@/components/ProductCard";
-import { Search, Filter, SlidersHorizontal } from "lucide-react";
+import { Search, Filter, SlidersHorizontal, Package } from "lucide-react";
 
 const ProductSearch = () => {
   const [query, setQuery] = useState("");
@@ -105,7 +105,7 @@ const ProductSearch = () => {
                 />
               </div>
               <div className="flex gap-2">
-                <Button onClick={handleSearch} className="bg-green-600 hover:bg-green-700">
+                <Button onClick={handleSearch} className="bg-blue-600 hover:bg-blue-700">
                   <Search className="ml-2 h-4 w-4" />
                   بحث
                 </Button>
@@ -130,7 +130,7 @@ const ProductSearch = () => {
                   setSelectedCategory(category);
                   setTimeout(handleSearch, 0);
                 }}
-                className={selectedCategory === category ? "bg-green-600 hover:bg-green-700" : ""}
+                className={selectedCategory === category ? "bg-blue-600 hover:bg-blue-700" : ""}
               >
                 {category}
               </Button>

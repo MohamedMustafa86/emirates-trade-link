@@ -17,6 +17,10 @@ import PackagingSupplies from "./pages/products/PackagingSupplies";
 import PlasticRawMaterials from "./pages/products/PlasticRawMaterials";
 import ConsumerGoods from "./pages/products/ConsumerGoods";
 import MachineryEquipment from "./pages/products/MachineryEquipment";
+import SupplierDashboard from "./pages/SupplierDashboard";
+import ProductSearch from "./pages/ProductSearch";
+import AddProduct from "./pages/AddProduct";
+import SupplierRating from "./pages/SupplierRating";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +42,10 @@ const App = () => (
           <Route path="/partners" element={<Partners />} />
           <Route path="/logistics" element={<Logistics />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/supplier-dashboard" element={<SupplierDashboard />} />
+          <Route path="/search" element={<ProductSearch />} />
+          <Route path="/add-product" element={<AddProduct />} />
+          <Route path="/rate-supplier" element={<SupplierRating />} />
           <Route path="/prd" element={<PRD />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
