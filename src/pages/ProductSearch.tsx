@@ -81,7 +81,7 @@ const ProductSearch = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50" dir="rtl">
+    <div className="min-h-screen bg-white" dir="rtl">
       <Navigation />
       
       <main className="container mx-auto px-4 py-8">
@@ -92,7 +92,7 @@ const ProductSearch = () => {
         </div>
 
         {/* Search Section */}
-        <Card className="mb-8">
+        <Card className="mb-8 bg-white shadow-lg">
           <CardContent className="p-6">
             <div className="flex flex-col md:flex-row gap-4">
               <div className="flex-1">
@@ -105,11 +105,11 @@ const ProductSearch = () => {
                 />
               </div>
               <div className="flex gap-2">
-                <Button onClick={handleSearch} className="bg-blue-600 hover:bg-blue-700">
+                <Button onClick={handleSearch} className="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white">
                   <Search className="ml-2 h-4 w-4" />
                   بحث
                 </Button>
-                <Button variant="outline">
+                <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
                   <SlidersHorizontal className="ml-2 h-4 w-4" />
                   فلترة
                 </Button>
@@ -130,7 +130,10 @@ const ProductSearch = () => {
                   setSelectedCategory(category);
                   setTimeout(handleSearch, 0);
                 }}
-                className={selectedCategory === category ? "bg-blue-600 hover:bg-blue-700" : ""}
+                className={selectedCategory === category 
+                  ? "bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white" 
+                  : "border-blue-600 text-blue-600 hover:bg-blue-50"
+                }
               >
                 {category}
               </Button>

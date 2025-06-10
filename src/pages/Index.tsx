@@ -46,11 +46,11 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50" dir="rtl">
+    <div className="min-h-screen bg-white" dir="rtl">
       <Navigation />
       
       {/* GCC Flags Section */}
-      <div className="bg-white border-b">
+      <div className="bg-white border-b border-gray-200">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center justify-center gap-6">
             <span className="text-sm font-medium text-gray-600">دول مجلس التعاون الخليجي:</span>
@@ -68,22 +68,22 @@ const Index = () => {
 
       <main>
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+        <section className="py-20 bg-white">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-5xl font-bold mb-6">
+            <h1 className="text-5xl font-bold mb-6 text-gray-900">
               منصة دبي مركس
             </h1>
-            <p className="text-xl mb-8 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl mb-8 max-w-3xl mx-auto leading-relaxed text-gray-700">
               المنصة الرائدة لتسويق وعرض المنتجات الإماراتية والخليجية للأسواق العالمية والأفريقية والشرق أوسطية
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
+              <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white">
                 <Link to="/products">
                   استكشف المنتجات
                   <ArrowLeft className="mr-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
+              <Button asChild size="lg" className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white">
                 <Link to="/contact">
                   ابدأ التصدير
                   <ArrowLeft className="mr-2 h-5 w-5" />
@@ -94,11 +94,11 @@ const Index = () => {
         </section>
 
         {/* Stats Section */}
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
-                <Card key={index} className="text-center p-6 hover:shadow-lg transition-shadow">
+                <Card key={index} className="text-center p-6 hover:shadow-lg transition-shadow bg-white">
                   <CardContent className="p-0">
                     <div className="flex justify-center mb-4">
                       {stat.icon}
@@ -113,7 +113,7 @@ const Index = () => {
         </section>
 
         {/* Featured Products */}
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-gray-800 mb-4">منتجات مميزة</h2>
@@ -147,7 +147,7 @@ const Index = () => {
                   origin: "قطر"
                 }
               ].map((product, index) => (
-                <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
+                <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow bg-white">
                   <CardContent className="p-0">
                     <img 
                       src={product.image} 
@@ -168,7 +168,7 @@ const Index = () => {
                         </div>
                         <span className="text-sm text-gray-600 mr-2">(4.8)</span>
                       </div>
-                      <Button size="sm" className="w-full bg-blue-600 hover:bg-blue-700">
+                      <Button size="sm" className="w-full bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white">
                         عرض التفاصيل
                       </Button>
                     </div>
@@ -178,7 +178,7 @@ const Index = () => {
             </div>
 
             <div className="text-center">
-              <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700">
+              <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white">
                 <Link to="/search">
                   <Search className="ml-2 h-5 w-5" />
                   البحث المتقدم
@@ -189,7 +189,7 @@ const Index = () => {
         </section>
 
         {/* Features Section */}
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-gray-800 mb-4">لماذا تختار دبي مركس؟</h2>
@@ -198,7 +198,7 @@ const Index = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {features.map((feature, index) => (
-                <Card key={index} className="text-center p-6 hover:shadow-lg transition-shadow">
+                <Card key={index} className="text-center p-6 hover:shadow-lg transition-shadow bg-white">
                   <CardContent className="p-0">
                     <div className="flex justify-center mb-4">
                       {feature.icon}
@@ -213,20 +213,20 @@ const Index = () => {
         </section>
 
         {/* Call to Action */}
-        <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+        <section className="py-20 bg-white">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-4xl font-bold mb-6">ابدأ رحلتك التجارية معنا</h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto">
+            <h2 className="text-4xl font-bold mb-6 text-gray-900">ابدأ رحلتك التجارية معنا</h2>
+            <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-700">
               انضم إلى آلاف الموردين والمشترين الذين يثقون بمنصة دبي مركس
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
+              <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white">
                 <Link to="/supplier-dashboard">
                   للموردين - ابدأ البيع
                   <ArrowLeft className="mr-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
+              <Button asChild size="lg" className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white">
                 <Link to="/search">
                   للمشترين - ابدأ الشراء
                   <ArrowLeft className="mr-2 h-5 w-5" />
