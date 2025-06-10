@@ -57,15 +57,6 @@ const Index = () => {
     }
   ];
 
-  const gccFlags = [
-    { country: "الإمارات", flag: "🇦🇪" },
-    { country: "السعودية", flag: "🇸🇦" },
-    { country: "الكويت", flag: "🇰🇼" },
-    { country: "قطر", flag: "🇶🇦" },
-    { country: "البحرين", flag: "🇧🇭" },
-    { country: "عمان", flag: "🇴🇲" }
-  ];
-
   return (
     <div className="relative flex min-h-screen flex-col bg-white" dir="rtl" style={{ fontFamily: '"Space Grotesk", "Noto Sans", sans-serif' }}>
       {/* Header */}
@@ -73,27 +64,20 @@ const Index = () => {
         <div className="text-[#111418] flex size-12 shrink-0 items-center">
           <List className="h-6 w-6" />
         </div>
+        
+        {/* Logo */}
+        <div className="flex items-center justify-center">
+          <img 
+            src="/lovable-uploads/8b27315a-9e7d-4683-a231-655339f73994.png" 
+            alt="DubaiMerx Logo" 
+            className="h-12 w-auto object-contain"
+          />
+        </div>
+        
         <div className="flex w-12 items-center justify-end">
           <button className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 bg-transparent text-[#111418] gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
             <Globe className="h-6 w-6" />
           </button>
-        </div>
-      </div>
-
-      {/* GCC Flags Section */}
-      <div className="bg-white border-b border-gray-200">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center justify-center gap-6">
-            <span className="text-sm font-medium text-gray-600">دول مجلس التعاون الخليجي:</span>
-            <div className="flex items-center gap-4">
-              {gccFlags.map((country, index) => (
-                <div key={index} className="flex items-center gap-1">
-                  <span className="text-2xl">{country.flag}</span>
-                  <span className="text-xs text-gray-600 hidden sm:inline">{country.country}</span>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
 
