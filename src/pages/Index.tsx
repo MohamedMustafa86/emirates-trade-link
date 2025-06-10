@@ -1,9 +1,8 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import Navigation from "@/components/Navigation";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Package, Globe, Users, TrendingUp, Shield, Clock, Truck, Award, Search, Star } from "lucide-react";
+import { ArrowLeft, Package, Globe, Users, TrendingUp, Shield, Clock, Truck, Award, Search, Star, List, User, MessageCircle, Home, Grid3X3 } from "lucide-react";
 
 const Index = () => {
   const stats = [
@@ -21,20 +20,20 @@ const Index = () => {
       link: "/products"
     },
     {
-      title: "المنتجات الزراعية",
-      description: "اكتشف المنتجات الزراعية عالية الجودة",
-      image: "https://images.unsplash.com/photo-1559181567-c3190ca9959b",
-      link: "/products"
-    },
-    {
-      title: "المنسوجات",
+      title: "الموضة",
       description: "تشكيلة واسعة من المنسوجات والأقمشة",
       image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5",
       link: "/products"
     },
     {
-      title: "المعدات والآلات",
-      description: "مصدر موثوق للآلات التجارية",
+      title: "الطعام",
+      description: "اكتشف المنتجات الزراعية عالية الجودة",
+      image: "https://images.unsplash.com/photo-1559181567-c3190ca9959b",
+      link: "/products"
+    },
+    {
+      title: "المنتجات المنزلية",
+      description: "مصدر موثوق للمنتجات المنزلية",
       image: "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3",
       link: "/products"
     }
@@ -42,19 +41,19 @@ const Index = () => {
 
   const benefits = [
     {
-      title: "شبكة واسعة",
-      description: "تواصل مع شبكة واسعة من المشترين والبائعين المعتمدين",
-      icon: <Users className="h-12 w-12 text-emerald-600" />
-    },
-    {
-      title: "وصول عالمي",
+      title: "التواصل مع الأسواق العالمية",
       description: "وسع نطاق السوق لتصل إلى أفريقيا والشرق الأوسط وآسيا وأوروبا وما بعدها",
-      icon: <Globe className="h-12 w-12 text-emerald-600" />
+      icon: <Users className="h-6 w-6 text-[#111418]" />
     },
     {
       title: "معاملات آمنة",
-      description: "استفد من خدمات الدفع الآمنة وضمان التجارة",
-      icon: <Shield className="h-12 w-12 text-emerald-600" />
+      description: "ضمان المعاملات الآمنة والموثوقة مع نظام الدفع الآمن",
+      icon: <Shield className="h-6 w-6 text-[#111418]" />
+    },
+    {
+      title: "لوجستيات فعالة",
+      description: "تبسيط عملية الشحن مع حلول اللوجستيات المتكاملة",
+      icon: <Truck className="h-6 w-6 text-[#111418]" />
     }
   ];
 
@@ -68,9 +67,19 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white" dir="rtl">
-      <Navigation />
-      
+    <div className="relative flex min-h-screen flex-col bg-white" dir="rtl" style={{ fontFamily: '"Space Grotesk", "Noto Sans", sans-serif' }}>
+      {/* Header */}
+      <div className="flex items-center bg-white p-4 pb-2 justify-between">
+        <div className="text-[#111418] flex size-12 shrink-0 items-center">
+          <List className="h-6 w-6" />
+        </div>
+        <div className="flex w-12 items-center justify-end">
+          <button className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 bg-transparent text-[#111418] gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+            <Globe className="h-6 w-6" />
+          </button>
+        </div>
+      </div>
+
       {/* GCC Flags Section */}
       <div className="bg-white border-b border-gray-200">
         <div className="container mx-auto px-4 py-2">
@@ -88,122 +97,60 @@ const Index = () => {
         </div>
       </div>
 
-      <main>
-        {/* Hero Section */}
-        <section className="relative h-screen flex items-center justify-center bg-gradient-to-r from-gray-900 to-gray-700 overflow-hidden">
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
-            style={{
-              backgroundImage: "url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"
-            }}
-          />
-          <div className="relative z-10 container mx-auto px-4 text-center text-white">
-            <h1 className="text-6xl font-bold mb-6 leading-tight">
-              بوابتك إلى التجارة العالمية B2B
-            </h1>
-            <p className="text-xl mb-8 max-w-3xl mx-auto leading-relaxed opacity-90">
-              تواصل مع المشترين والبائعين حول العالم. وسع نطاق وصولك وانمِ أعمالك مع منصتنا الموثوقة
-            </p>
-            
-            {/* Search Bar */}
-            <div className="max-w-2xl mx-auto mb-8">
-              <div className="flex bg-white rounded-lg shadow-lg overflow-hidden">
-                <input
-                  type="text"
-                  placeholder="البحث عن المنتجات أو الموردين"
-                  className="flex-1 px-6 py-4 text-gray-800 text-lg focus:outline-none"
-                />
-                <Button className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-none">
-                  <Search className="ml-2 h-5 w-5" />
-                  بحث
-                </Button>
-              </div>
+      {/* Search Section */}
+      <div className="px-4 py-3">
+        <label className="flex flex-col min-w-40 h-12 w-full">
+          <div className="flex w-full flex-1 items-stretch rounded-xl h-full">
+            <div className="text-[#637488] flex border-none bg-[#f0f2f4] items-center justify-center pl-4 rounded-l-xl border-r-0">
+              <Search className="h-6 w-6" />
             </div>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white">
-                <Link to="/products">
-                  استكشف المنتجات
-                  <ArrowLeft className="mr-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900">
-                <Link to="/contact">
-                  انضم مجاناً
-                  <ArrowLeft className="mr-2 h-5 w-5" />
-                </Link>
-              </Button>
-            </div>
+            <input
+              placeholder="البحث عن المنتجات أو الموردين"
+              className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-full placeholder:text-[#637488] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
+            />
           </div>
-        </section>
+        </label>
+      </div>
 
+      <main className="flex-1">
         {/* Featured Products */}
-        <section className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">المنتجات المميزة</h2>
-              <p className="text-xl text-gray-600">اكتشف أفضل المنتجات في فئات متنوعة</p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <section className="py-8">
+          <h2 className="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3">المنتجات المميزة</h2>
+          <div className="flex overflow-y-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div className="flex items-stretch p-4 gap-3">
               {featuredCategories.map((category, index) => (
-                <Card key={index} className="overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 bg-white border-0">
-                  <CardContent className="p-0">
-                    <div className="relative h-48 overflow-hidden">
-                      <img 
-                        src={category.image} 
-                        alt={category.title}
-                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-gray-800 mb-2">{category.title}</h3>
-                      <p className="text-gray-600 mb-4 leading-relaxed">{category.description}</p>
-                      <Button asChild size="sm" className="w-full bg-emerald-600 hover:bg-emerald-700 text-white">
-                        <Link to={category.link}>
-                          استكشف المزيد
-                          <ArrowLeft className="mr-2 h-4 w-4" />
-                        </Link>
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
+                <div key={index} className="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-60">
+                  <div
+                    className="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col"
+                    style={{ backgroundImage: `url(${category.image})` }}
+                  />
+                  <p className="text-[#111418] text-base font-medium leading-normal">{category.title}</p>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Why Choose Us */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">لماذا تختار DUBAIMERX.COM؟</h2>
-            </div>
-            
-            <div className="mb-16">
-              <h3 className="text-3xl font-bold text-gray-800 mb-8 text-center">فوائد التجارة معنا</h3>
-              <p className="text-lg text-gray-600 mb-12 max-w-4xl mx-auto text-center leading-relaxed">
-                DUBAIMERX.COM يوفر منصة آمنة وفعالة للتجارة B2B، تربط الشركات عبر الصناعات والمناطق المتنوعة
-              </p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                {benefits.map((benefit, index) => (
-                  <div key={index} className="text-center">
-                    <div className="flex justify-center mb-6">
-                      {benefit.icon}
-                    </div>
-                    <h4 className="text-xl font-bold text-gray-800 mb-4">{benefit.title}</h4>
-                    <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
-                  </div>
-                ))}
+        {/* Platform Benefits */}
+        <section className="py-8">
+          <h2 className="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3">فوائد المنصة</h2>
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="flex flex-1 gap-3 rounded-lg border border-[#dce0e5] bg-white p-4 flex-col">
+                <div className="text-[#111418]">
+                  {benefit.icon}
+                </div>
+                <div className="flex flex-col gap-1">
+                  <h2 className="text-[#111418] text-base font-bold leading-tight">{benefit.title}</h2>
+                  <p className="text-[#637488] text-sm font-normal leading-normal">{benefit.description}</p>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </section>
 
         {/* Stats Section */}
-        <section className="py-20 bg-gray-50">
+        <section className="py-8 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
@@ -229,13 +176,13 @@ const Index = () => {
               انضم إلى آلاف الموردين والمشترين الذين يثقون بمنصة دبي مركس
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white">
+              <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white">
                 <Link to="/supplier-dashboard">
                   للموردين - ابدأ البيع
                   <ArrowLeft className="mr-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-emerald-600 text-emerald-600 hover:bg-emerald-50">
+              <Button asChild size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
                 <Link to="/search">
                   للمشترين - ابدأ الشراء
                   <ArrowLeft className="mr-2 h-5 w-5" />
@@ -245,6 +192,34 @@ const Index = () => {
           </div>
         </section>
       </main>
+
+      {/* Bottom Navigation */}
+      <div className="flex gap-2 border-t border-[#f0f2f4] bg-white px-4 pb-3 pt-2">
+        <Link to="/" className="flex flex-1 flex-col items-center justify-end gap-1 rounded-full text-[#111418]">
+          <div className="text-[#111418] flex h-8 items-center justify-center">
+            <Home className="h-6 w-6 fill-current" />
+          </div>
+          <p className="text-[#111418] text-xs font-medium leading-normal tracking-[0.015em]">الرئيسية</p>
+        </Link>
+        <Link to="/products" className="flex flex-1 flex-col items-center justify-end gap-1 text-[#637488]">
+          <div className="text-[#637488] flex h-8 items-center justify-center">
+            <Grid3X3 className="h-6 w-6" />
+          </div>
+          <p className="text-[#637488] text-xs font-medium leading-normal tracking-[0.015em]">الفئات</p>
+        </Link>
+        <Link to="/contact" className="flex flex-1 flex-col items-center justify-end gap-1 text-[#637488]">
+          <div className="text-[#637488] flex h-8 items-center justify-center">
+            <MessageCircle className="h-6 w-6" />
+          </div>
+          <p className="text-[#637488] text-xs font-medium leading-normal tracking-[0.015em]">الرسائل</p>
+        </Link>
+        <Link to="/supplier-dashboard" className="flex flex-1 flex-col items-center justify-end gap-1 text-[#637488]">
+          <div className="text-[#637488] flex h-8 items-center justify-center">
+            <User className="h-6 w-6" />
+          </div>
+          <p className="text-[#637488] text-xs font-medium leading-normal tracking-[0.015em]">الملف الشخصي</p>
+        </Link>
+      </div>
     </div>
   );
 };
