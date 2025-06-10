@@ -7,32 +7,54 @@ import { ArrowLeft, Package, Globe, Users, TrendingUp, Shield, Clock, Truck, Awa
 
 const Index = () => {
   const stats = [
-    { number: "500+", label: "موردين معتمدين", icon: <Users className="h-8 w-8 text-blue-600" /> },
-    { number: "10,000+", label: "منتج متاح", icon: <Package className="h-8 w-8 text-blue-600" /> },
-    { number: "50+", label: "دولة مستهدفة", icon: <Globe className="h-8 w-8 text-blue-600" /> },
-    { number: "95%", label: "رضا العملاء", icon: <TrendingUp className="h-8 w-8 text-blue-600" /> }
+    { number: "500+", label: "موردين معتمدين", icon: <Users className="h-8 w-8 text-emerald-600" /> },
+    { number: "10,000+", label: "منتج متاح", icon: <Package className="h-8 w-8 text-emerald-600" /> },
+    { number: "50+", label: "دولة مستهدفة", icon: <Globe className="h-8 w-8 text-emerald-600" /> },
+    { number: "95%", label: "رضا العملاء", icon: <TrendingUp className="h-8 w-8 text-emerald-600" /> }
   ];
 
-  const features = [
+  const featuredCategories = [
     {
-      title: "جودة مضمونة",
-      description: "منتجات من مصانع معتمدة وموثوقة عالمياً",
-      icon: <Shield className="h-12 w-12 text-blue-600" />
+      title: "الإلكترونيات",
+      description: "اكتشف أحدث المنتجات الإلكترونية الاستهلاكية",
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+      link: "/products"
     },
     {
-      title: "توصيل سريع",
-      description: "خدمات لوجستية متطورة وتوصيل في الوقت المحدد",
-      icon: <Clock className="h-12 w-12 text-blue-600" />
+      title: "المنتجات الزراعية",
+      description: "اكتشف المنتجات الزراعية عالية الجودة",
+      image: "https://images.unsplash.com/photo-1559181567-c3190ca9959b",
+      link: "/products"
     },
     {
-      title: "شحن عالمي",
-      description: "نصل إلى أكثر من 50 دولة حول العالم",
-      icon: <Truck className="h-12 w-12 text-blue-600" />
+      title: "المنسوجات",
+      description: "تشكيلة واسعة من المنسوجات والأقمشة",
+      image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5",
+      link: "/products"
     },
     {
-      title: "دعم متميز",
-      description: "فريق دعم فني متخصص متاح على مدار الساعة",
-      icon: <Award className="h-12 w-12 text-blue-600" />
+      title: "المعدات والآلات",
+      description: "مصدر موثوق للآلات التجارية",
+      image: "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3",
+      link: "/products"
+    }
+  ];
+
+  const benefits = [
+    {
+      title: "شبكة واسعة",
+      description: "تواصل مع شبكة واسعة من المشترين والبائعين المعتمدين",
+      icon: <Users className="h-12 w-12 text-emerald-600" />
+    },
+    {
+      title: "وصول عالمي",
+      description: "وسع نطاق السوق لتصل إلى أفريقيا والشرق الأوسط وآسيا وأوروبا وما بعدها",
+      icon: <Globe className="h-12 w-12 text-emerald-600" />
+    },
+    {
+      title: "معاملات آمنة",
+      description: "استفد من خدمات الدفع الآمنة وضمان التجارة",
+      icon: <Shield className="h-12 w-12 text-emerald-600" />
     }
   ];
 
@@ -68,24 +90,46 @@ const Index = () => {
 
       <main>
         {/* Hero Section */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4 text-center">
-            <h1 className="text-5xl font-bold mb-6 text-gray-900">
-              منصة دبي مركس
+        <section className="relative h-screen flex items-center justify-center bg-gradient-to-r from-gray-900 to-gray-700 overflow-hidden">
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
+            style={{
+              backgroundImage: "url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"
+            }}
+          />
+          <div className="relative z-10 container mx-auto px-4 text-center text-white">
+            <h1 className="text-6xl font-bold mb-6 leading-tight">
+              بوابتك إلى التجارة العالمية B2B
             </h1>
-            <p className="text-xl mb-8 max-w-3xl mx-auto leading-relaxed text-gray-700">
-              المنصة الرائدة لتسويق وعرض المنتجات الإماراتية والخليجية للأسواق العالمية والأفريقية والشرق أوسطية
+            <p className="text-xl mb-8 max-w-3xl mx-auto leading-relaxed opacity-90">
+              تواصل مع المشترين والبائعين حول العالم. وسع نطاق وصولك وانمِ أعمالك مع منصتنا الموثوقة
             </p>
+            
+            {/* Search Bar */}
+            <div className="max-w-2xl mx-auto mb-8">
+              <div className="flex bg-white rounded-lg shadow-lg overflow-hidden">
+                <input
+                  type="text"
+                  placeholder="البحث عن المنتجات أو الموردين"
+                  className="flex-1 px-6 py-4 text-gray-800 text-lg focus:outline-none"
+                />
+                <Button className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-none">
+                  <Search className="ml-2 h-5 w-5" />
+                  بحث
+                </Button>
+              </div>
+            </div>
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white">
+              <Button asChild size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white">
                 <Link to="/products">
                   استكشف المنتجات
                   <ArrowLeft className="mr-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button asChild size="lg" className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white">
+              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900">
                 <Link to="/contact">
-                  ابدأ التصدير
+                  انضم مجاناً
                   <ArrowLeft className="mr-2 h-5 w-5" />
                 </Link>
               </Button>
@@ -93,118 +137,83 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Stats Section */}
-        <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {stats.map((stat, index) => (
-                <Card key={index} className="text-center p-6 hover:shadow-lg transition-shadow bg-white">
-                  <CardContent className="p-0">
-                    <div className="flex justify-center mb-4">
-                      {stat.icon}
-                    </div>
-                    <h3 className="text-3xl font-bold text-gray-800 mb-2">{stat.number}</h3>
-                    <p className="text-gray-600">{stat.label}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Featured Products */}
-        <section className="py-16 bg-white">
+        <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">منتجات مميزة</h2>
-              <p className="text-xl text-gray-600">اكتشف أفضل المنتجات الخليجية والإماراتية</p>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">المنتجات المميزة</h2>
+              <p className="text-xl text-gray-600">اكتشف أفضل المنتجات في فئات متنوعة</p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-              {[
-                {
-                  name: "تمور عجوة المدينة",
-                  image: "https://images.unsplash.com/photo-1559181567-c3190ca9959b",
-                  price: "45 درهم",
-                  origin: "السعودية"
-                },
-                {
-                  name: "زيت الزيتون البكر",
-                  image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5",
-                  price: "85 درهم",
-                  origin: "الإمارات"
-                },
-                {
-                  name: "العود الخليجي الفاخر",
-                  image: "https://images.unsplash.com/photo-1545558014-8692077e9b5c",
-                  price: "250 درهم",
-                  origin: "الإمارات"
-                },
-                {
-                  name: "الحرف اليدوية التراثية",
-                  image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96",
-                  price: "120 درهم",
-                  origin: "قطر"
-                }
-              ].map((product, index) => (
-                <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow bg-white">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {featuredCategories.map((category, index) => (
+                <Card key={index} className="overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 bg-white border-0">
                   <CardContent className="p-0">
-                    <img 
-                      src={product.image} 
-                      alt={product.name}
-                      className="w-full h-48 object-cover"
-                    />
-                    <div className="p-4">
-                      <h3 className="font-bold text-gray-800 mb-2">{product.name}</h3>
-                      <div className="flex justify-between items-center mb-3">
-                        <span className="text-blue-600 font-bold">{product.price}</span>
-                        <span className="text-sm text-gray-500">{product.origin}</span>
-                      </div>
-                      <div className="flex items-center mb-3">
-                        <div className="flex items-center">
-                          {[...Array(5)].map((_, i) => (
-                            <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
-                          ))}
-                        </div>
-                        <span className="text-sm text-gray-600 mr-2">(4.8)</span>
-                      </div>
-                      <Button size="sm" className="w-full bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white">
-                        عرض التفاصيل
+                    <div className="relative h-48 overflow-hidden">
+                      <img 
+                        src={category.image} 
+                        alt={category.title}
+                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-gray-800 mb-2">{category.title}</h3>
+                      <p className="text-gray-600 mb-4 leading-relaxed">{category.description}</p>
+                      <Button asChild size="sm" className="w-full bg-emerald-600 hover:bg-emerald-700 text-white">
+                        <Link to={category.link}>
+                          استكشف المزيد
+                          <ArrowLeft className="mr-2 h-4 w-4" />
+                        </Link>
                       </Button>
                     </div>
                   </CardContent>
                 </Card>
               ))}
             </div>
+          </div>
+        </section>
 
-            <div className="text-center">
-              <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white">
-                <Link to="/search">
-                  <Search className="ml-2 h-5 w-5" />
-                  البحث المتقدم
-                </Link>
-              </Button>
+        {/* Why Choose Us */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">لماذا تختار DUBAIMERX.COM؟</h2>
+            </div>
+            
+            <div className="mb-16">
+              <h3 className="text-3xl font-bold text-gray-800 mb-8 text-center">فوائد التجارة معنا</h3>
+              <p className="text-lg text-gray-600 mb-12 max-w-4xl mx-auto text-center leading-relaxed">
+                DUBAIMERX.COM يوفر منصة آمنة وفعالة للتجارة B2B، تربط الشركات عبر الصناعات والمناطق المتنوعة
+              </p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                {benefits.map((benefit, index) => (
+                  <div key={index} className="text-center">
+                    <div className="flex justify-center mb-6">
+                      {benefit.icon}
+                    </div>
+                    <h4 className="text-xl font-bold text-gray-800 mb-4">{benefit.title}</h4>
+                    <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Features Section */}
-        <section className="py-16 bg-gray-50">
+        {/* Stats Section */}
+        <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">لماذا تختار دبي مركس؟</h2>
-              <p className="text-xl text-gray-600">نحن نقدم أفضل الخدمات لضمان نجاح تجارتك</p>
-            </div>
-            
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {features.map((feature, index) => (
-                <Card key={index} className="text-center p-6 hover:shadow-lg transition-shadow bg-white">
+              {stats.map((stat, index) => (
+                <Card key={index} className="text-center p-8 hover:shadow-lg transition-shadow bg-white border-0">
                   <CardContent className="p-0">
                     <div className="flex justify-center mb-4">
-                      {feature.icon}
+                      {stat.icon}
                     </div>
-                    <h3 className="text-xl font-bold text-gray-800 mb-3">{feature.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                    <h3 className="text-4xl font-bold text-gray-800 mb-2">{stat.number}</h3>
+                    <p className="text-gray-600 text-lg">{stat.label}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -216,17 +225,17 @@ const Index = () => {
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-4xl font-bold mb-6 text-gray-900">ابدأ رحلتك التجارية معنا</h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-700">
+            <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-700 leading-relaxed">
               انضم إلى آلاف الموردين والمشترين الذين يثقون بمنصة دبي مركس
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white">
+              <Button asChild size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white">
                 <Link to="/supplier-dashboard">
                   للموردين - ابدأ البيع
                   <ArrowLeft className="mr-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button asChild size="lg" className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white">
+              <Button asChild size="lg" variant="outline" className="border-emerald-600 text-emerald-600 hover:bg-emerald-50">
                 <Link to="/search">
                   للمشترين - ابدأ الشراء
                   <ArrowLeft className="mr-2 h-5 w-5" />
