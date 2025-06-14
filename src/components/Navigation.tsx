@@ -29,6 +29,14 @@ const Navigation = () => {
     { title: "تواصل معنا", href: "/contact" },
   ];
 
+  const toggleMobileMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsOpen(false);
+  };
+
   return (
     <nav className="bg-white shadow-lg sticky top-0 z-50" dir="rtl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,14 +51,14 @@ const Navigation = () => {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
             {navigationItems.map((item) => (
               <div key={item.title} className="relative group">
                 {item.submenu ? (
                   <div className="relative">
                     <Button
                       variant="ghost"
-                      className="flex items-center space-x-1 text-gray-700 hover:text-green-600"
+                      className="flex items-center space-x-1 rtl:space-x-reverse text-gray-700 hover:text-green-600"
                       onMouseEnter={() => setProductsOpen(true)}
                       onMouseLeave={() => setProductsOpen(false)}
                     >
@@ -95,8 +103,9 @@ const Navigation = () => {
           <div className="md:hidden">
             <Button
               variant="ghost"
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700"
+              onClick={toggleMobileMenu}
+              className="text-gray-700 hover:text-green-600 p-2"
+              aria-label="Toggle mobile menu"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
@@ -105,8 +114,8 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
+          <div className="md:hidden bg-white border-t border-gray-200 shadow-lg">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {navigationItems.map((item) => (
                 <div key={item.title}>
                   {item.submenu ? (
@@ -114,9 +123,9 @@ const Navigation = () => {
                       <Button
                         variant="ghost"
                         onClick={() => setProductsOpen(!productsOpen)}
-                        className="w-full text-right justify-between text-gray-700 hover:text-green-600"
+                        className="w-full text-right justify-between text-gray-700 hover:text-green-600 hover:bg-green-50"
                       >
-                        {item.title}
+                        <span>{item.title}</span>
                         <ChevronDown className={`h-4 w-4 transition-transform ${productsOpen ? 'rotate-180' : ''}`} />
                       </Button>
                       {productsOpen && (
@@ -125,8 +134,8 @@ const Navigation = () => {
                             <Link
                               key={subItem.title}
                               to={subItem.href}
-                              className="block px-4 py-2 text-sm text-gray-600 hover:text-green-600 hover:bg-green-50 rounded-md"
-                              onClick={() => setIsOpen(false)}
+                              className="block px-4 py-2 text-sm text-gray-600 hover:text-green-600 hover:bg-green-50 rounded-md transition-colors"
+                              onClick={closeMobileMenu}
                             >
                               {subItem.title}
                             </Link>
@@ -137,10 +146,10 @@ const Navigation = () => {
                   ) : (
                     <Link
                       to={item.href}
-                      className={`block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-600 hover:bg-green-50 ${
+                      className={`block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-600 hover:bg-green-50 transition-colors ${
                         location.pathname === item.href ? 'text-green-600 bg-green-50' : ''
                       }`}
-                      onClick={() => setIsOpen(false)}
+                      onClick={closeMobileMenu}
                     >
                       {item.title}
                     </Link>
