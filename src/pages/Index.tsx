@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Package, Globe, Users, TrendingUp, Shield, Clock, Truck, Award, Search, Star, List, User, MessageCircle, Home, Grid3X3 } from "lucide-react";
+import { ArrowLeft, Package, Globe, Users, TrendingUp, Shield, Clock, Truck, Award, Search, Star, List, User, MessageCircle, Home, Grid3X3, Menu } from "lucide-react";
 
 const Index = () => {
   const stats = [
@@ -60,9 +60,9 @@ const Index = () => {
   return (
     <div className="relative flex min-h-screen flex-col bg-white" dir="rtl" style={{ fontFamily: '"Space Grotesk", "Noto Sans", sans-serif' }}>
       {/* Header */}
-      <div className="flex items-center bg-white p-4 pb-2 justify-between">
+      <div className="flex items-center bg-white p-4 pb-2 justify-between border-b border-gray-100">
         <div className="text-[#111418] flex size-12 shrink-0 items-center">
-          <List className="h-6 w-6" />
+          <Menu className="h-6 w-6" />
         </div>
         
         {/* Logo */}
@@ -70,7 +70,7 @@ const Index = () => {
           <img 
             src="/lovable-uploads/8b27315a-9e7d-4683-a231-655339f73994.png" 
             alt="DubaiMerx Logo" 
-            className="h-12 w-auto object-contain"
+            className="h-10 w-auto object-contain"
           />
         </div>
         
@@ -82,18 +82,69 @@ const Index = () => {
       </div>
 
       {/* Search Section */}
-      <div className="px-4 py-3">
+      <div className="px-4 py-3 bg-white">
         <label className="flex flex-col min-w-40 h-12 w-full">
           <div className="flex w-full flex-1 items-stretch rounded-xl h-full">
             <div className="text-[#637488] flex border-none bg-[#f0f2f4] items-center justify-center pl-4 rounded-l-xl border-r-0">
               <Search className="h-6 w-6" />
             </div>
             <input
-              placeholder="البحث عن المنتجات أو الموردين"
+              placeholder="ما الذي تبحث عنه؟"
               className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-full placeholder:text-[#637488] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
             />
           </div>
         </label>
+      </div>
+
+      {/* Navigation Tabs */}
+      <div className="bg-white border-b border-gray-100">
+        <div className="flex justify-center">
+          <div className="flex">
+            <Link 
+              to="/products" 
+              className="px-6 py-4 text-base font-medium text-[#111418] border-b-2 border-orange-500 bg-white"
+            >
+              المنتجات
+            </Link>
+            <Link 
+              to="/manufacturers" 
+              className="px-6 py-4 text-base font-medium text-[#637488] hover:text-[#111418] transition-colors"
+            >
+              المصنعون
+            </Link>
+            <Link 
+              to="/suppliers" 
+              className="px-6 py-4 text-base font-medium text-[#637488] hover:text-[#111418] transition-colors"
+            >
+              الموردون
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Business Section */}
+      <div className="bg-white px-4 py-6">
+        <h2 className="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] mb-4">لأعمالك</h2>
+        <div className="grid grid-cols-3 gap-3">
+          <div className="bg-orange-500 rounded-lg p-4 text-white text-center">
+            <div className="flex justify-center mb-2">
+              <Grid3X3 className="h-8 w-8" />
+            </div>
+            <p className="text-sm font-medium">جميع الفئات</p>
+          </div>
+          <div className="bg-blue-600 rounded-lg p-4 text-white text-center">
+            <div className="flex justify-center mb-2">
+              <MessageCircle className="h-8 w-8" />
+            </div>
+            <p className="text-sm font-medium">طلب عرض أسعار</p>
+          </div>
+          <div className="bg-green-700 rounded-lg p-4 text-white text-center">
+            <div className="flex justify-center mb-2">
+              <Package className="h-8 w-8" />
+            </div>
+            <p className="text-sm font-medium">مورد أوروبا</p>
+          </div>
+        </div>
       </div>
 
       <main className="flex-1">

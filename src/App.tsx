@@ -21,6 +21,8 @@ import SupplierDashboard from "./pages/SupplierDashboard";
 import ProductSearch from "./pages/ProductSearch";
 import AddProduct from "./pages/AddProduct";
 import SupplierRating from "./pages/SupplierRating";
+import Manufacturers from "./pages/Manufacturers";
+import Suppliers from "./pages/Suppliers";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +36,8 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/manufacturers" element={<Manufacturers />} />
+          <Route path="/suppliers" element={<Suppliers />} />
           <Route path="/products/building-materials" element={<BuildingMaterials />} />
           <Route path="/products/packaging-supplies" element={<PackagingSupplies />} />
           <Route path="/products/plastic-raw-materials" element={<PlasticRawMaterials />} />
