@@ -45,7 +45,7 @@ const Header = ({ currentLanguage, onLanguageChange }: HeaderProps) => {
                 <Menu className="h-4 w-4" />
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="w-64 bg-white border border-gray-200 shadow-lg z-50" dir="rtl">
+            <DropdownMenuContent align="start" className="w-64 bg-white border border-gray-200 shadow-lg z-50">
               {navigationItems.map((item) => (
                 <DropdownMenuItem key={item.title} asChild>
                   <Link
