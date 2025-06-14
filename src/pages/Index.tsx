@@ -47,6 +47,7 @@ const Index = () => {
     document.documentElement.style.setProperty('--text-direction', language === "العربية" ? 'rtl' : 'ltr');
     
     console.log(`تم تغيير اللغة إلى ${language}`);
+    alert(`تم تغيير اللغة إلى ${language}`);
   };
 
   const stats = [
@@ -102,7 +103,7 @@ const Index = () => {
   ];
 
   return (
-    <div className="relative flex min-h-screen flex-col bg-white pb-20" dir="rtl" style={{ fontFamily: '"Space Grotesk", "Noto Sans", sans-serif' }}>
+    <div className="relative flex min-h-screen flex-col bg-white pb-16" dir="rtl" style={{ fontFamily: '"Space Grotesk", "Noto Sans", sans-serif' }}>
       {/* Header */}
       <div className="flex items-center bg-white p-4 pb-2 justify-between border-b border-gray-100">
         <div className="text-[#111418] flex size-12 shrink-0 items-center">
@@ -147,15 +148,15 @@ const Index = () => {
 
       {/* Search Section - Updated design */}
       <div className="px-6 py-4 bg-white">
-        <div className="max-w-md mx-auto">
-          <label className="flex flex-col min-w-40 h-11 w-full">
-            <div className="flex w-full flex-1 items-stretch rounded-2xl h-full shadow-sm">
-              <div className="text-[#637488] flex border border-gray-200 bg-gray-50 items-center justify-center pl-4 rounded-r-2xl border-l-0">
-                <Search className="h-5 w-5" />
+        <div className="max-w-xs mx-auto">
+          <label className="flex flex-col min-w-40 h-10 w-full">
+            <div className="flex w-full flex-1 items-stretch rounded-full h-full shadow-sm">
+              <div className="text-[#637488] flex border border-gray-200 bg-gray-50 items-center justify-center pl-3 rounded-r-full border-l-0">
+                <Search className="h-4 w-4" />
               </div>
               <input
                 placeholder="ما الذي تبحث عنه؟"
-                className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-2xl text-[#111418] focus:outline-0 focus:ring-2 focus:ring-blue-500 focus:border-transparent border border-gray-200 bg-gray-50 h-full placeholder:text-[#637488] px-4 rounded-r-none border-r-0 pr-2 text-sm font-normal leading-normal transition-all duration-200"
+                className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-full text-[#111418] focus:outline-0 focus:ring-2 focus:ring-blue-500 focus:border-transparent border border-gray-200 bg-gray-50 h-full placeholder:text-[#637488] px-3 rounded-r-none border-r-0 pr-2 text-sm font-normal leading-normal transition-all duration-200"
               />
             </div>
           </label>
@@ -354,50 +355,50 @@ const Index = () => {
         </section>
       </main>
 
-      {/* Fixed Footer */}
+      {/* Fixed Footer - Reduced height */}
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50">
-        {/* Top section with logo */}
-        <div className="flex justify-center py-2 border-b border-gray-100">
-          <div className="text-orange-500 font-bold text-lg tracking-wide">
+        {/* Top section with logo - smaller */}
+        <div className="flex justify-center py-1 border-b border-gray-100">
+          <div className="text-orange-500 font-bold text-sm tracking-wide">
             DUBAIMERX.COM
           </div>
         </div>
         
-        {/* Bottom navigation */}
-        <div className="flex gap-2 px-4 py-2">
+        {/* Bottom navigation - reduced padding */}
+        <div className="flex gap-1 px-2 py-1">
           <Link to="/" className="flex flex-1 flex-col items-center justify-center gap-1 rounded-full text-[#111418] py-1">
-            <div className="text-[#111418] flex h-6 items-center justify-center">
-              <Home className="h-5 w-5 fill-current" />
+            <div className="text-[#111418] flex h-5 items-center justify-center">
+              <Home className="h-4 w-4 fill-current" />
             </div>
             <p className="text-[#111418] text-xs font-medium leading-normal tracking-[0.015em]">الرئيسية</p>
           </Link>
           <Link to="/products" className="flex flex-1 flex-col items-center justify-center gap-1 text-[#637488] py-1">
-            <div className="text-[#637488] flex h-6 items-center justify-center">
-              <Grid3X3 className="h-5 w-5" />
+            <div className="text-[#637488] flex h-5 items-center justify-center">
+              <Grid3X3 className="h-4 w-4" />
             </div>
             <p className="text-[#637488] text-xs font-medium leading-normal tracking-[0.015em]">الفئات</p>
           </Link>
           <Link to="/messages" className="flex flex-1 flex-col items-center justify-center gap-1 text-[#637488] py-1">
-            <div className="text-[#637488] flex h-6 items-center justify-center">
-              <MessageCircle className="h-5 w-5" />
+            <div className="text-[#637488] flex h-5 items-center justify-center">
+              <MessageCircle className="h-4 w-4" />
             </div>
             <p className="text-[#637488] text-xs font-medium leading-normal tracking-[0.015em]">الرسائل</p>
           </Link>
           <Link to="/cart" className="flex flex-1 flex-col items-center justify-center gap-1 text-[#637488] py-1">
-            <div className="text-[#637488] flex h-6 items-center justify-center">
-              <ShoppingCart className="h-5 w-5" />
+            <div className="text-[#637488] flex h-5 items-center justify-center">
+              <ShoppingCart className="h-4 w-4" />
             </div>
             <p className="text-[#637488] text-xs font-medium leading-normal tracking-[0.015em]">العربة</p>
           </Link>
           <Link to="/tips" className="flex flex-1 flex-col items-center justify-center gap-1 text-[#637488] py-1">
-            <div className="text-[#637488] flex h-6 items-center justify-center">
-              <Lightbulb className="h-5 w-5" />
+            <div className="text-[#637488] flex h-5 items-center justify-center">
+              <Lightbulb className="h-4 w-4" />
             </div>
             <p className="text-[#637488] text-xs font-medium leading-normal tracking-[0.015em]">نصائح</p>
           </Link>
           <Link to="/supplier-dashboard" className="flex flex-1 flex-col items-center justify-center gap-1 text-[#637488] py-1">
-            <div className="text-[#637488] flex h-6 items-center justify-center">
-              <User className="h-5 w-5" />
+            <div className="text-[#637488] flex h-5 items-center justify-center">
+              <User className="h-4 w-4" />
             </div>
             <p className="text-[#637488] text-xs font-medium leading-normal tracking-[0.015em]">الملف</p>
           </Link>
