@@ -1,9 +1,8 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Package, Globe, Users, TrendingUp, Shield, Truck, Search, Home, Grid3X3, Menu, MessageCircle, User, Factory, Languages, MapPin, CheckCircle } from "lucide-react";
+import { ArrowLeft, Package, Globe, Users, TrendingUp, Shield, Truck, Search, Home, Grid3X3, Menu, MessageCircle, User, Factory, MapPin, CheckCircle } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -27,6 +26,18 @@ const Index = () => {
     setCurrentLanguage(language);
     // Here you would implement the actual language switching logic
     console.log(`Language changed to: ${language}`);
+    
+    // Update document direction and language
+    if (language === "العربية") {
+      document.dir = "rtl";
+      document.documentElement.lang = "ar";
+    } else {
+      document.dir = "ltr";
+      document.documentElement.lang = language === "English" ? "en" : "fr";
+    }
+    
+    // Show success message
+    alert(`تم تغيير اللغة إلى ${language}`);
   };
 
   const stats = [
@@ -103,7 +114,7 @@ const Index = () => {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 bg-transparent text-[#111418] gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0 hover:bg-gray-100 transition-colors">
-                <Languages className="h-6 w-6" />
+                <Globe className="h-6 w-6" />
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-48 bg-white border border-gray-200 shadow-lg z-50">
