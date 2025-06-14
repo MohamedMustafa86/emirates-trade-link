@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -55,30 +56,78 @@ const Index = () => {
     { number: "95%", label: "رضا العملاء", icon: <TrendingUp className="h-8 w-8 text-emerald-600" /> }
   ];
 
-  const featuredCategories = [
+  const productCategories = [
     {
-      title: "الإلكترونيات",
-      description: "اكتشف أحدث المنتجات الإلكترونية الاستهلاكية",
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475",
-      link: "/products"
+      title: "المنتجات الاستهلاكية",
+      emoji: "🧴",
+      description: "العطور، مستحضرات التجميل، مواد التنظيف والعناية الشخصية",
+      image: "https://images.unsplash.com/photo-1556228578-8c89e6adf883",
+      link: "/products/consumer-goods",
+      subcategories: ["العطور", "مستحضرات التجميل", "مواد التنظيف", "العناية الشخصية"]
     },
     {
-      title: "الموضة",
-      description: "تشكيلة واسعة من المنسوجات والأقمشة",
-      image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5",
-      link: "/products"
+      title: "المنتجات الغذائية",
+      emoji: "🍱",
+      description: "التمور ومشتقاتها، الألبان والعصائر، الأغذية المعلبة",
+      image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9",
+      link: "/products/food-products",
+      subcategories: ["التمور ومشتقاتها", "الألبان والعصائر", "الأغذية المعلبة والمجمدة", "التوابل والزيوت"]
     },
     {
-      title: "الطعام",
-      description: "اكتشف المنتجات الزراعية عالية الجودة",
-      image: "https://images.unsplash.com/photo-1559181567-c3190ca9959b",
-      link: "/products"
+      title: "مواد البناء والتشطيب",
+      emoji: "🏗️",
+      description: "السيراميك والبورسلين، الزجاج الصناعي، الأدوات الصحية",
+      image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625",
+      link: "/products/building-materials",
+      subcategories: ["السيراميك والبورسلين", "الزجاج الصناعي", "الأدوات الصحية", "الألمنيوم والحديد"]
     },
     {
-      title: "المنتجات المنزلية",
-      description: "مصدر موثوق للمنتجات المنزلية",
+      title: "المنتجات الصناعية",
+      emoji: "⚙️",
+      description: "الأنابيب والكابلات، المعدات الكهربائية، المنتجات البلاستيكية",
       image: "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3",
-      link: "/products"
+      link: "/products/industrial-products",
+      subcategories: ["الأنابيب والكابلات", "المعدات الكهربائية", "المنتجات البلاستيكية", "الفلاتر والمكونات الصناعية"]
+    },
+    {
+      title: "منتجات تقنية وذكية",
+      emoji: "💡",
+      description: "أجهزة المراقبة، حلول المنازل الذكية، تطبيقات وخدمات SaaS",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
+      link: "/products/smart-tech",
+      subcategories: ["أجهزة المراقبة", "حلول المنازل الذكية", "تطبيقات وخدمات SaaS", "أجهزة إلكترونية خفيفة"]
+    },
+    {
+      title: "المنتجات الطبية والصحية",
+      emoji: "💊",
+      description: "الأدوية والمكملات، القفازات والكمامات، أدوات الإسعاف الأولي",
+      image: "https://images.unsplash.com/photo-1582562124811-c09040d0a901",
+      link: "/products/medical-health",
+      subcategories: ["الأدوية والمكملات", "القفازات والكمامات", "أدوات الإسعاف الأولي", "العبوات الطبية"]
+    },
+    {
+      title: "منتجات التعبئة والتغليف",
+      emoji: "📦",
+      description: "عبوات بلاستيكية وزجاجية، لفائف تغليف وصناديق، ملصقات وباركودات",
+      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d",
+      link: "/products/packaging-supplies",
+      subcategories: ["عبوات بلاستيكية وزجاجية", "لفائف تغليف وصناديق", "ملصقات وباركودات", "حلول تغليف صديقة للبيئة"]
+    },
+    {
+      title: "الأثاث والمفروشات",
+      emoji: "🪑",
+      description: "أثاث خشبي ومعدني، مفروشات فندقية، مراتب وستائر",
+      image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc",
+      link: "/products/furniture",
+      subcategories: ["أثاث خشبي ومعدني", "مفروشات فندقية", "مراتب وستائر", "سجاد وسجاد صناعي"]
+    },
+    {
+      title: "المنتجات المستدامة",
+      emoji: "🌿",
+      description: "منتجات قابلة للتحلل، أنظمة طاقة شمسية، حلول تدوير",
+      image: "https://images.unsplash.com/photo-1501854140801-50d01698950b",
+      link: "/products/sustainable",
+      subcategories: ["منتجات قابلة للتحلل", "أنظمة طاقة شمسية", "حلول تدوير", "أدوات توفير المياه والطاقة"]
     }
   ];
 
@@ -103,9 +152,9 @@ const Index = () => {
   return (
     <div className="relative flex min-h-screen flex-col bg-white pb-10" dir="rtl" style={{ fontFamily: '"Space Grotesk", "Noto Sans", sans-serif' }}>
       {/* Header */}
-      <div className="flex items-center bg-white p-4 pb-2 justify-between border-b border-gray-100">
-        <div className="text-[#111418] flex size-12 shrink-0 items-center">
-          <Menu className="h-5 w-5" />
+      <div className="flex items-center bg-white p-2 pb-1 justify-between border-b border-gray-100">
+        <div className="text-[#111418] flex size-8 shrink-0 items-center">
+          <Menu className="h-4 w-4" />
         </div>
         
         {/* Logo */}
@@ -113,16 +162,16 @@ const Index = () => {
           <img 
             src="/lovable-uploads/8b27315a-9e7d-4683-a231-655339f73994.png" 
             alt="DUBAIMERX.COM Logo" 
-            className="h-8 w-auto object-contain"
+            className="h-5 w-auto object-contain"
           />
         </div>
         
         {/* Language Dropdown */}
-        <div className="flex w-12 items-center justify-end">
+        <div className="flex w-8 items-center justify-end">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 bg-transparent text-[#111418] gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0 hover:bg-gray-100 transition-colors">
-                <Globe className="h-5 w-5" />
+              <button className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 bg-transparent text-[#111418] gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0 hover:bg-gray-100 transition-colors">
+                <Globe className="h-4 w-4" />
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-48 bg-white border border-gray-200 shadow-lg z-50">
@@ -221,21 +270,45 @@ const Index = () => {
       </div>
 
       <main className="flex-1">
-        {/* Featured Products */}
+        {/* Product Categories */}
         <section className="py-8">
-          <h2 className="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3">المنتجات المميزة</h2>
-          <div className="flex overflow-y-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            <div className="flex items-stretch p-4 gap-3">
-              {featuredCategories.map((category, index) => (
-                <div key={index} className="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-60">
-                  <div
-                    className="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col"
-                    style={{ backgroundImage: `url(${category.image})` }}
-                  />
-                  <p className="text-[#111418] text-base font-medium leading-normal">{category.title}</p>
-                </div>
-              ))}
-            </div>
+          <h2 className="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3">فئات المنتجات</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+            {productCategories.map((category, index) => (
+              <Link key={index} to={category.link} className="block">
+                <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-105 h-full">
+                  <CardContent className="p-0">
+                    <div className="relative">
+                      <img 
+                        src={category.image} 
+                        alt={category.title}
+                        className="w-full h-48 object-cover"
+                      />
+                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2">
+                        <span className="text-2xl">{category.emoji}</span>
+                      </div>
+                    </div>
+                    <div className="p-4">
+                      <h3 className="text-lg font-bold text-gray-800 mb-2">{category.title}</h3>
+                      <p className="text-gray-600 text-sm mb-3 line-clamp-2">{category.description}</p>
+                      <div className="space-y-1">
+                        {category.subcategories.slice(0, 2).map((sub, idx) => (
+                          <div key={idx} className="flex items-center text-xs text-gray-500">
+                            <div className="w-1.5 h-1.5 bg-orange-400 rounded-full ml-2"></div>
+                            {sub}
+                          </div>
+                        ))}
+                        {category.subcategories.length > 2 && (
+                          <div className="text-xs text-blue-600 font-medium">
+                            +{category.subcategories.length - 2} المزيد
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
           </div>
         </section>
 
