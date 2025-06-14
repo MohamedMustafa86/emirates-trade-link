@@ -1,5 +1,4 @@
 
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
@@ -16,7 +15,7 @@ const About = () => {
         <section className="text-center py-12 bg-gradient-to-r from-green-600 to-emerald-500 text-white rounded-lg mb-12">
           <h1 className="text-4xl font-bold mb-4">من نحن</h1>
           <p className="text-xl max-w-3xl mx-auto">
-            UAE HUB - بوابتك لتسويق المنتجات الإماراتية والخليجية إلى الأسواق العالمية والإقليمية
+            DUBAIMERX.COM - بوابتك لتسويق المنتجات الإماراتية والخليجية إلى الأسواق العالمية والإقليمية
           </p>
         </section>
 
@@ -28,7 +27,7 @@ const About = () => {
                 <div>
                   <h2 className="text-3xl font-bold text-gray-800 mb-6">خلفية الشركة</h2>
                   <p className="text-gray-600 mb-4 leading-relaxed">
-                    تأسست UAE HUB لتكون المنصة الرائدة في تسويق وعرض المنتجات الإماراتية والخليجية عالمياً. نحن نتخصص في ربط المنتجين والمصنعين في دولة الإمارات العربية المتحدة ودول مجلس التعاون الخليجي بالأسواق العالمية والإفريقية وأسواق الشرق الأوسط.
+                    تأسست DUBAIMERX.COM لتكون المنصة الرائدة في تسويق وعرض المنتجات الإماراتية والخليجية عالمياً. نحن نتخصص في ربط المنتجين والمصنعين في دولة الإمارات العربية المتحدة ودول مجلس التعاون الخليجي بالأسواق العالمية والإفريقية وأسواق الشرق الأوسط.
                   </p>
                   <p className="text-gray-600 mb-6 leading-relaxed">
                     مهمتنا هي الانطلاق بالمنتجات المحلية عالية الجودة من المنطقة الخليجية وتعريف العالم بتميز وإبداع الصناعات الوطنية، مع توفير حلول تسويقية متكاملة تضمن وصول منتجاتنا إلى أوسع شريحة من العملاء الدوليين.
@@ -242,4 +241,3 @@ const About = () => {
 };
 
 export default About;
-
