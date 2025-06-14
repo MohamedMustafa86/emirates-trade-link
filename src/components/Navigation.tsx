@@ -35,7 +35,7 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center space-x-2">
             <img 
-              src="/lovable-uploads/f763a692-2838-4ba3-abbb-25405467d2ee.png" 
+              src="/lovable-uploads/b9a2938c-03fc-4d35-924b-8e12501bf855.png" 
               alt="Gulf Map" 
               className="h-10 w-10 rounded-lg object-cover"
             />
