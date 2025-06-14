@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -24,20 +25,28 @@ const Index = () => {
 
   const handleLanguageChange = (language: string) => {
     setCurrentLanguage(language);
-    // Here you would implement the actual language switching logic
     console.log(`Language changed to: ${language}`);
     
-    // Update document direction and language
+    // Update document direction and language properly
+    const body = document.body;
+    const html = document.documentElement;
+    
     if (language === "العربية") {
-      document.dir = "rtl";
-      document.documentElement.lang = "ar";
+      body.dir = "rtl";
+      html.dir = "rtl";
+      html.lang = "ar";
+      body.style.direction = "rtl";
     } else {
-      document.dir = "ltr";
-      document.documentElement.lang = language === "English" ? "en" : "fr";
+      body.dir = "ltr";
+      html.dir = "ltr";
+      body.style.direction = "ltr";
+      html.lang = language === "English" ? "en" : "fr";
     }
     
-    // Show success message
-    alert(`تم تغيير اللغة إلى ${language}`);
+    // Force a re-render by updating a CSS custom property
+    document.documentElement.style.setProperty('--text-direction', language === "العربية" ? 'rtl' : 'ltr');
+    
+    console.log(`تم تغيير اللغة إلى ${language}`);
   };
 
   const stats = [
@@ -136,19 +145,21 @@ const Index = () => {
         </div>
       </div>
 
-      {/* Search Section */}
-      <div className="px-4 py-3 bg-white">
-        <label className="flex flex-col min-w-40 h-12 w-full">
-          <div className="flex w-full flex-1 items-stretch rounded-xl h-full">
-            <div className="text-[#637488] flex border-none bg-[#f0f2f4] items-center justify-center pl-4 rounded-l-xl border-r-0">
-              <Search className="h-6 w-6" />
+      {/* Search Section - Updated design */}
+      <div className="px-6 py-4 bg-white">
+        <div className="max-w-md mx-auto">
+          <label className="flex flex-col min-w-40 h-11 w-full">
+            <div className="flex w-full flex-1 items-stretch rounded-2xl h-full shadow-sm">
+              <div className="text-[#637488] flex border border-gray-200 bg-gray-50 items-center justify-center pl-4 rounded-r-2xl border-l-0">
+                <Search className="h-5 w-5" />
+              </div>
+              <input
+                placeholder="ما الذي تبحث عنه؟"
+                className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-2xl text-[#111418] focus:outline-0 focus:ring-2 focus:ring-blue-500 focus:border-transparent border border-gray-200 bg-gray-50 h-full placeholder:text-[#637488] px-4 rounded-r-none border-r-0 pr-2 text-sm font-normal leading-normal transition-all duration-200"
+              />
             </div>
-            <input
-              placeholder="ما الذي تبحث عنه؟"
-              className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-full placeholder:text-[#637488] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
-            />
-          </div>
-        </label>
+          </label>
+        </div>
       </div>
 
       {/* Navigation Tabs */}
