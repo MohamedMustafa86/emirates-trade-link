@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -48,13 +47,22 @@ const Manufacturers = () => {
           <Menu className="h-6 w-6" />
         </div>
         
-        <div className="flex items-center gap-4 flex-1 max-w-md mx-4">
+        <div className="flex w-12 items-center justify-end">
+          <button className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 bg-transparent text-[#111418] gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+            <Globe className="h-6 w-6" />
+          </button>
+        </div>
+      </div>
+
+      {/* Search Section */}
+      <div className="px-4 py-3 bg-white border-b border-gray-100">
+        <div className="flex items-center gap-4">
           <img 
             src="/lovable-uploads/8b27315a-9e7d-4683-a231-655339f73994.png" 
             alt="DUBAIMERX.COM Logo" 
             className="h-8 w-auto object-contain"
           />
-          <div className="flex flex-1">
+          <div className="flex flex-1 max-w-md">
             <div className="text-[#637488] flex border-none bg-[#f0f2f4] items-center justify-center pl-3 rounded-l-xl border-r-0">
               <Search className="h-5 w-5" />
             </div>
@@ -63,12 +71,6 @@ const Manufacturers = () => {
               className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-10 placeholder:text-[#637488] px-3 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal"
             />
           </div>
-        </div>
-        
-        <div className="flex w-12 items-center justify-end">
-          <button className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 bg-transparent text-[#111418] gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
-            <Globe className="h-6 w-6" />
-          </button>
         </div>
       </div>
 
