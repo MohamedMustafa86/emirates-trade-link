@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -13,6 +14,7 @@ import RegistrationDialog from "@/components/RegistrationDialog";
 import SupplierRegistrationDialog from "@/components/SupplierRegistrationDialog";
 import QuoteRequestDialog from "@/components/QuoteRequestDialog";
 import { useState } from "react";
+import { getTranslation } from "@/utils/translations";
 
 const Index = () => {
   const [currentLanguage, setCurrentLanguage] = useState("العربية");
@@ -57,81 +59,81 @@ const Index = () => {
   };
 
   const stats = [
-    { number: "500+", label: "موردين معتمدين", icon: <Users className="h-8 w-8 text-emerald-600" /> },
-    { number: "10,000+", label: "منتج متاح", icon: <Package className="h-8 w-8 text-emerald-600" /> },
-    { number: "50+", label: "دولة مستهدفة", icon: <Globe className="h-8 w-8 text-emerald-600" /> },
-    { number: "95%", label: "رضا العملاء", icon: <TrendingUp className="h-8 w-8 text-emerald-600" /> }
+    { number: "500+", label: getTranslation("verifiedSuppliers", currentLanguage), icon: <Users className="h-8 w-8 text-emerald-600" /> },
+    { number: "10,000+", label: getTranslation("availableProducts", currentLanguage), icon: <Package className="h-8 w-8 text-emerald-600" /> },
+    { number: "50+", label: getTranslation("targetCountries", currentLanguage), icon: <Globe className="h-8 w-8 text-emerald-600" /> },
+    { number: "95%", label: getTranslation("customerSatisfaction", currentLanguage), icon: <TrendingUp className="h-8 w-8 text-emerald-600" /> }
   ];
 
   const productCategories = [
     {
-      title: "المنتجات الاستهلاكية",
+      title: getTranslation("consumerProducts", currentLanguage),
       emoji: "🧴",
-      description: "العطور، مستحضرات التجميل، مواد التنظيف والعناية الشخصية",
+      description: getTranslation("consumerProductsDesc", currentLanguage),
       image: "https://images.unsplash.com/photo-1556228578-8c89e6adf883",
       link: "/products/consumer-goods",
       subcategories: ["العطور", "مستحضرات التجميل", "مواد التنظيف", "العناية الشخصية"]
     },
     {
-      title: "المنتجات الغذائية",
+      title: getTranslation("foodProducts", currentLanguage),
       emoji: "🍱",
-      description: "التمور ومشتقاتها، الألبان والعصائر، الأغذية المعلبة",
+      description: getTranslation("foodProductsDesc", currentLanguage),
       image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9",
       link: "/products/food-products",
       subcategories: ["التمور ومشتقاتها", "الألبان والعصائر", "الأغذية المعلبة والمجمدة", "التوابل والزيوت"]
     },
     {
-      title: "مواد البناء والتشطيب",
+      title: getTranslation("buildingMaterials", currentLanguage),
       emoji: "🏗️",
-      description: "السيراميك والبورسلين، الزجاج الصناعي، الأدوات الصحية",
+      description: getTranslation("buildingMaterialsDesc", currentLanguage),
       image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625",
       link: "/products/building-materials",
       subcategories: ["السيراميك والبورسلين", "الزجاج الصناعي", "الأدوات الصحية", "الألمنيوم والحديد"]
     },
     {
-      title: "المنتجات الصناعية",
+      title: getTranslation("industrialProducts", currentLanguage),
       emoji: "⚙️",
-      description: "الأنابيب والكابلات، المعدات الكهربائية، المنتجات البلاستيكية",
+      description: getTranslation("industrialProductsDesc", currentLanguage),
       image: "/lovable-uploads/c7715e31-8323-48d1-b768-76d1ecfe655c.png",
       link: "/products/industrial-products",
       subcategories: ["الأنابيب والكابلات", "المعدات الكهربائية", "المنتجات البلاستيكية", "الفلاتر والمكونات الصناعية"]
     },
     {
-      title: "منتجات تقنية وذكية",
+      title: getTranslation("smartTech", currentLanguage),
       emoji: "💡",
-      description: "أجهزة المراقبة، حلول المنازل الذكية، تطبيقات وخدمات SaaS",
+      description: getTranslation("smartTechDesc", currentLanguage),
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
       link: "/products/smart-tech",
       subcategories: ["أجهزة المراقبة", "حلول المنازل الذكية", "تطبيقات وخدمات SaaS", "أجهزة إلكترونية خفيفة"]
     },
     {
-      title: "المنتجات الطبية والصحية",
+      title: getTranslation("medicalHealth", currentLanguage),
       emoji: "💊",
-      description: "الأدوية والمكملات، القفازات والكمامات، أدوات الإسعاف الأولي",
+      description: getTranslation("medicalHealthDesc", currentLanguage),
       image: "/lovable-uploads/ca03062d-8feb-454f-9fd4-dd33ace0c1ed.png",
       link: "/products/medical-health",
       subcategories: ["الأدوية والمكملات", "القفازات والكمامات", "أدوات الإسعاف الأولي", "العبوات الطبية"]
     },
     {
-      title: "منتجات التعبئة والتغليف",
+      title: getTranslation("packagingSupplies", currentLanguage),
       emoji: "📦",
-      description: "عبوات بلاستيكية وزجاجية، لفائف تغليف وصناديق، ملصقات وباركودات",
+      description: getTranslation("packagingSuppliesDesc", currentLanguage),
       image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d",
       link: "/products/packaging-supplies",
       subcategories: ["عبوات بلاستيكية وزجاجية", "لفائف تغليف وصناديق", "ملصقات وباركودات", "حلول تغليف صديقة للبيئة"]
     },
     {
-      title: "الأثاث والمفروشات",
+      title: getTranslation("furniture", currentLanguage),
       emoji: "🪑",
-      description: "أثاث خشبي ومعدني، مفروشات فندقية، مراتب وستائر",
+      description: getTranslation("furnitureDesc", currentLanguage),
       image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc",
       link: "/products/furniture",
       subcategories: ["أثاث خشبي ومعدني", "مفروشات فندقية", "مراتب وستائر", "سجاد وسجاد صناعي"]
     },
     {
-      title: "المنتجات المستدامة",
+      title: getTranslation("sustainable", currentLanguage),
       emoji: "🌿",
-      description: "منتجات قابلة للتحلل، أنظمة طاقة شمسية، حلول تدوير",
+      description: getTranslation("sustainableDesc", currentLanguage),
       image: "https://images.unsplash.com/photo-1501854140801-50d01698950b",
       link: "/products/sustainable",
       subcategories: ["منتجات قابلة للتحلل", "أنظمة طاقة شمسية", "حلول تدوير", "أدوات توفير المياه والطاقة"]
@@ -140,24 +142,24 @@ const Index = () => {
 
   const benefits = [
     {
-      title: "التواصل مع الأسواق العالمية",
-      description: "وسع نطاق السوق لتصل إلى أفريقيا والشرق الأوسط وآسيا وأوروبا وما بعدها",
+      title: getTranslation("globalMarkets", currentLanguage),
+      description: getTranslation("globalMarketsDesc", currentLanguage),
       icon: <Users className="h-6 w-6 text-[#111418]" />
     },
     {
-      title: "معاملات آمنة",
-      description: "ضمان المعاملات الآمنة والموثوقة مع نظام الدفع الآمن",
+      title: getTranslation("secureTransactions", currentLanguage),
+      description: getTranslation("secureTransactionsDesc", currentLanguage),
       icon: <Shield className="h-6 w-6 text-[#111418]" />
     },
     {
-      title: "لوجستيات فعالة",
-      description: "تبسيط عملية الشحن مع حلول اللوجستيات المتكاملة",
+      title: getTranslation("efficientLogistics", currentLanguage),
+      description: getTranslation("efficientLogisticsDesc", currentLanguage),
       icon: <Truck className="h-6 w-6 text-[#111418]" />
     }
   ];
 
   return (
-    <div className="relative flex min-h-screen flex-col bg-white pb-10" dir="rtl" style={{ fontFamily: '"Space Grotesk", "Noto Sans", sans-serif' }}>
+    <div className="relative flex min-h-screen flex-col bg-white pb-10" dir={currentLanguage === "العربية" ? "rtl" : "ltr"} style={{ fontFamily: '"Space Grotesk", "Noto Sans", sans-serif' }}>
       {/* Fixed Header */}
       <div className="fixed top-0 left-0 right-0 bg-white shadow-sm z-40">
         {/* Header */}
@@ -211,7 +213,7 @@ const Index = () => {
                   <Search className="h-3 w-3" />
                 </div>
                 <input
-                  placeholder="ما الذي تبحث عنه؟"
+                  placeholder={getTranslation("searchPlaceholder", currentLanguage)}
                   className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-full text-[#111418] focus:outline-0 focus:ring-2 focus:ring-blue-500 focus:border-transparent border border-gray-200 bg-gray-50 h-full placeholder:text-[#637488] px-2 rounded-r-none border-r-0 pr-2 text-xs font-normal leading-normal transition-all duration-200"
                 />
               </div>
@@ -227,19 +229,19 @@ const Index = () => {
                 to="/products" 
                 className="px-4 py-2 text-sm font-medium text-[#111418] border-b-2 border-orange-500 bg-white"
               >
-                المنتجات
+                {getTranslation("products", currentLanguage)}
               </Link>
               <Link 
                 to="/manufacturers" 
                 className="px-4 py-2 text-sm font-medium text-[#637488] hover:text-[#111418] transition-colors"
               >
-                المصنعون
+                {getTranslation("manufacturers", currentLanguage)}
               </Link>
               <Link 
                 to="/suppliers" 
                 className="px-4 py-2 text-sm font-medium text-[#637488] hover:text-[#111418] transition-colors"
               >
-                الموردون
+                {getTranslation("suppliers", currentLanguage)}
               </Link>
             </div>
           </div>
@@ -250,7 +252,7 @@ const Index = () => {
       <div className="pt-24">
         {/* Business Section */}
         <div className="bg-white px-4 py-4">
-          <h2 className="text-[#111418] text-[20px] font-bold leading-tight tracking-[-0.015em] mb-3">لأعمالك</h2>
+          <h2 className="text-[#111418] text-[20px] font-bold leading-tight tracking-[-0.015em] mb-3">{getTranslation("forYourBusiness", currentLanguage)}</h2>
           <div className="grid grid-cols-4 gap-3">
             <button 
               onClick={scrollToProductCategories}
@@ -259,28 +261,28 @@ const Index = () => {
               <div className="flex justify-center mb-2">
                 <Grid3X3 className="h-6 w-6" />
               </div>
-              <p className="text-xs font-medium">جميع الفئات</p>
+              <p className="text-xs font-medium">{getTranslation("allCategories", currentLanguage)}</p>
             </button>
             <QuoteRequestDialog>
               <div className="bg-blue-600 rounded-lg p-3 text-white text-center cursor-pointer hover:bg-blue-700 transition-colors">
                 <div className="flex justify-center mb-2">
                   <MessageCircle className="h-6 w-6" />
                 </div>
-                <p className="text-xs font-medium">طلب عرض أسعار</p>
+                <p className="text-xs font-medium">{getTranslation("requestQuote", currentLanguage)}</p>
               </div>
             </QuoteRequestDialog>
             <Link to="/suppliers" className="bg-green-700 rounded-lg p-3 text-white text-center hover:bg-green-800 transition-colors">
               <div className="flex justify-center mb-2">
                 <Package className="h-6 w-6" />
               </div>
-              <p className="text-xs font-medium">مورد الخليج</p>
+              <p className="text-xs font-medium">{getTranslation("gulfSupplier", currentLanguage)}</p>
             </Link>
             <SupplierRegistrationDialog>
               <div className="bg-purple-600 rounded-lg p-3 text-white text-center cursor-pointer hover:bg-purple-700 transition-colors">
                 <div className="flex justify-center mb-2">
                   <Factory className="h-6 w-6" />
                 </div>
-                <p className="text-xs font-medium">سجل كمورد</p>
+                <p className="text-xs font-medium">{getTranslation("registerAsSupplier", currentLanguage)}</p>
               </div>
             </SupplierRegistrationDialog>
           </div>
@@ -289,7 +291,7 @@ const Index = () => {
         <main className="flex-1">
           {/* Product Categories */}
           <section className="py-8" id="product-categories">
-            <h2 className="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3">فئات المنتجات</h2>
+            <h2 className="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3">{getTranslation("productCategories", currentLanguage)}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
               {productCategories.map((category, index) => (
                 <Link key={index} to={category.link} className="block">
@@ -331,7 +333,7 @@ const Index = () => {
 
           {/* Platform Benefits */}
           <section className="py-8">
-            <h2 className="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3">فوائد المنصة</h2>
+            <h2 className="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3">{getTranslation("platformBenefits", currentLanguage)}</h2>
             <div className="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
               {benefits.map((benefit, index) => (
                 <div key={index} className="flex flex-1 gap-3 rounded-lg border border-[#dce0e5] bg-white p-4 flex-col">
@@ -421,20 +423,20 @@ const Index = () => {
           {/* Call to Action */}
           <section className="py-20 bg-white">
             <div className="container mx-auto px-4 text-center">
-              <h2 className="text-4xl font-bold mb-6 text-gray-900">ابدأ رحلتك التجارية مع DUBAIMERX.COM</h2>
+              <h2 className="text-4xl font-bold mb-6 text-gray-900">{getTranslation("ctaTitle", currentLanguage)}</h2>
               <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-700 leading-relaxed">
-                انضم إلى آلاف الموردين والمشترين الذين يثقون بمنصة DUBAIMERX.COM
+                {getTranslation("ctaDesc", currentLanguage)}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <RegistrationDialog>
                   <Button size="lg" className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white">
-                    سجل مجاناً للمشترين
+                    {getTranslation("registerBuyers", currentLanguage)}
                     <ArrowLeft className="mr-2 h-5 w-5" />
                   </Button>
                 </RegistrationDialog>
                 <SupplierRegistrationDialog>
                   <Button size="lg" className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white">
-                    سجل كمورد أو مصنع
+                    {getTranslation("registerSuppliers", currentLanguage)}
                     <ArrowLeft className="mr-2 h-5 w-5" />
                   </Button>
                 </SupplierRegistrationDialog>
@@ -459,37 +461,37 @@ const Index = () => {
             <div className="text-[#111418] flex h-4 items-center justify-center">
               <Home className="h-3 w-3 fill-current" />
             </div>
-            <p className="text-[#111418] text-[10px] font-medium leading-normal tracking-[0.015em]">الرئيسية</p>
+            <p className="text-[#111418] text-[10px] font-medium leading-normal tracking-[0.015em]">{getTranslation("home", currentLanguage)}</p>
           </Link>
           <Link to="/products" className="flex flex-1 flex-col items-center justify-center gap-0.5 text-[#637488] py-0.5">
             <div className="text-[#637488] flex h-4 items-center justify-center">
               <Grid3X3 className="h-3 w-3" />
             </div>
-            <p className="text-[#637488] text-[10px] font-medium leading-normal tracking-[0.015em]">الفئات</p>
+            <p className="text-[#637488] text-[10px] font-medium leading-normal tracking-[0.015em]">{getTranslation("categories", currentLanguage)}</p>
           </Link>
           <Link to="/messages" className="flex flex-1 flex-col items-center justify-center gap-0.5 text-[#637488] py-0.5">
             <div className="text-[#637488] flex h-4 items-center justify-center">
               <MessageCircle className="h-3 w-3" />
             </div>
-            <p className="text-[#637488] text-[10px] font-medium leading-normal tracking-[0.015em]">الرسائل</p>
+            <p className="text-[#637488] text-[10px] font-medium leading-normal tracking-[0.015em]">{getTranslation("messages", currentLanguage)}</p>
           </Link>
           <Link to="/cart" className="flex flex-1 flex-col items-center justify-center gap-0.5 text-[#637488] py-0.5">
             <div className="text-[#637488] flex h-4 items-center justify-center">
               <ShoppingCart className="h-3 w-3" />
             </div>
-            <p className="text-[#637488] text-[10px] font-medium leading-normal tracking-[0.015em]">العربة</p>
+            <p className="text-[#637488] text-[10px] font-medium leading-normal tracking-[0.015em]">{getTranslation("cart", currentLanguage)}</p>
           </Link>
           <Link to="/tips" className="flex flex-1 flex-col items-center justify-center gap-0.5 text-[#637488] py-0.5">
             <div className="text-[#637488] flex h-4 items-center justify-center">
               <Lightbulb className="h-3 w-3" />
             </div>
-            <p className="text-[#637488] text-[10px] font-medium leading-normal tracking-[0.015em]">نصائح</p>
+            <p className="text-[#637488] text-[10px] font-medium leading-normal tracking-[0.015em]">{getTranslation("tips", currentLanguage)}</p>
           </Link>
           <Link to="/supplier-dashboard" className="flex flex-1 flex-col items-center justify-center gap-0.5 text-[#637488] py-0.5">
             <div className="text-[#637488] flex h-4 items-center justify-center">
               <User className="h-3 w-3" />
             </div>
-            <p className="text-[#637488] text-[10px] font-medium leading-normal tracking-[0.015em]">الملف</p>
+            <p className="text-[#637488] text-[10px] font-medium leading-normal tracking-[0.015em]">{getTranslation("profile", currentLanguage)}</p>
           </Link>
         </div>
       </div>
