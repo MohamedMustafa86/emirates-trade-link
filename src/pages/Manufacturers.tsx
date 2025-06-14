@@ -1,161 +1,182 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Building, Globe, Star, Users, Package, Search, Menu, Home, Grid3X3, MessageCircle, User } from "lucide-react";
+import { useState } from "react";
+import Header from "@/components/Header";
+import { getTranslation } from "@/utils/translations";
 
 const Manufacturers = () => {
+  const [currentLanguage, setCurrentLanguage] = useState("العربية");
+
+  const handleLanguageChange = (language: string) => {
+    setCurrentLanguage(language);
+    console.log(`Language changed to: ${language}`);
+    
+    const body = document.body;
+    const html = document.documentElement;
+    
+    if (language === "العربية") {
+      body.dir = "rtl";
+      html.dir = "rtl";
+      html.lang = "ar";
+      body.style.direction = "rtl";
+    } else {
+      body.dir = "ltr";
+      html.dir = "ltr";
+      body.style.direction = "ltr";
+      html.lang = language === "English" ? "en" : "fr";
+    }
+    
+    document.documentElement.style.setProperty('--text-direction', language === "العربية" ? 'rtl' : 'ltr');
+  };
+
   const manufacturers = [
     {
-      name: "مصنع الإمارات للبلاستيك",
-      location: "دبي، الإمارات العربية المتحدة",
-      specialization: "المواد البلاستيكية والتعبئة",
+      nameAr: "مصنع الإمارات للبلاستيك",
+      nameEn: "Emirates Plastic Factory",
+      nameFr: "Usine de Plastique des Émirats",
+      locationAr: "دبي، الإمارات العربية المتحدة",
+      locationEn: "Dubai, United Arab Emirates",
+      locationFr: "Dubaï, Émirats arabes unis",
+      specializationAr: "المواد البلاستيكية والتعبئة",
+      specializationEn: "Plastic Materials and Packaging",
+      specializationFr: "Matériaux plastiques et emballage",
       rating: 4.8,
       products: 150,
       image: "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3"
     },
     {
-      name: "مجموعة السعودية للصناعات",
-      location: "الرياض، المملكة العربية السعودية",
-      specialization: "مواد البناء والإنشاء",
+      nameAr: "مجموعة السعودية للصناعات",
+      nameEn: "Saudi Industrial Group",
+      nameFr: "Groupe industriel saoudien",
+      locationAr: "الرياض، المملكة العربية السعودية",
+      locationEn: "Riyadh, Saudi Arabia",
+      locationFr: "Riyad, Arabie saoudite",
+      specializationAr: "مواد البناء والإنشاء",
+      specializationEn: "Building and Construction Materials",
+      specializationFr: "Matériaux de construction",
       rating: 4.9,
       products: 280,
       image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5"
     },
     {
-      name: "شركة قطر للكيماويات",
-      location: "الدوحة، قطر",
-      specialization: "المواد الكيميائية والبتروكيماويات",
+      nameAr: "شركة قطر للكيماويات",
+      nameEn: "Qatar Chemical Company",
+      nameFr: "Compagnie chimique du Qatar",
+      locationAr: "الدوحة، قطر",
+      locationEn: "Doha, Qatar",
+      locationFr: "Doha, Qatar",
+      specializationAr: "المواد الكيميائية والبتروكيماويات",
+      specializationEn: "Chemicals and Petrochemicals",
+      specializationFr: "Produits chimiques et pétrochimiques",
       rating: 4.7,
       products: 95,
       image: "https://images.unsplash.com/photo-1518770660439-4636190af475"
     },
     {
-      name: "مصانع الكويت المتطورة",
-      location: "الكويت، الكويت",
-      specialization: "الإلكترونيات والمعدات",
+      nameAr: "مصانع الكويت المتطورة",
+      nameEn: "Advanced Kuwait Factories",
+      nameFr: "Usines avancées du Koweït",
+      locationAr: "الكويت، الكويت",
+      locationEn: "Kuwait City, Kuwait",
+      locationFr: "Ville de Koweït, Koweït",
+      specializationAr: "الإلكترونيات والمعدات",
+      specializationEn: "Electronics and Equipment",
+      specializationFr: "Électronique et équipement",
       rating: 4.6,
       products: 220,
       image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43"
     }
   ];
 
+  const getManufacturerName = (manufacturer: any) => {
+    return currentLanguage === "العربية" ? manufacturer.nameAr : 
+           currentLanguage === "English" ? manufacturer.nameEn : manufacturer.nameFr;
+  };
+
+  const getManufacturerLocation = (manufacturer: any) => {
+    return currentLanguage === "العربية" ? manufacturer.locationAr : 
+           currentLanguage === "English" ? manufacturer.locationEn : manufacturer.locationFr;
+  };
+
+  const getManufacturerSpecialization = (manufacturer: any) => {
+    return currentLanguage === "العربية" ? manufacturer.specializationAr : 
+           currentLanguage === "English" ? manufacturer.specializationEn : manufacturer.specializationFr;
+  };
+
   return (
-    <div className="relative flex min-h-screen flex-col bg-gray-50" dir="rtl" style={{ fontFamily: '"Space Grotesk", "Noto Sans", sans-serif' }}>
-      {/* Header */}
-      <div className="flex items-center bg-white p-4 pb-2 justify-between border-b border-gray-100">
-        <div className="text-[#111418] flex size-12 shrink-0 items-center">
-          <Menu className="h-6 w-6" />
-        </div>
-        
-        <div className="flex w-12 items-center justify-end">
-          <button className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 bg-transparent text-[#111418] gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
-            <Globe className="h-6 w-6" />
-          </button>
-        </div>
-      </div>
+    <div 
+      className="relative flex min-h-screen flex-col bg-gray-50" 
+      dir={currentLanguage === "العربية" ? "rtl" : "ltr"} 
+      style={{ fontFamily: '"Space Grotesk", "Noto Sans", sans-serif' }}
+    >
+      <Header 
+        currentLanguage={currentLanguage} 
+        onLanguageChange={handleLanguageChange} 
+      />
 
-      {/* Search Section */}
-      <div className="px-4 py-3 bg-white border-b border-gray-100">
-        <div className="flex items-center gap-4">
-          <img 
-            src="/lovable-uploads/8b27315a-9e7d-4683-a231-655339f73994.png" 
-            alt="DUBAIMERX.COM Logo" 
-            className="h-8 w-auto object-contain"
-          />
-          <div className="flex flex-1 max-w-md">
-            <div className="text-[#637488] flex border-none bg-[#f0f2f4] items-center justify-center pl-3 rounded-l-xl border-r-0">
-              <Search className="h-5 w-5" />
-            </div>
-            <input
-              placeholder="البحث عن المصنعين"
-              className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-10 placeholder:text-[#637488] px-3 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Navigation Tabs */}
-      <div className="bg-white border-b border-gray-100">
-        <div className="flex justify-center">
-          <div className="flex">
-            <Link 
-              to="/products" 
-              className="px-6 py-4 text-base font-medium text-[#637488] hover:text-[#111418] transition-colors"
-            >
-              المنتجات
-            </Link>
-            <Link 
-              to="/manufacturers" 
-              className="px-6 py-4 text-base font-medium text-[#111418] border-b-2 border-orange-500 bg-white"
-            >
-              المصنعون
-            </Link>
-            <Link 
-              to="/suppliers" 
-              className="px-6 py-4 text-base font-medium text-[#637488] hover:text-[#111418] transition-colors"
-            >
-              الموردون
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      <main className="flex-1 p-4">
-        <h1 className="text-2xl font-bold text-gray-800 mb-6">المصنعون المعتمدون</h1>
-        
-        <div className="grid gap-6">
-          {manufacturers.map((manufacturer, index) => (
-            <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow bg-white">
-              <CardContent className="p-0">
-                <div className="grid md:grid-cols-3 gap-0">
-                  <div className="md:col-span-1">
-                    <img 
-                      src={manufacturer.image} 
-                      alt={manufacturer.name}
-                      className="w-full h-48 md:h-full object-cover"
-                    />
-                  </div>
-                  <div className="md:col-span-2 p-6">
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <h3 className="text-xl font-bold text-gray-800 mb-2">{manufacturer.name}</h3>
-                        <p className="text-gray-600 mb-1 flex items-center">
-                          <Globe className="h-4 w-4 ml-2" />
-                          {manufacturer.location}
-                        </p>
-                        <p className="text-gray-600 mb-3 flex items-center">
-                          <Building className="h-4 w-4 ml-2" />
-                          {manufacturer.specialization}
-                        </p>
-                      </div>
-                      <div className="text-left">
-                        <div className="flex items-center mb-2">
-                          <Star className="h-4 w-4 text-yellow-500 ml-1" />
-                          <span className="font-semibold">{manufacturer.rating}</span>
+      <div className="pt-32">
+        <main className="flex-1 p-4">
+          <h1 className="text-2xl font-bold text-gray-800 mb-6">
+            {getTranslation("manufacturers", currentLanguage)} {getTranslation("verifiedSuppliers", currentLanguage).split(" ")[1]}
+          </h1>
+          
+          <div className="grid gap-6">
+            {manufacturers.map((manufacturer, index) => (
+              <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow bg-white">
+                <CardContent className="p-0">
+                  <div className="grid md:grid-cols-3 gap-0">
+                    <div className="md:col-span-1">
+                      <img 
+                        src={manufacturer.image} 
+                        alt={getManufacturerName(manufacturer)}
+                        className="w-full h-48 md:h-full object-cover"
+                      />
+                    </div>
+                    <div className="md:col-span-2 p-6">
+                      <div className="flex justify-between items-start mb-4">
+                        <div>
+                          <h3 className="text-xl font-bold text-gray-800 mb-2">{getManufacturerName(manufacturer)}</h3>
+                          <p className="text-gray-600 mb-1 flex items-center">
+                            <Globe className="h-4 w-4 ml-2" />
+                            {getManufacturerLocation(manufacturer)}
+                          </p>
+                          <p className="text-gray-600 mb-3 flex items-center">
+                            <Building className="h-4 w-4 ml-2" />
+                            {getManufacturerSpecialization(manufacturer)}
+                          </p>
                         </div>
-                        <div className="flex items-center text-sm text-gray-600">
-                          <Package className="h-4 w-4 ml-1" />
-                          <span>{manufacturer.products} منتج</span>
+                        <div className="text-left">
+                          <div className="flex items-center mb-2">
+                            <Star className="h-4 w-4 text-yellow-500 ml-1" />
+                            <span className="font-semibold">{manufacturer.rating}</span>
+                          </div>
+                          <div className="flex items-center text-sm text-gray-600">
+                            <Package className="h-4 w-4 ml-1" />
+                            <span>{manufacturer.products} {currentLanguage === "العربية" ? "منتج" : currentLanguage === "English" ? "products" : "produits"}</span>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    
-                    <div className="flex justify-between items-center">
-                      <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                        عرض المنتجات
-                        <ArrowLeft className="mr-2 h-4 w-4" />
-                      </Button>
-                      <Button variant="outline" className="border-green-600 text-green-600 hover:bg-green-50">
-                        تواصل معنا
-                      </Button>
+                      
+                      <div className="flex justify-between items-center">
+                        <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                          {currentLanguage === "العربية" ? "عرض المنتجات" : currentLanguage === "English" ? "View Products" : "Voir les produits"}
+                          <ArrowLeft className="mr-2 h-4 w-4" />
+                        </Button>
+                        <Button variant="outline" className="border-green-600 text-green-600 hover:bg-green-50">
+                          {getTranslation("contactUs", currentLanguage)}
+                        </Button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </main>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </main>
+      </div>
 
       {/* Bottom Navigation */}
       <div className="flex gap-2 border-t border-[#f0f2f4] bg-white px-4 pb-3 pt-2">
@@ -163,25 +184,25 @@ const Manufacturers = () => {
           <div className="text-[#637488] flex h-8 items-center justify-center">
             <Home className="h-6 w-6" />
           </div>
-          <p className="text-[#637488] text-xs font-medium leading-normal tracking-[0.015em]">الرئيسية</p>
+          <p className="text-[#637488] text-xs font-medium leading-normal tracking-[0.015em]">{getTranslation("home", currentLanguage)}</p>
         </Link>
         <Link to="/products" className="flex flex-1 flex-col items-center justify-end gap-1 text-[#637488]">
           <div className="text-[#637488] flex h-8 items-center justify-center">
             <Grid3X3 className="h-6 w-6" />
           </div>
-          <p className="text-[#637488] text-xs font-medium leading-normal tracking-[0.015em]">الفئات</p>
+          <p className="text-[#637488] text-xs font-medium leading-normal tracking-[0.015em]">{getTranslation("categories", currentLanguage)}</p>
         </Link>
         <Link to="/contact" className="flex flex-1 flex-col items-center justify-end gap-1 text-[#637488]">
           <div className="text-[#637488] flex h-8 items-center justify-center">
             <MessageCircle className="h-6 w-6" />
           </div>
-          <p className="text-[#637488] text-xs font-medium leading-normal tracking-[0.015em]">الرسائل</p>
+          <p className="text-[#637488] text-xs font-medium leading-normal tracking-[0.015em]">{getTranslation("messages", currentLanguage)}</p>
         </Link>
         <Link to="/supplier-dashboard" className="flex flex-1 flex-col items-center justify-end gap-1 text-[#637488]">
           <div className="text-[#637488] flex h-8 items-center justify-center">
             <User className="h-6 w-6" />
           </div>
-          <p className="text-[#637488] text-xs font-medium leading-normal tracking-[0.015em]">الملف الشخصي</p>
+          <p className="text-[#637488] text-xs font-medium leading-normal tracking-[0.015em]">{getTranslation("profile", currentLanguage)}</p>
         </Link>
       </div>
     </div>
