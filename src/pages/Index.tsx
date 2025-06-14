@@ -1,9 +1,11 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Package, Globe, Users, TrendingUp, Shield, Truck, Search, Home, Grid3X3, Menu, MessageCircle, User } from "lucide-react";
+import { ArrowLeft, Package, Globe, Users, TrendingUp, Shield, Truck, Search, Home, Grid3X3, Menu, MessageCircle, User, Factory } from "lucide-react";
 import RegistrationDialog from "@/components/RegistrationDialog";
+import SupplierRegistrationDialog from "@/components/SupplierRegistrationDialog";
 
 const Index = () => {
   const stats = [
@@ -126,7 +128,7 @@ const Index = () => {
       {/* Business Section */}
       <div className="bg-white px-4 py-6">
         <h2 className="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] mb-4">لأعمالك</h2>
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-4 gap-3">
           <div className="bg-orange-500 rounded-lg p-4 text-white text-center">
             <div className="flex justify-center mb-2">
               <Grid3X3 className="h-8 w-8" />
@@ -145,6 +147,14 @@ const Index = () => {
             </div>
             <p className="text-sm font-medium">مورد أوروبا</p>
           </div>
+          <SupplierRegistrationDialog>
+            <div className="bg-purple-600 rounded-lg p-4 text-white text-center cursor-pointer hover:bg-purple-700 transition-colors">
+              <div className="flex justify-center mb-2">
+                <Factory className="h-8 w-8" />
+              </div>
+              <p className="text-sm font-medium">سجل كمورد</p>
+            </div>
+          </SupplierRegistrationDialog>
         </div>
       </div>
 
@@ -214,16 +224,16 @@ const Index = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <RegistrationDialog>
                 <Button size="lg" className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white">
-                  سجل مجاناً
+                  سجل مجاناً للمشترين
                   <ArrowLeft className="mr-2 h-5 w-5" />
                 </Button>
               </RegistrationDialog>
-              <Button asChild size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
-                <Link to="/search">
-                  للمشترين - ابدأ الشراء
+              <SupplierRegistrationDialog>
+                <Button size="lg" className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white">
+                  سجل كمورد أو مصنع
                   <ArrowLeft className="mr-2 h-5 w-5" />
-                </Link>
-              </Button>
+                </Button>
+              </SupplierRegistrationDialog>
             </div>
           </div>
         </section>
