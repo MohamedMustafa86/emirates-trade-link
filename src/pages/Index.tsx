@@ -57,7 +57,7 @@ const Index = () => {
       />
 
       {/* Content with top padding to account for fixed header */}
-      <div className="pt-24">
+      <div className="pt-32">
         <BusinessSection 
           currentLanguage={currentLanguage} 
           onScrollToProductCategories={scrollToProductCategories} 
