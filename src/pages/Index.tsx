@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -244,7 +243,7 @@ const Index = () => {
           </div>
           <p className="text-[#637488] text-xs font-medium leading-normal tracking-[0.015em]">الفئات</p>
         </Link>
-        <Link to="/contact" className="flex flex-1 flex-col items-center justify-end gap-1 text-[#637488]">
+        <Link to="/messages" className="flex flex-1 flex-col items-center justify-end gap-1 text-[#637488]">
           <div className="text-[#637488] flex h-8 items-center justify-center">
             <MessageCircle className="h-6 w-6" />
           </div>

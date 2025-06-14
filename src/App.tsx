@@ -23,6 +23,7 @@ import AddProduct from "./pages/AddProduct";
 import SupplierRating from "./pages/SupplierRating";
 import Manufacturers from "./pages/Manufacturers";
 import Suppliers from "./pages/Suppliers";
+import Messages from "./pages/Messages";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +47,7 @@ const App = () => (
           <Route path="/partners" element={<Partners />} />
           <Route path="/logistics" element={<Logistics />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/messages" element={<Messages />} />
           <Route path="/supplier-dashboard" element={<SupplierDashboard />} />
           <Route path="/search" element={<ProductSearch />} />
           <Route path="/add-product" element={<AddProduct />} />
