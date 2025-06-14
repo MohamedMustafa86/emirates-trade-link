@@ -1,36 +1,13 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Package, Truck, Shield, Clock, Search, Menu, Home, Grid3X3, MessageCircle, User, Globe } from "lucide-react";
-import { useState } from "react";
+import { ArrowLeft, Package, Truck, Shield, Clock, Home, Grid3X3, MessageCircle, User } from "lucide-react";
 import Header from "@/components/Header";
 import { getTranslation } from "@/utils/translations";
+import { useLanguage } from "@/hooks/useLanguage";
 
 const Products = () => {
-  const [currentLanguage, setCurrentLanguage] = useState("العربية");
-
-  const handleLanguageChange = (language: string) => {
-    setCurrentLanguage(language);
-    console.log(`Language changed to: ${language}`);
-    
-    const body = document.body;
-    const html = document.documentElement;
-    
-    if (language === "العربية") {
-      body.dir = "rtl";
-      html.dir = "rtl";
-      html.lang = "ar";
-      body.style.direction = "rtl";
-    } else {
-      body.dir = "ltr";
-      html.dir = "ltr";
-      body.style.direction = "ltr";
-      html.lang = language === "English" ? "en" : "fr";
-    }
-    
-    document.documentElement.style.setProperty('--text-direction', language === "العربية" ? 'rtl' : 'ltr');
-  };
+  const { currentLanguage, handleLanguageChange } = useLanguage();
 
   const productCategories = [
     {

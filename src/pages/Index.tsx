@@ -1,5 +1,4 @@
 
-import { useState } from "react";
 import Header from "@/components/Header";
 import BusinessSection from "@/components/BusinessSection";
 import ProductCategories from "@/components/ProductCategories";
@@ -8,35 +7,10 @@ import StatsSection from "@/components/StatsSection";
 import PromotionalSection from "@/components/PromotionalSection";
 import CTASection from "@/components/CTASection";
 import FixedFooter from "@/components/FixedFooter";
+import { useLanguage } from "@/hooks/useLanguage";
 
 const Index = () => {
-  const [currentLanguage, setCurrentLanguage] = useState("العربية");
-
-  const handleLanguageChange = (language: string) => {
-    setCurrentLanguage(language);
-    console.log(`Language changed to: ${language}`);
-    
-    // Update document direction and language properly
-    const body = document.body;
-    const html = document.documentElement;
-    
-    if (language === "العربية") {
-      body.dir = "rtl";
-      html.dir = "rtl";
-      html.lang = "ar";
-      body.style.direction = "rtl";
-    } else {
-      body.dir = "ltr";
-      html.dir = "ltr";
-      body.style.direction = "ltr";
-      html.lang = language === "English" ? "en" : "fr";
-    }
-    
-    // Force a re-render by updating a CSS custom property
-    document.documentElement.style.setProperty('--text-direction', language === "العربية" ? 'rtl' : 'ltr');
-    
-    console.log(`تم تغيير اللغة إلى ${language}`);
-  };
+  const { currentLanguage, handleLanguageChange } = useLanguage();
 
   const scrollToProductCategories = () => {
     const element = document.getElementById('product-categories');
