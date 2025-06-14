@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Link } from "react-router-dom";
 import { getTranslation } from "@/utils/translations";
+import { useState } from "react";
 
 interface HeaderProps {
   currentLanguage: string;
@@ -15,18 +16,49 @@ interface HeaderProps {
 }
 
 const Header = ({ currentLanguage, onLanguageChange }: HeaderProps) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
   const languages = [
     { code: "ar", name: "العربية", flag: "🇸🇦" },
     { code: "en", name: "English", flag: "🇺🇸" },
     { code: "fr", name: "Français", flag: "🇫🇷" }
   ];
 
+  const navigationItems = [
+    { title: "الرئيسية", href: "/" },
+    { title: "من نحن", href: "/about" },
+    { title: "المنتجات", href: "/products" },
+    { title: "الشركاء والمصنّعون", href: "/partners" },
+    { title: "خدمات التوريد واللوجستيات", href: "/logistics" },
+    { title: "تواصل معنا", href: "/contact" },
+  ];
+
   return (
     <div className="fixed top-0 left-0 right-0 bg-white shadow-sm z-40">
       {/* Header */}
       <div className="flex items-center bg-white px-2 py-1.5 justify-between border-b border-gray-100">
+        {/* Menu Icon */}
         <div className="text-[#111418] flex size-6 shrink-0 items-center">
-          <Menu className="h-3.5 w-3.5" />
+          <DropdownMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+            <DropdownMenuTrigger asChild>
+              <button className="flex items-center justify-center p-1 hover:bg-gray-100 rounded-md transition-colors">
+                <Menu className="h-4 w-4" />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="w-64 bg-white border border-gray-200 shadow-lg z-50" dir="rtl">
+              {navigationItems.map((item) => (
+                <DropdownMenuItem key={item.title} asChild>
+                  <Link
+                    to={item.href}
+                    className="flex items-center px-4 py-3 hover:bg-gray-50 cursor-pointer text-right w-full"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <span className="text-sm font-medium text-gray-700">{item.title}</span>
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
         
         {/* Logo */}
