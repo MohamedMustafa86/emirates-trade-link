@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Package, Globe, Users, TrendingUp, Shield, Truck, Search, Home, Grid3X3, Menu, MessageCircle, User, Factory, MapPin, CheckCircle } from "lucide-react";
+import { ArrowLeft, Package, Globe, Users, TrendingUp, Shield, Truck, Search, Home, Grid3X3, Menu, MessageCircle, User, Factory, MapPin, CheckCircle, ShoppingCart, Lightbulb } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -102,7 +102,7 @@ const Index = () => {
   ];
 
   return (
-    <div className="relative flex min-h-screen flex-col bg-white" dir="rtl" style={{ fontFamily: '"Space Grotesk", "Noto Sans", sans-serif' }}>
+    <div className="relative flex min-h-screen flex-col bg-white pb-20" dir="rtl" style={{ fontFamily: '"Space Grotesk", "Noto Sans", sans-serif' }}>
       {/* Header */}
       <div className="flex items-center bg-white p-4 pb-2 justify-between border-b border-gray-100">
         <div className="text-[#111418] flex size-12 shrink-0 items-center">
@@ -118,7 +118,7 @@ const Index = () => {
           />
         </div>
         
-        {/* Language Dropdown */}
+        {/* Language Dropdown - Fixed functionality */}
         <div className="flex w-12 items-center justify-end">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -354,32 +354,54 @@ const Index = () => {
         </section>
       </main>
 
-      {/* Bottom Navigation */}
-      <div className="flex gap-2 border-t border-[#f0f2f4] bg-white px-4 pb-3 pt-2">
-        <Link to="/" className="flex flex-1 flex-col items-center justify-end gap-1 rounded-full text-[#111418]">
-          <div className="text-[#111418] flex h-8 items-center justify-center">
-            <Home className="h-6 w-6 fill-current" />
+      {/* Fixed Footer */}
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50">
+        {/* Top section with logo */}
+        <div className="flex justify-center py-2 border-b border-gray-100">
+          <div className="text-orange-500 font-bold text-lg tracking-wide">
+            DUBAIMERX.COM
           </div>
-          <p className="text-[#111418] text-xs font-medium leading-normal tracking-[0.015em]">الرئيسية</p>
-        </Link>
-        <Link to="/products" className="flex flex-1 flex-col items-center justify-end gap-1 text-[#637488]">
-          <div className="text-[#637488] flex h-8 items-center justify-center">
-            <Grid3X3 className="h-6 w-6" />
-          </div>
-          <p className="text-[#637488] text-xs font-medium leading-normal tracking-[0.015em]">الفئات</p>
-        </Link>
-        <Link to="/messages" className="flex flex-1 flex-col items-center justify-end gap-1 text-[#637488]">
-          <div className="text-[#637488] flex h-8 items-center justify-center">
-            <MessageCircle className="h-6 w-6" />
-          </div>
-          <p className="text-[#637488] text-xs font-medium leading-normal tracking-[0.015em]">الرسائل</p>
-        </Link>
-        <Link to="/supplier-dashboard" className="flex flex-1 flex-col items-center justify-end gap-1 text-[#637488]">
-          <div className="text-[#637488] flex h-8 items-center justify-center">
-            <User className="h-6 w-6" />
-          </div>
-          <p className="text-[#637488] text-xs font-medium leading-normal tracking-[0.015em]">الملف الشخصي</p>
-        </Link>
+        </div>
+        
+        {/* Bottom navigation */}
+        <div className="flex gap-2 px-4 py-2">
+          <Link to="/" className="flex flex-1 flex-col items-center justify-center gap-1 rounded-full text-[#111418] py-1">
+            <div className="text-[#111418] flex h-6 items-center justify-center">
+              <Home className="h-5 w-5 fill-current" />
+            </div>
+            <p className="text-[#111418] text-xs font-medium leading-normal tracking-[0.015em]">الرئيسية</p>
+          </Link>
+          <Link to="/products" className="flex flex-1 flex-col items-center justify-center gap-1 text-[#637488] py-1">
+            <div className="text-[#637488] flex h-6 items-center justify-center">
+              <Grid3X3 className="h-5 w-5" />
+            </div>
+            <p className="text-[#637488] text-xs font-medium leading-normal tracking-[0.015em]">الفئات</p>
+          </Link>
+          <Link to="/messages" className="flex flex-1 flex-col items-center justify-center gap-1 text-[#637488] py-1">
+            <div className="text-[#637488] flex h-6 items-center justify-center">
+              <MessageCircle className="h-5 w-5" />
+            </div>
+            <p className="text-[#637488] text-xs font-medium leading-normal tracking-[0.015em]">الرسائل</p>
+          </Link>
+          <Link to="/cart" className="flex flex-1 flex-col items-center justify-center gap-1 text-[#637488] py-1">
+            <div className="text-[#637488] flex h-6 items-center justify-center">
+              <ShoppingCart className="h-5 w-5" />
+            </div>
+            <p className="text-[#637488] text-xs font-medium leading-normal tracking-[0.015em]">العربة</p>
+          </Link>
+          <Link to="/tips" className="flex flex-1 flex-col items-center justify-center gap-1 text-[#637488] py-1">
+            <div className="text-[#637488] flex h-6 items-center justify-center">
+              <Lightbulb className="h-5 w-5" />
+            </div>
+            <p className="text-[#637488] text-xs font-medium leading-normal tracking-[0.015em]">نصائح</p>
+          </Link>
+          <Link to="/supplier-dashboard" className="flex flex-1 flex-col items-center justify-center gap-1 text-[#637488] py-1">
+            <div className="text-[#637488] flex h-6 items-center justify-center">
+              <User className="h-5 w-5" />
+            </div>
+            <p className="text-[#637488] text-xs font-medium leading-normal tracking-[0.015em]">الملف</p>
+          </Link>
+        </div>
       </div>
     </div>
   );
