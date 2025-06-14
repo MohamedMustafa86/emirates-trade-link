@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -51,7 +50,7 @@ const Manufacturers = () => {
         <div className="flex items-center justify-center">
           <img 
             src="/lovable-uploads/8b27315a-9e7d-4683-a231-655339f73994.png" 
-            alt="DubaiMerx Logo" 
+            alt="DUBAIMERX.COM Logo" 
             className="h-10 w-auto object-contain"
           />
         </div>

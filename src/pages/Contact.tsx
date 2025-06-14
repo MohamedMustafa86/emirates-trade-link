@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -58,7 +57,7 @@ const Contact = () => {
     {
       icon: <Mail className="h-6 w-6" />,
       title: "البريد الإلكتروني",
-      details: ["info@uaehub.com", "sales@uaehub.com"],
+      details: ["info@dubaimerx.com", "support@dubaimerx.com"],
       color: "text-blue-600"
     },
     {
@@ -80,21 +79,21 @@ const Contact = () => {
       city: "دبي (المكتب الرئيسي)",
       address: "مجمع دبي للاستثمار، مكتب 201",
       phone: "+971 4 123 4567",
-      email: "dubai@uaehub.com",
+      email: "dubai@dubaimerx.com",
       image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c"
     },
     {
       city: "أبوظبي",
       address: "المنطقة الاقتصادية، برج الأعمال",
       phone: "+971 2 987 6543",
-      email: "abudhabi@uaehub.com",
+      email: "abudhabi@dubaimerx.com",
       image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000"
     },
     {
       city: "الشارقة",
       address: "المنطقة الحرة، مجمع التجارة",
       phone: "+971 6 555 0123",
-      email: "sharjah@uaehub.com",
+      email: "sharjah@dubaimerx.com",
       image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5"
     }
   ];
@@ -108,7 +107,7 @@ const Contact = () => {
         <section className="text-center py-12 bg-gradient-to-r from-blue-600 to-purple-500 text-white rounded-lg mb-12">
           <h1 className="text-4xl font-bold mb-4">تواصل معنا</h1>
           <p className="text-xl max-w-3xl mx-auto">
-            نحن هنا لمساعدتكم. تواصلوا معنا لأي استفسارات أو طلبات الخدمة
+            نحن في DUBAIMERX.COM هنا لمساعدتكم. تواصلوا معنا لأي استفسارات أو طلبات الخدمة
           </p>
         </section>
 
@@ -269,7 +268,7 @@ const Contact = () => {
 
         {/* Office Locations */}
         <section className="mt-12">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">مكاتبنا</h2>
+          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">مكاتب DUBAIMERX.COM</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {offices.map((office, index) => (
               <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
@@ -309,7 +308,7 @@ const Contact = () => {
               <div className="bg-gray-200 h-64 flex items-center justify-center">
                 <div className="text-center text-gray-600">
                   <MapPin className="h-12 w-12 mx-auto mb-4" />
-                  <p className="text-lg">خريطة المواقع</p>
+                  <p className="text-lg">خريطة مواقع DUBAIMERX.COM</p>
                   <p className="text-sm">يمكن دمج خريطة Google Maps هنا</p>
                 </div>
               </div>

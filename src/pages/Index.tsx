@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
@@ -69,7 +68,7 @@ const Index = () => {
         <div className="flex items-center justify-center">
           <img 
             src="/lovable-uploads/8b27315a-9e7d-4683-a231-655339f73994.png" 
-            alt="DubaiMerx Logo" 
+            alt="DUBAIMERX.COM Logo" 
             className="h-10 w-auto object-contain"
           />
         </div>
@@ -206,9 +205,9 @@ const Index = () => {
         {/* Call to Action */}
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-4xl font-bold mb-6 text-gray-900">ابدأ رحلتك التجارية معنا</h2>
+            <h2 className="text-4xl font-bold mb-6 text-gray-900">ابدأ رحلتك التجارية مع DUBAIMERX.COM</h2>
             <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-700 leading-relaxed">
-              انضم إلى آلاف الموردين والمشترين الذين يثقون بمنصة دبي مركس
+              انضم إلى آلاف الموردين والمشترين الذين يثقون بمنصة DUBAIMERX.COM
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white">
