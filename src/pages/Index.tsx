@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -109,7 +108,7 @@ const Index = () => {
       title: "المنتجات الطبية والصحية",
       emoji: "💊",
       description: "الأدوية والمكملات، القفازات والكمامات، أدوات الإسعاف الأولي",
-      image: "https://images.unsplash.com/photo-1582562124811-c09040d0a901",
+      image: "/lovable-uploads/ca03062d-8feb-454f-9fd4-dd33ace0c1ed.png",
       link: "/products/medical-health",
       subcategories: ["الأدوية والمكملات", "القفازات والكمامات", "أدوات الإسعاف الأولي", "العبوات الطبية"]
     },
