@@ -1,13 +1,33 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Package, Globe, Users, TrendingUp, Shield, Truck, Search, Home, Grid3X3, Menu, MessageCircle, User, Factory } from "lucide-react";
+import { ArrowLeft, Package, Globe, Users, TrendingUp, Shield, Truck, Search, Home, Grid3X3, Menu, MessageCircle, User, Factory, Languages } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import RegistrationDialog from "@/components/RegistrationDialog";
 import SupplierRegistrationDialog from "@/components/SupplierRegistrationDialog";
+import { useState } from "react";
 
 const Index = () => {
+  const [currentLanguage, setCurrentLanguage] = useState("العربية");
+
+  const languages = [
+    { code: "ar", name: "العربية", flag: "🇸🇦" },
+    { code: "en", name: "English", flag: "🇺🇸" },
+    { code: "fr", name: "Français", flag: "🇫🇷" }
+  ];
+
+  const handleLanguageChange = (language: string) => {
+    setCurrentLanguage(language);
+    // Here you would implement the actual language switching logic
+    console.log(`Language changed to: ${language}`);
+  };
+
   const stats = [
     { number: "500+", label: "موردين معتمدين", icon: <Users className="h-8 w-8 text-emerald-600" /> },
     { number: "10,000+", label: "منتج متاح", icon: <Package className="h-8 w-8 text-emerald-600" /> },
@@ -77,10 +97,30 @@ const Index = () => {
           />
         </div>
         
+        {/* Language Dropdown */}
         <div className="flex w-12 items-center justify-end">
-          <button className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 bg-transparent text-[#111418] gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
-            <Globe className="h-6 w-6" />
-          </button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 bg-transparent text-[#111418] gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0 hover:bg-gray-100 transition-colors">
+                <Languages className="h-6 w-6" />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-48 bg-white border border-gray-200 shadow-lg z-50">
+              {languages.map((language) => (
+                <DropdownMenuItem
+                  key={language.code}
+                  onClick={() => handleLanguageChange(language.name)}
+                  className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 cursor-pointer"
+                >
+                  <span className="text-xl">{language.flag}</span>
+                  <span className="text-sm font-medium text-gray-700">{language.name}</span>
+                  {currentLanguage === language.name && (
+                    <span className="ml-auto text-blue-600">✓</span>
+                  )}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
 
