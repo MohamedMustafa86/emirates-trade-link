@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -92,7 +93,7 @@ const Index = () => {
       title: "المنتجات الصناعية",
       emoji: "⚙️",
       description: "الأنابيب والكابلات، المعدات الكهربائية، المنتجات البلاستيكية",
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+      image: "/lovable-uploads/c7715e31-8323-48d1-b768-76d1ecfe655c.png",
       link: "/products/industrial-products",
       subcategories: ["الأنابيب والكابلات", "المعدات الكهربائية", "المنتجات البلاستيكية", "الفلاتر والمكونات الصناعية"]
     },
