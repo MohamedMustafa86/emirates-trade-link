@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -12,6 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import RegistrationDialog from "@/components/RegistrationDialog";
 import SupplierRegistrationDialog from "@/components/SupplierRegistrationDialog";
+import QuoteRequestDialog from "@/components/QuoteRequestDialog";
 import { useState } from "react";
 
 const Index = () => {
@@ -47,6 +47,13 @@ const Index = () => {
     document.documentElement.style.setProperty('--text-direction', language === "العربية" ? 'rtl' : 'ltr');
     
     console.log(`تم تغيير اللغة إلى ${language}`);
+  };
+
+  const scrollToProductCategories = () => {
+    const element = document.getElementById('product-categories');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const stats = [
@@ -240,24 +247,29 @@ const Index = () => {
       <div className="bg-white px-4 py-5">
         <h2 className="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] mb-3">لأعمالك</h2>
         <div className="grid grid-cols-4 gap-3">
-          <div className="bg-orange-500 rounded-lg p-3 text-white text-center">
+          <button 
+            onClick={scrollToProductCategories}
+            className="bg-orange-500 rounded-lg p-3 text-white text-center hover:bg-orange-600 transition-colors"
+          >
             <div className="flex justify-center mb-2">
               <Grid3X3 className="h-6 w-6" />
             </div>
             <p className="text-xs font-medium">جميع الفئات</p>
-          </div>
-          <div className="bg-blue-600 rounded-lg p-3 text-white text-center">
-            <div className="flex justify-center mb-2">
-              <MessageCircle className="h-6 w-6" />
+          </button>
+          <QuoteRequestDialog>
+            <div className="bg-blue-600 rounded-lg p-3 text-white text-center cursor-pointer hover:bg-blue-700 transition-colors">
+              <div className="flex justify-center mb-2">
+                <MessageCircle className="h-6 w-6" />
+              </div>
+              <p className="text-xs font-medium">طلب عرض أسعار</p>
             </div>
-            <p className="text-xs font-medium">طلب عرض أسعار</p>
-          </div>
-          <div className="bg-green-700 rounded-lg p-3 text-white text-center">
+          </QuoteRequestDialog>
+          <Link to="/suppliers" className="bg-green-700 rounded-lg p-3 text-white text-center hover:bg-green-800 transition-colors">
             <div className="flex justify-center mb-2">
               <Package className="h-6 w-6" />
             </div>
-            <p className="text-xs font-medium">مورد أوروبا</p>
-          </div>
+            <p className="text-xs font-medium">مورد الخليج</p>
+          </Link>
           <SupplierRegistrationDialog>
             <div className="bg-purple-600 rounded-lg p-3 text-white text-center cursor-pointer hover:bg-purple-700 transition-colors">
               <div className="flex justify-center mb-2">
@@ -271,7 +283,7 @@ const Index = () => {
 
       <main className="flex-1">
         {/* Product Categories */}
-        <section className="py-8">
+        <section className="py-8" id="product-categories">
           <h2 className="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3">فئات المنتجات</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
             {productCategories.map((category, index) => (
