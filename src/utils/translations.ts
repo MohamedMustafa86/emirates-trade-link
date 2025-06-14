@@ -7,6 +7,14 @@ export const translations = {
     manufacturers: "المصنعون",
     suppliers: "الموردون",
     
+    // Navigation Menu
+    home: "الرئيسية",
+    aboutUs: "من نحن",
+    productsNav: "المنتجات",
+    partnersManufacturers: "الشركاء والمصنّعون",
+    supplyLogistics: "خدمات التوريد واللوجستيات",
+    contactUs: "تواصل معنا",
+    
     // Business Section
     forYourBusiness: "لأعمالك",
     allCategories: "جميع الفئات",
@@ -57,7 +65,6 @@ export const translations = {
     registerSuppliers: "سجل كمورد أو مصنع",
     
     // Footer Navigation
-    home: "الرئيسية",
     categories: "الفئات",
     messages: "الرسائل",
     cart: "العربة",
@@ -71,6 +78,14 @@ export const translations = {
     products: "Products",
     manufacturers: "Manufacturers",
     suppliers: "Suppliers",
+    
+    // Navigation Menu
+    home: "Home",
+    aboutUs: "About Us",
+    productsNav: "Products",
+    partnersManufacturers: "Partners & Manufacturers",
+    supplyLogistics: "Supply & Logistics Services",
+    contactUs: "Contact Us",
     
     // Business Section
     forYourBusiness: "For Your Business",
@@ -122,7 +137,6 @@ export const translations = {
     registerSuppliers: "Register as Supplier or Manufacturer",
     
     // Footer Navigation
-    home: "Home",
     categories: "Categories",
     messages: "Messages",
     cart: "Cart",
@@ -136,6 +150,14 @@ export const translations = {
     products: "Produits",
     manufacturers: "Fabricants",
     suppliers: "Fournisseurs",
+    
+    // Navigation Menu
+    home: "Accueil",
+    aboutUs: "À propos",
+    productsNav: "Produits",
+    partnersManufacturers: "Partenaires et Fabricants",
+    supplyLogistics: "Services d'Approvisionnement et Logistique",
+    contactUs: "Nous Contacter",
     
     // Business Section
     forYourBusiness: "Pour Votre Entreprise",
@@ -187,7 +209,6 @@ export const translations = {
     registerSuppliers: "S'inscrire comme Fournisseur ou Fabricant",
     
     // Footer Navigation
-    home: "Accueil",
     categories: "Catégories",
     messages: "Messages",
     cart: "Panier",

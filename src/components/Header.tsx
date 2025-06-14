@@ -25,12 +25,12 @@ const Header = ({ currentLanguage, onLanguageChange }: HeaderProps) => {
   ];
 
   const navigationItems = [
-    { title: "الرئيسية", href: "/" },
-    { title: "من نحن", href: "/about" },
-    { title: "المنتجات", href: "/products" },
-    { title: "الشركاء والمصنّعون", href: "/partners" },
-    { title: "خدمات التوريد واللوجستيات", href: "/logistics" },
-    { title: "تواصل معنا", href: "/contact" },
+    { title: getTranslation("home", currentLanguage), href: "/" },
+    { title: getTranslation("aboutUs", currentLanguage), href: "/about" },
+    { title: getTranslation("productsNav", currentLanguage), href: "/products" },
+    { title: getTranslation("partnersManufacturers", currentLanguage), href: "/partners" },
+    { title: getTranslation("supplyLogistics", currentLanguage), href: "/logistics" },
+    { title: getTranslation("contactUs", currentLanguage), href: "/contact" },
   ];
 
   return (
