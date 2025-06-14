@@ -92,7 +92,7 @@ const Index = () => {
       title: "المنتجات الصناعية",
       emoji: "⚙️",
       description: "الأنابيب والكابلات، المعدات الكهربائية، المنتجات البلاستيكية",
-      image: "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3",
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475",
       link: "/products/industrial-products",
       subcategories: ["الأنابيب والكابلات", "المعدات الكهربائية", "المنتجات البلاستيكية", "الفلاتر والمكونات الصناعية"]
     },
