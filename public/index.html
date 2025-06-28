@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DUBAIMERX.COM - B2B Trading Platform</title>
+    <meta name="description" content="DUBAIMERX.COM: Export Gulf Products to the World – Find trusted suppliers and manufacturers across the UAE and GCC.">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" />
+    <style>
+      body {
+        font-family: "Noto Sans", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9fbfd;
+        color: #333;
+        text-align: center;
+      }
+      header {
+        background-color: #d0eaff;
+        padding: 20px;
+        position: relative;
+      }
+      header h1 {
+        margin: 0;
+        color: #0077b6;
+      }
+      #language-switcher {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 1.2em;
+        cursor: pointer;
+      }
+      main {
+        padding: 40px 20px;
+      }
+      section {
+        max-width: 800px;
+        margin: auto;
+        margin-bottom: 30px;
+      }
+      footer {
+        background-color: #0077b6;
+        color: #fff;
+        padding: 10px 0;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1 id="title">DUBAIMERX.COM</h1>
+      <div id="language-switcher" onclick="toggleLanguage()">🌐</div>
+    </header>
+
+    <main>
+      <section>
+        <h2 id="subtitle">Export Gulf Products to the World</h2>
+        <p id="description">
+          Discover thousands of non-oil products from trusted Gulf suppliers. Register as a buyer, supplier, or manufacturer and grow your global business with us.
+        </p>
+      </section>
+
+      <section>
+        <h3 id="features-title">Key Features:</h3>
+        <ul id="features">
+          <li>Multi-language interface (Arabic / English / French)</li>
+          <li>Advanced supplier and product search</li>
+          <li>Live chat and messaging system</li>
+          <li>Custom registration for clients and suppliers</li>
+        </ul>
+      </section>
+
+      <section>
+        <a href="register.html" style="font-size: 1.2em; color: #0077b6; text-decoration: underline;">Register Now</a>
+      </section>
+    </main>
+
+    <footer>
+      &copy; <span id="year"></span> DUBAIMERX.COM. All rights reserved.
+    </footer>
+
+    <script>
+      const content = {
+        en: {
+          title: "DUBAIMERX.COM",
+          subtitle: "Export Gulf Products to the World",
+          description:
+            "Discover thousands of non-oil products from trusted Gulf suppliers. Register as a buyer, supplier, or manufacturer and grow your global business with us.",
+          featuresTitle: "Key Features:",
+          features: [
+            "Multi-language interface (Arabic / English / French)",
+            "Advanced supplier and product search",
+            "Live chat and messaging system",
+            "Custom registration for clients and suppliers",
+          ],
+        },
+        ar: {
+          title: "دبي ميركس",
+          subtitle: "تصدير المنتجات الخليجية إلى العالم",
+          description:
+            "اكتشف الآلاف من المنتجات غير النفطية من موردين موثوقين في الخليج. سجّل كعميل أو كمورد أو مصنع، ووسّع تجارتك عالميًا معنا.",
+          featuresTitle: "الميزات الرئيسية:",
+          features: [
+            "واجهة متعددة اللغات (عربية / إنجليزية / فرنسية)",
+            "بحث متقدم عن الموردين والمنتجات",
+            "دردشة مباشرة ونظام رسائل",
+            "نماذج تسجيل مخصصة للعملاء والموردين",
+          ],
+        },
+        fr: {
+          title: "DUBAIMERX.COM",
+          subtitle: "Exporter les produits du Golfe vers le monde",
+          description:
+            "Découvrez des milliers de produits non pétroliers auprès de fournisseurs du Golfe. Inscrivez-vous en tant qu'acheteur, fournisseur ou fabricant et développez votre activité mondiale.",
+          featuresTitle: "Caractéristiques principales :",
+          features: [
+            "Interface multilingue (Arabe / Anglais / Français)",
+            "Recherche avancée de produits et fournisseurs",
+            "Système de chat en direct et de messagerie",
+            "Inscription personnalisée pour clients et fournisseurs",
+          ],
+        },
+      };
+
+      let lang = "en";
+      function toggleLanguage() {
+        lang = lang === "en" ? "ar" : lang === "ar" ? "fr" : "en";
+        updateContent();
+      }
+
+      function updateContent() {
+        const c = content[lang];
+        document.getElementById("title").textContent = c.title;
+        document.getElementById("subtitle").textContent = c.subtitle;
+        document.getElementById("description").textContent = c.description;
+        document.getElementById("features-title").textContent = c.featuresTitle;
+        const featuresList = document.getElementById("features");
+        featuresList.innerHTML = "";
+        c.features.forEach((item) => {
+          const li = document.createElement("li");
+          li.textContent = item;
+          featuresList.appendChild(li);
+        });
+        document.body.dir = lang === "ar" ? "rtl" : "ltr";
+      }
+
+      updateContent();
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
