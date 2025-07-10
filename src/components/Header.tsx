@@ -6,7 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { getTranslation } from "@/utils/translations";
 import { useState } from "react";
 
@@ -17,6 +17,11 @@ interface HeaderProps {
 
 const Header = ({ currentLanguage, onLanguageChange }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  
+  const isActivePath = (path: string) => {
+    return location.pathname === path || (path === "/products" && location.pathname.startsWith("/products"));
+  };
   
   const languages = [
     { code: "ar", name: "العربية", flag: "🇸🇦" },
@@ -120,19 +125,31 @@ const Header = ({ currentLanguage, onLanguageChange }: HeaderProps) => {
           <div className="flex">
             <Link 
               to="/products" 
-              className="px-4 py-2 text-sm font-medium text-[#111418] border-b-2 border-orange-500 bg-white"
+              className={`px-4 py-2 text-sm font-medium transition-colors ${
+                isActivePath("/products") 
+                  ? "text-[#111418] border-b-2 border-orange-500" 
+                  : "text-[#637488] hover:text-[#111418]"
+              }`}
             >
               {getTranslation("products", currentLanguage)}
             </Link>
             <Link 
               to="/manufacturers" 
-              className="px-4 py-2 text-sm font-medium text-[#637488] hover:text-[#111418] transition-colors"
+              className={`px-4 py-2 text-sm font-medium transition-colors ${
+                isActivePath("/manufacturers") 
+                  ? "text-[#111418] border-b-2 border-orange-500" 
+                  : "text-[#637488] hover:text-[#111418]"
+              }`}
             >
               {getTranslation("manufacturers", currentLanguage)}
             </Link>
             <Link 
               to="/suppliers" 
-              className="px-4 py-2 text-sm font-medium text-[#637488] hover:text-[#111418] transition-colors"
+              className={`px-4 py-2 text-sm font-medium transition-colors ${
+                isActivePath("/suppliers") 
+                  ? "text-[#111418] border-b-2 border-orange-500" 
+                  : "text-[#637488] hover:text-[#111418]"
+              }`}
             >
               {getTranslation("suppliers", currentLanguage)}
             </Link>
