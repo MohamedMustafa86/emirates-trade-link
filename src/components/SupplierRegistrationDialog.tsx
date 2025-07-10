@@ -14,6 +14,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ArrowLeft } from "lucide-react";
+import { sanitizeFormData, isValidEmail, isValidPhone, sanitizeURL } from "@/utils/security";
 
 interface SupplierRegistrationDialogProps {
   children: React.ReactNode;
@@ -43,6 +44,12 @@ const SupplierRegistrationDialog = ({ children }: SupplierRegistrationDialogProp
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
+    
+    // Basic validation for input length
+    if (value.length > 1000) {
+      return; // Prevent overly long inputs
+    }
+    
     setFormData(prev => ({
       ...prev,
       [name]: value
@@ -58,7 +65,37 @@ const SupplierRegistrationDialog = ({ children }: SupplierRegistrationDialogProp
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Supplier form submitted:', formData);
+    
+    // Validate required fields
+    if (!formData.companyName || !formData.contactName || !formData.email || !formData.phone) {
+      alert('يرجى ملء جميع الحقول المطلوبة');
+      return;
+    }
+    
+    // Validate email and phone
+    if (!isValidEmail(formData.email)) {
+      alert('البريد الإلكتروني غير صحيح');
+      return;
+    }
+    
+    if (!isValidPhone(formData.phone)) {
+      alert('رقم الهاتف غير صحيح');
+      return;
+    }
+    
+    // Sanitize website URL if provided
+    if (formData.website) {
+      const sanitizedURL = sanitizeURL(formData.website);
+      if (!sanitizedURL && formData.website.trim() !== '') {
+        alert('رابط الموقع الإلكتروني غير صحيح');
+        return;
+      }
+      formData.website = sanitizedURL;
+    }
+    
+    // Sanitize all form data
+    const sanitizedData = sanitizeFormData(formData);
+    console.log('Supplier form submitted:', sanitizedData);
     alert('تم تسجيل بياناتك كمورد بنجاح! سنراجع طلبك ونتواصل معك قريباً.');
   };
 

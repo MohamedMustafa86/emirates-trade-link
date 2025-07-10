@@ -30,16 +30,17 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useToast } from "@/hooks/use-toast";
+import { sanitizeFormData, isValidEmail, isValidPhone } from "@/utils/security";
 
 const formSchema = z.object({
-  companyName: z.string().min(2, "اسم الشركة مطلوب"),
-  contactName: z.string().min(2, "اسم الشخص المسؤول مطلوب"),
-  email: z.string().email("البريد الإلكتروني غير صحيح"),
-  phone: z.string().min(10, "رقم الهاتف مطلوب"),
+  companyName: z.string().min(2, "اسم الشركة مطلوب").max(100, "اسم الشركة طويل جداً"),
+  contactName: z.string().min(2, "اسم الشخص المسؤول مطلوب").max(100, "الاسم طويل جداً"),
+  email: z.string().email("البريد الإلكتروني غير صحيح").refine(isValidEmail, "البريد الإلكتروني غير صحيح"),
+  phone: z.string().min(10, "رقم الهاتف مطلوب").refine(isValidPhone, "رقم الهاتف غير صحيح"),
   productCategory: z.string().min(1, "فئة المنتج مطلوبة"),
-  productDescription: z.string().min(10, "وصف المنتج مطلوب"),
-  quantity: z.string().min(1, "الكمية مطلوبة"),
-  additionalNotes: z.string().optional(),
+  productDescription: z.string().min(10, "وصف المنتج مطلوب").max(1000, "الوصف طويل جداً"),
+  quantity: z.string().min(1, "الكمية مطلوبة").max(100, "وصف الكمية طويل جداً"),
+  additionalNotes: z.string().max(500, "الملاحظات طويلة جداً").optional(),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -67,7 +68,9 @@ const QuoteRequestDialog = ({ children }: QuoteRequestDialogProps) => {
   });
 
   const onSubmit = (data: FormData) => {
-    console.log("Quote request submitted:", data);
+    // Sanitize form data before processing
+    const sanitizedData = sanitizeFormData(data);
+    console.log("Quote request submitted:", sanitizedData);
     toast({
       title: "تم إرسال طلب العرض بنجاح",
       description: "سيتم التواصل معك خلال 24 ساعة",
