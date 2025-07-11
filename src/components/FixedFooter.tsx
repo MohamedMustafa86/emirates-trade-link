@@ -59,7 +59,7 @@ const FixedFooter = ({ currentLanguage }: FixedFooterProps) => {
             {getTranslation("tips", currentLanguage)}
           </p>
         </Link>
-        <Link to="/supplier-dashboard" className="flex flex-1 flex-col items-center justify-center gap-0.5 text-[#637488] py-0.5">
+        <Link to="/profile" className="flex flex-1 flex-col items-center justify-center gap-0.5 text-[#637488] py-0.5">
           <div className="text-[#637488] flex h-4 items-center justify-center">
             <User className="h-3 w-3" />
           </div>

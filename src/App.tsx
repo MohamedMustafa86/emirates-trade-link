@@ -25,6 +25,10 @@ import SupplierRating from "./pages/SupplierRating";
 import Manufacturers from "./pages/Manufacturers";
 import Suppliers from "./pages/Suppliers";
 import Messages from "./pages/Messages";
+import Auth from "./pages/Auth";
+import Profile from "./pages/Profile";
+import ModernMessages from "./pages/ModernMessages";
+import SupplierRegistration from "./pages/SupplierRegistration";
 
 const queryClient = new QueryClient();
 
@@ -49,12 +53,16 @@ const App = () => (
           <Route path="/partners" element={<Partners />} />
           <Route path="/logistics" element={<Logistics />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/messages" element={<Messages />} />
+          <Route path="/messages" element={<ModernMessages />} />
           <Route path="/supplier-dashboard" element={<SupplierDashboard />} />
           <Route path="/search" element={<ProductSearch />} />
+          <Route path="/product-search" element={<ProductSearch />} />
           <Route path="/add-product" element={<AddProduct />} />
           <Route path="/rate-supplier" element={<SupplierRating />} />
           <Route path="/prd" element={<PRD />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/supplier-registration" element={<SupplierRegistration />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

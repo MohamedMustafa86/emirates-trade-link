@@ -1,5 +1,5 @@
 
-import { Search, Globe, Menu } from "lucide-react";
+import { Globe, Menu } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,6 +9,7 @@ import {
 import { Link, useLocation } from "react-router-dom";
 import { getTranslation } from "@/utils/translations";
 import { useState } from "react";
+import SearchBar from "./SearchBar";
 
 interface HeaderProps {
   currentLanguage: string;
@@ -36,6 +37,8 @@ const Header = ({ currentLanguage, onLanguageChange }: HeaderProps) => {
     { title: getTranslation("partnersManufacturers", currentLanguage), href: "/partners" },
     { title: getTranslation("supplyLogistics", currentLanguage), href: "/logistics" },
     { title: getTranslation("contactUs", currentLanguage), href: "/contact" },
+    { title: "تسجيل المشترين", href: "/auth" },
+    { title: "تسجيل الموردين", href: "/supplier-registration" },
   ];
 
   return (
@@ -104,19 +107,7 @@ const Header = ({ currentLanguage, onLanguageChange }: HeaderProps) => {
 
       {/* Search Section */}
       <div className="px-4 py-2 bg-white">
-        <div className="max-w-xs mx-auto">
-          <label className="flex flex-col min-w-40 h-8 w-full">
-            <div className="flex w-full flex-1 items-stretch rounded-full h-full shadow-sm">
-              <div className="text-[#637488] flex border border-gray-200 bg-gray-50 items-center justify-center pl-2 rounded-r-full border-l-0">
-                <Search className="h-3 w-3" />
-              </div>
-              <input
-                placeholder={getTranslation("searchPlaceholder", currentLanguage)}
-                className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-full text-[#111418] focus:outline-0 focus:ring-2 focus:ring-blue-500 focus:border-transparent border border-gray-200 bg-gray-50 h-full placeholder:text-[#637488] px-2 rounded-r-none border-r-0 pr-2 text-xs font-normal leading-normal transition-all duration-200"
-              />
-            </div>
-          </label>
-        </div>
+        <SearchBar placeholder={getTranslation("searchPlaceholder", currentLanguage)} />
       </div>
 
       {/* Navigation Tabs */}
