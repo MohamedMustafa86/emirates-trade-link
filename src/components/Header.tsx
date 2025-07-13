@@ -41,10 +41,12 @@ const Header = ({ currentLanguage, onLanguageChange }: HeaderProps) => {
     { title: "تسجيل الموردين", href: "/supplier-registration" },
   ];
 
+  const isRTL = currentLanguage === "العربية";
+
   return (
     <div className="fixed top-0 left-0 right-0 bg-white shadow-sm z-40">
       {/* Header */}
-      <div className="flex items-center bg-white px-2 py-1.5 justify-between border-b border-gray-100">
+      <div className={`flex items-center bg-white px-2 py-1.5 justify-between border-b border-gray-100 ${isRTL ? 'rtl:flex-row-reverse' : ''}`}>
         {/* Menu Icon */}
         <div className="text-[#111418] flex size-6 shrink-0 items-center">
           <DropdownMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
