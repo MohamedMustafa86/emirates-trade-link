@@ -19,6 +19,7 @@ interface UserProfile {
   phone: string | null;
   location: string | null;
   user_type: 'buyer' | 'supplier' | 'admin' | null;
+  avatar_url?: string | null;
 }
 
 const Profile = () => {
@@ -87,8 +88,8 @@ const Profile = () => {
         });
         
         // Fetch avatar URL if exists
-        if (data.avatar_url) {
-          setAvatarUrl(data.avatar_url);
+        if ((data as any).avatar_url) {
+          setAvatarUrl((data as any).avatar_url);
         }
       }
     } catch (error) {
@@ -118,7 +119,7 @@ const Profile = () => {
       
       const { error: updateError } = await supabase
         .from('users')
-        .update({ avatar_url: publicUrl })
+        .update({ avatar_url: publicUrl } as any)
         .eq('id', user.id);
       
       if (updateError) throw updateError;
@@ -298,7 +299,7 @@ const Profile = () => {
                         className="rounded-full h-6 w-6 p-0"
                         onClick={() => {
                           setAvatarFile(null);
-                          setAvatarUrl(profile?.avatar_url || null);
+                          setAvatarUrl((profile as any)?.avatar_url || null);
                         }}
                       >
                         <X className="h-3 w-3" />
