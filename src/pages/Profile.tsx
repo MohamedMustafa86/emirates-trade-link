@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from 'react-router-dom';
 import { useToast } from "@/hooks/use-toast";
-import { Edit2, LogOut, Camera, ArrowLeft } from "lucide-react";
+import { Edit2, LogOut, Camera, ArrowLeft, Upload, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import FixedFooter from "@/components/FixedFooter";
 import { useLanguage } from "@/hooks/useLanguage";
@@ -34,6 +34,9 @@ const Profile = () => {
     phone: '',
     location: ''
   });
+  const [avatarFile, setAvatarFile] = useState<File | null>(null);
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
+  const [isUploadingAvatar, setIsUploadingAvatar] = useState(false);
 
   useEffect(() => {
     const checkUser = async () => {
@@ -82,11 +85,58 @@ const Profile = () => {
           phone: data.phone || '',
           location: data.location || ''
         });
+        
+        // Fetch avatar URL if exists
+        if (data.avatar_url) {
+          setAvatarUrl(data.avatar_url);
+        }
       }
     } catch (error) {
       console.error('Error fetching profile:', error);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleAvatarUpload = async (file: File) => {
+    if (!user?.id) return;
+    
+    setIsUploadingAvatar(true);
+    try {
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${user.id}.${fileExt}`;
+      
+      const { error: uploadError } = await supabase.storage
+        .from('user-avatars')
+        .upload(fileName, file, { upsert: true });
+      
+      if (uploadError) throw uploadError;
+      
+      const { data: { publicUrl } } = supabase.storage
+        .from('user-avatars')
+        .getPublicUrl(fileName);
+      
+      const { error: updateError } = await supabase
+        .from('users')
+        .update({ avatar_url: publicUrl })
+        .eq('id', user.id);
+      
+      if (updateError) throw updateError;
+      
+      setAvatarUrl(publicUrl);
+      toast({
+        title: "تم بنجاح",
+        description: "تم تحديث صورة الملف الشخصي"
+      });
+    } catch (error) {
+      toast({
+        title: "خطأ",
+        description: "فشل في تحميل الصورة",
+        variant: "destructive"
+      });
+    } finally {
+      setIsUploadingAvatar(false);
+      setAvatarFile(null);
     }
   };
 
@@ -188,18 +238,74 @@ const Profile = () => {
             <div className="flex flex-col items-center text-center space-y-4">
               <div className="relative">
                 <Avatar className="h-24 w-24">
-                  <AvatarImage src={user?.user_metadata?.avatar_url} />
+                  <AvatarImage src={avatarUrl || user?.user_metadata?.avatar_url} />
                   <AvatarFallback className="text-2xl bg-blue-100 text-blue-600">
                     {profile?.name?.charAt(0) || user?.email?.charAt(0)}
                   </AvatarFallback>
                 </Avatar>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className="absolute -bottom-2 -right-2 rounded-full h-8 w-8 p-0"
-                >
-                  <Camera className="h-4 w-4" />
-                </Button>
+                <div className="absolute -bottom-2 -right-2">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    id="avatar-upload"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        setAvatarFile(file);
+                        const reader = new FileReader();
+                        reader.onload = (e) => {
+                          setAvatarUrl(e.target?.result as string);
+                        };
+                        reader.readAsDataURL(file);
+                      }
+                    }}
+                  />
+                  <label htmlFor="avatar-upload">
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="rounded-full h-8 w-8 p-0 cursor-pointer"
+                      asChild
+                      disabled={isUploadingAvatar}
+                    >
+                      <span>
+                        {isUploadingAvatar ? (
+                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600"></div>
+                        ) : (
+                          <Camera className="h-4 w-4" />
+                        )}
+                      </span>
+                    </Button>
+                  </label>
+                </div>
+                
+                {avatarFile && (
+                  <div className="absolute -top-2 -left-2 bg-white rounded-full p-1 shadow-md">
+                    <div className="flex gap-1">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="rounded-full h-6 w-6 p-0"
+                        onClick={() => handleAvatarUpload(avatarFile)}
+                        disabled={isUploadingAvatar}
+                      >
+                        <Upload className="h-3 w-3" />
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="rounded-full h-6 w-6 p-0"
+                        onClick={() => {
+                          setAvatarFile(null);
+                          setAvatarUrl(profile?.avatar_url || null);
+                        }}
+                      >
+                        <X className="h-3 w-3" />
+                      </Button>
+                    </div>
+                  </div>
+                )}
               </div>
               
               <div>
