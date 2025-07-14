@@ -27,6 +27,7 @@ const Auth = () => {
     password: '',
     confirmPassword: '',
     phone: '',
+    countryCode: '+971',
     location: '',
     userType: 'buyer' as 'buyer' | 'supplier'
   });
@@ -98,7 +99,7 @@ const Auth = () => {
           emailRedirectTo: redirectUrl,
           data: {
             name: signupData.name,
-            phone: signupData.phone,
+            phone: `${signupData.countryCode}${signupData.phone}`,
             location: signupData.location,
             user_type: signupData.userType
           }
@@ -229,13 +230,48 @@ const Auth = () => {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="signup-phone">رقم الهاتف</Label>
-                  <Input
-                    id="signup-phone"
-                    placeholder="أدخل رقم هاتفك"
-                    value={signupData.phone}
-                    onChange={(e) => setSignupData({...signupData, phone: e.target.value})}
-                    dir="ltr"
-                  />
+                  <div className="flex gap-2">
+                    <select 
+                      className="w-24 h-10 border border-gray-300 rounded-md px-2 text-sm"
+                      value={signupData.countryCode || '+971'}
+                      onChange={(e) => setSignupData({...signupData, countryCode: e.target.value})}
+                    >
+                      <option value="+971">🇦🇪 +971</option>
+                      <option value="+966">🇸🇦 +966</option>
+                      <option value="+965">🇰🇼 +965</option>
+                      <option value="+973">🇧🇭 +973</option>
+                      <option value="+974">🇶🇦 +974</option>
+                      <option value="+968">🇴🇲 +968</option>
+                      <option value="+20">🇪🇬 +20</option>
+                      <option value="+962">🇯🇴 +962</option>
+                      <option value="+961">🇱🇧 +961</option>
+                      <option value="+963">🇸🇾 +963</option>
+                      <option value="+964">🇮🇶 +964</option>
+                      <option value="+967">🇾🇪 +967</option>
+                      <option value="+212">🇲🇦 +212</option>
+                      <option value="+213">🇩🇿 +213</option>
+                      <option value="+216">🇹🇳 +216</option>
+                      <option value="+218">🇱🇾 +218</option>
+                      <option value="+249">🇸🇩 +249</option>
+                      <option value="+1">🇺🇸 +1</option>
+                      <option value="+44">🇬🇧 +44</option>
+                      <option value="+33">🇫🇷 +33</option>
+                      <option value="+49">🇩🇪 +49</option>
+                      <option value="+39">🇮🇹 +39</option>
+                      <option value="+34">🇪🇸 +34</option>
+                      <option value="+91">🇮🇳 +91</option>
+                      <option value="+86">🇨🇳 +86</option>
+                      <option value="+81">🇯🇵 +81</option>
+                    </select>
+                    <Input
+                      id="signup-phone"
+                      placeholder="123456789"
+                      value={signupData.phone}
+                      onChange={(e) => setSignupData({...signupData, phone: e.target.value})}
+                      dir="ltr"
+                      className="flex-1"
+                    />
+                  </div>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="signup-location">الموقع</Label>

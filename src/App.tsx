@@ -29,6 +29,8 @@ import Auth from "./pages/Auth";
 import Profile from "./pages/Profile";
 import ModernMessages from "./pages/ModernMessages";
 import SupplierRegistration from "./pages/SupplierRegistration";
+import ShoppingCart from "./pages/ShoppingCart";
+import Tips from "./pages/Tips";
 
 const queryClient = new QueryClient();
 
@@ -63,6 +65,8 @@ const App = () => (
           <Route path="/auth" element={<Auth />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/supplier-registration" element={<SupplierRegistration />} />
+          <Route path="/cart" element={<ShoppingCart />} />
+          <Route path="/tips" element={<Tips />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
