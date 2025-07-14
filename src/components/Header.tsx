@@ -47,26 +47,24 @@ const Header = ({ currentLanguage, onLanguageChange }: HeaderProps) => {
     <div className="fixed top-0 left-0 right-0 bg-white shadow-sm z-40">
       {/* Header */}
       <div className="flex items-center bg-white px-2 py-1.5 justify-between border-b border-gray-100">
-        {/* Language Dropdown - Left Side */}
-        <div className="flex w-6 items-center justify-start">
-          <DropdownMenu>
+        {/* Menu Icon - Left Side */}
+        <div className="text-[#111418] flex size-6 shrink-0 items-center justify-start">
+          <DropdownMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
             <DropdownMenuTrigger asChild>
-              <button className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-6 bg-transparent text-[#111418] gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0 hover:bg-gray-100 transition-colors">
-                <Globe className="h-3.5 w-3.5" />
+              <button className="flex items-center justify-center p-1 hover:bg-gray-100 rounded-md transition-colors">
+                <Menu className="h-4 w-4" />
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="w-48 bg-white border border-gray-200 shadow-lg z-50">
-              {languages.map((language) => (
-                <DropdownMenuItem
-                  key={language.code}
-                  onClick={() => onLanguageChange(language.name)}
-                  className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 cursor-pointer"
-                >
-                  <span className="text-xl">{language.flag}</span>
-                  <span className="text-sm font-medium text-gray-700">{language.name}</span>
-                  {currentLanguage === language.name && (
-                    <span className="ml-auto text-blue-600">✓</span>
-                  )}
+            <DropdownMenuContent align="start" className="w-64 bg-white border border-gray-200 shadow-lg z-50">
+              {navigationItems.map((item) => (
+                <DropdownMenuItem key={item.title} asChild>
+                  <Link
+                    to={item.href}
+                    className="flex items-center px-4 py-3 hover:bg-gray-50 cursor-pointer text-right w-full"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <span className="text-sm font-medium text-gray-700">{item.title}</span>
+                  </Link>
                 </DropdownMenuItem>
               ))}
             </DropdownMenuContent>
@@ -78,28 +76,30 @@ const Header = ({ currentLanguage, onLanguageChange }: HeaderProps) => {
           <img 
             src="/lovable-uploads/8b27315a-9e7d-4683-a231-655339f73994.png" 
             alt="DUBAIMERX.COM Logo" 
-            className="h-4 w-auto object-contain"
+            className="h-7 w-auto object-contain"
           />
         </div>
         
-        {/* Menu Icon - Right Side */}
-        <div className="text-[#111418] flex size-6 shrink-0 items-center justify-end">
-          <DropdownMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+        {/* Language Dropdown - Right Side */}
+        <div className="flex w-6 items-center justify-end">
+          <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button className="flex items-center justify-center p-1 hover:bg-gray-100 rounded-md transition-colors">
-                <Menu className="h-4 w-4" />
+              <button className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-6 bg-transparent text-[#111418] gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0 hover:bg-gray-100 transition-colors">
+                <Globe className="h-3.5 w-3.5" />
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-64 bg-white border border-gray-200 shadow-lg z-50">
-              {navigationItems.map((item) => (
-                <DropdownMenuItem key={item.title} asChild>
-                  <Link
-                    to={item.href}
-                    className="flex items-center px-4 py-3 hover:bg-gray-50 cursor-pointer text-right w-full"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <span className="text-sm font-medium text-gray-700">{item.title}</span>
-                  </Link>
+            <DropdownMenuContent align="end" className="w-48 bg-white border border-gray-200 shadow-lg z-50">
+              {languages.map((language) => (
+                <DropdownMenuItem
+                  key={language.code}
+                  onClick={() => onLanguageChange(language.name)}
+                  className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 cursor-pointer"
+                >
+                  <span className="text-xl">{language.flag}</span>
+                  <span className="text-sm font-medium text-gray-700">{language.name}</span>
+                  {currentLanguage === language.name && (
+                    <span className="ml-auto text-blue-600">✓</span>
+                  )}
                 </DropdownMenuItem>
               ))}
             </DropdownMenuContent>
