@@ -46,9 +46,9 @@ const Header = ({ currentLanguage, onLanguageChange }: HeaderProps) => {
   return (
     <div className="fixed top-0 left-0 right-0 bg-white shadow-sm z-40">
       {/* Header */}
-      <div className={`flex items-center bg-white px-2 py-1.5 justify-between border-b border-gray-100 ${isRTL ? 'rtl:flex-row-reverse' : ''}`}>
+      <div className={`flex items-center bg-white px-2 py-1.5 ${isRTL ? 'flex-row-reverse' : 'justify-between'} border-b border-gray-100`}>
         {/* Menu Icon */}
-        <div className="text-[#111418] flex size-6 shrink-0 items-center">
+        <div className={`text-[#111418] flex size-6 shrink-0 items-center ${isRTL ? 'order-first' : ''}`}>
           <DropdownMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
             <DropdownMenuTrigger asChild>
               <button className="flex items-center justify-center p-1 hover:bg-gray-100 rounded-md transition-colors">
@@ -72,7 +72,7 @@ const Header = ({ currentLanguage, onLanguageChange }: HeaderProps) => {
         </div>
         
         {/* Logo */}
-        <div className="flex items-center justify-center">
+        <div className={`flex items-center justify-center ${isRTL ? 'order-2' : ''}`}>
           <img 
             src="/lovable-uploads/8b27315a-9e7d-4683-a231-655339f73994.png" 
             alt="DUBAIMERX.COM Logo" 
@@ -81,7 +81,7 @@ const Header = ({ currentLanguage, onLanguageChange }: HeaderProps) => {
         </div>
         
         {/* Language Dropdown */}
-        <div className="flex w-6 items-center justify-end">
+        <div className={`flex w-6 items-center ${isRTL ? 'justify-start order-last' : 'justify-end'}`}>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-6 bg-transparent text-[#111418] gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0 hover:bg-gray-100 transition-colors">

@@ -164,4 +164,29 @@
   [dir="rtl"] .float-right {
     float: left;
   }
+
+  /* RTL Form Labels */
+  [dir="rtl"] .space-y-2 > label {
+    text-align: right;
+    display: block;
+  }
+
+  [dir="rtl"] input, [dir="rtl"] textarea {
+    text-align: right;
+  }
+
+  [dir="rtl"] input[dir="ltr"], [dir="rtl"] textarea[dir="ltr"] {
+    text-align: left;
+  }
+
+  /* RTL Button positioning */
+  [dir="rtl"] .absolute.left-2 {
+    left: auto;
+    right: 0.5rem;
+  }
+
+  [dir="rtl"] .absolute.right-2 {
+    right: auto;
+    left: 0.5rem;
+  }
 }
