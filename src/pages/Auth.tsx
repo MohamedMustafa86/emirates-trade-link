@@ -147,7 +147,8 @@ const Auth = () => {
 
     setIsLoading(true);
     try {
-      const redirectUrl = `${window.location.origin}/`;
+      // Use the specific domain instead of window.location.origin
+      const redirectUrl = "https://dubaimerx.online/";
       
       const { data, error } = await supabase.auth.signUp({
         email: signupData.email,
@@ -165,16 +166,22 @@ const Auth = () => {
 
       if (error) {
         console.log("Registration error:", error);
-        if (error.message.includes('already registered')) {
+        if (error.message.includes('already registered') || error.message.includes('User already registered')) {
           toast({
             title: "خطأ",
             description: "البريد الإلكتروني مسجل مسبقاً",
             variant: "destructive"
           });
+        } else if (error.message.includes('Failed to fetch')) {
+          toast({
+            title: "خطأ في الاتصال",
+            description: "تحقق من اتصال الإنترنت وحاول مرة أخرى",
+            variant: "destructive"
+          });
         } else {
           toast({
             title: "خطأ في التسجيل",
-            description: `${error.message}`,
+            description: error.message,
             variant: "destructive"
           });
         }
@@ -189,12 +196,21 @@ const Auth = () => {
           description: "يرجى تفعيل حسابك من البريد الإلكتروني",
         });
       }
-    } catch (error) {
-      toast({
-        title: "خطأ",
-        description: "حدث خطأ غير متوقع",
-        variant: "destructive"
-      });
+    } catch (error: any) {
+      console.error("Signup catch error:", error);
+      if (error.message && error.message.includes('Failed to fetch')) {
+        toast({
+          title: "خطأ في الاتصال",
+          description: "تحقق من اتصال الإنترنت وحاول مرة أخرى",
+          variant: "destructive"
+        });
+      } else {
+        toast({
+          title: "خطأ",
+          description: "حدث خطأ غير متوقع، يرجى المحاولة لاحقاً",
+          variant: "destructive"
+        });
+      }
     } finally {
       setIsLoading(false);
     }

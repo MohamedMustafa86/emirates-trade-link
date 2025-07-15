@@ -37,8 +37,8 @@ const Header = ({ currentLanguage, onLanguageChange }: HeaderProps) => {
     { title: getTranslation("partnersManufacturers", currentLanguage), href: "/partners" },
     { title: getTranslation("supplyLogistics", currentLanguage), href: "/logistics" },
     { title: getTranslation("contactUs", currentLanguage), href: "/contact" },
-    { title: "تسجيل المشترين", href: "/auth" },
-    { title: "تسجيل الموردين", href: "/supplier-registration" },
+    { title: getTranslation("registerBuyers", currentLanguage), href: "/auth" },
+    { title: getTranslation("registerSuppliers", currentLanguage), href: "/supplier-registration" },
   ];
 
   const isRTL = currentLanguage === "العربية";

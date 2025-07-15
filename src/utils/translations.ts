@@ -61,8 +61,8 @@ export const translations = {
     // CTA Section
     ctaTitle: "ابدأ رحلتك التجارية مع DUBAIMERX.COM",
     ctaDesc: "انضم إلى آلاف الموردين والمشترين الذين يثقون بمنصة DUBAIMERX.COM",
-    registerBuyers: "سجل مجاناً للمشترين",
-    registerSuppliers: "سجل كمورد أو مصنع",
+    registerBuyers: "تسجيل المشترين",
+    registerSuppliers: "تسجيل الموردين",
     
     // Footer Navigation
     categories: "الفئات",
@@ -160,8 +160,8 @@ export const translations = {
     // CTA Section
     ctaTitle: "Start Your Business Journey with DUBAIMERX.COM",
     ctaDesc: "Join thousands of suppliers and buyers who trust DUBAIMERX.COM platform",
-    registerBuyers: "Register Free for Buyers",
-    registerSuppliers: "Register as Supplier or Manufacturer",
+    registerBuyers: "Buyer Registration",
+    registerSuppliers: "Supplier Registration",
     
     // Footer Navigation
     categories: "Categories",
@@ -259,8 +259,8 @@ export const translations = {
     // CTA Section
     ctaTitle: "Commencez Votre Parcours Commercial avec DUBAIMERX.COM",
     ctaDesc: "Rejoignez des milliers de fournisseurs et d'acheteurs qui font confiance à la plateforme DUBAIMERX.COM",
-    registerBuyers: "Inscription Gratuite pour Acheteurs",
-    registerSuppliers: "S'inscrire comme Fournisseur ou Fabricant",
+    registerBuyers: "Inscription Acheteurs",
+    registerSuppliers: "Inscription Fournisseurs",
     
     // Footer Navigation
     categories: "Catégories",
