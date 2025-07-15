@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from 'react-router-dom';
 import { useToast } from "@/hooks/use-toast";
-import { Eye, EyeOff, ArrowLeft } from "lucide-react";
+import { Eye, EyeOff, ArrowLeft, Upload, X } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Auth = () => {
@@ -29,8 +29,11 @@ const Auth = () => {
     phone: '',
     countryCode: '+971',
     location: '',
-    userType: 'buyer' as 'buyer' | 'supplier'
+    userType: 'buyer' as 'buyer' | 'supplier',
+    avatar: null as File | null
   });
+
+  const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
 
   useEffect(() => {
     // Check if user is already logged in
@@ -78,6 +81,60 @@ const Auth = () => {
     }
   };
 
+  const handleAvatarChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      if (file.size > 5 * 1024 * 1024) { // 5MB limit
+        toast({
+          title: "خطأ",
+          description: "حجم الصورة يجب أن يكون أقل من 5 ميجابايت",
+          variant: "destructive"
+        });
+        return;
+      }
+      
+      setSignupData({ ...signupData, avatar: file });
+      
+      // Create preview
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setAvatarPreview(e.target?.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const removeAvatar = () => {
+    setSignupData({ ...signupData, avatar: null });
+    setAvatarPreview(null);
+  };
+
+  const uploadAvatar = async (userId: string, file: File): Promise<string | null> => {
+    try {
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${userId}-${Math.random()}.${fileExt}`;
+      const filePath = `avatars/${fileName}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from('user-avatars')
+        .upload(filePath, file);
+
+      if (uploadError) {
+        console.error('Upload error:', uploadError);
+        return null;
+      }
+
+      const { data } = supabase.storage
+        .from('user-avatars')
+        .getPublicUrl(filePath);
+
+      return data.publicUrl;
+    } catch (error) {
+      console.error('Avatar upload error:', error);
+      return null;
+    }
+  };
+
   const handleSignup = async () => {
     if (signupData.password !== signupData.confirmPassword) {
       toast({
@@ -92,7 +149,7 @@ const Auth = () => {
     try {
       const redirectUrl = `${window.location.origin}/`;
       
-      const { error } = await supabase.auth.signUp({
+      const { data, error } = await supabase.auth.signUp({
         email: signupData.email,
         password: signupData.password,
         options: {
@@ -122,6 +179,11 @@ const Auth = () => {
           });
         }
       } else {
+        // Upload avatar if provided
+        if (signupData.avatar && data.user) {
+          await uploadAvatar(data.user.id, signupData.avatar);
+        }
+        
         toast({
           title: "تم التسجيل بنجاح",
           description: "يرجى تفعيل حسابك من البريد الإلكتروني",
@@ -282,6 +344,54 @@ const Auth = () => {
                     value={signupData.location}
                     onChange={(e) => setSignupData({...signupData, location: e.target.value})}
                   />
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="signup-avatar">الصورة الشخصية (اختياري)</Label>
+                  <div className="flex items-center gap-4">
+                    {avatarPreview ? (
+                      <div className="relative">
+                        <img 
+                          src={avatarPreview} 
+                          alt="معاينة الصورة الشخصية" 
+                          className="w-16 h-16 rounded-full object-cover border-2 border-gray-200"
+                        />
+                        <Button
+                          type="button"
+                          variant="destructive"
+                          size="sm"
+                          className="absolute -top-2 -right-2 h-6 w-6 rounded-full p-0"
+                          onClick={removeAvatar}
+                        >
+                          <X className="h-3 w-3" />
+                        </Button>
+                      </div>
+                    ) : (
+                      <div className="w-16 h-16 rounded-full bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center">
+                        <Upload className="h-6 w-6 text-gray-400" />
+                      </div>
+                    )}
+                    <div className="flex-1">
+                      <input
+                        id="signup-avatar"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleAvatarChange}
+                        className="hidden"
+                      />
+                      <Button
+                        type="button"
+                        variant="outline"
+                        onClick={() => document.getElementById('signup-avatar')?.click()}
+                        className="w-full"
+                      >
+                        {avatarPreview ? "تغيير الصورة" : "اختيار صورة"}
+                      </Button>
+                      <p className="text-xs text-gray-500 mt-1">
+                        حد أقصى 5 ميجابايت - JPG, PNG, GIF
+                      </p>
+                    </div>
+                  </div>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="signup-password">كلمة المرور</Label>

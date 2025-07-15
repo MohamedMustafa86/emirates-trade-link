@@ -139,8 +139,13 @@
   }
 
   /* Ensure proper font display for Arabic */
-  [lang="ar"] {
-    font-family: 'Noto Sans Arabic', 'Noto Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  [lang="ar"], [dir="rtl"] {
+    font-family: 'Noto Sans Arabic', 'Noto Sans', 'ui-sans-serif', 'system-ui';
+  }
+  
+  /* English and French fonts */
+  [lang="en"], [lang="fr"], [dir="ltr"] {
+    font-family: 'Open Sans', 'ui-sans-serif', 'system-ui';
   }
 
   /* Enhanced RTL support for common components */

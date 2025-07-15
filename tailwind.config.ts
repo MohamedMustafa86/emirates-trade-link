@@ -18,6 +18,10 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'sans': ['Open Sans', 'ui-sans-serif', 'system-ui'],
+				'arabic': ['Noto Sans Arabic', 'Noto Sans', 'ui-sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
