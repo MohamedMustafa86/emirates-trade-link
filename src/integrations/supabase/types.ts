@@ -68,13 +68,6 @@ export type Database = {
             referencedRelation: "products"
             referencedColumns: ["id"]
           },
-          {
-            foreignKeyName: "favorites_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
         ]
       }
       messages: {
@@ -107,24 +100,10 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: "messages_receiver_id_fkey"
-            columns: ["receiver_id"]
-            isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-          {
             foreignKeyName: "messages_rfq_id_fkey"
             columns: ["rfq_id"]
             isOneToOne: false
             referencedRelation: "rfqs"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "messages_sender_id_fkey"
-            columns: ["sender_id"]
-            isOneToOne: false
-            referencedRelation: "users"
             referencedColumns: ["id"]
           },
         ]
@@ -160,15 +139,7 @@ export type Database = {
           type?: Database["public"]["Enums"]["notification_type"]
           user_id?: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "notifications_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-        ]
+        Relationships: []
       }
       orders: {
         Row: {
@@ -211,13 +182,6 @@ export type Database = {
           updated_at?: string | null
         }
         Relationships: [
-          {
-            foreignKeyName: "orders_buyer_id_fkey"
-            columns: ["buyer_id"]
-            isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
           {
             foreignKeyName: "orders_product_id_fkey"
             columns: ["product_id"]
@@ -353,13 +317,6 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: "rfqs_buyer_id_fkey"
-            columns: ["buyer_id"]
-            isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-          {
             foreignKeyName: "rfqs_product_id_fkey"
             columns: ["product_id"]
             isOneToOne: false
@@ -481,43 +438,38 @@ export type Database = {
           updated_at?: string | null
           website?: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "suppliers_id_fkey"
-            columns: ["id"]
-            isOneToOne: true
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-        ]
+        Relationships: []
       }
       users: {
         Row: {
           created_at: string | null
+          email: string | null
           id: string
           location: string | null
-          name: string
+          name: string | null
           phone: string | null
           updated_at: string | null
-          user_type: Database["public"]["Enums"]["user_type"] | null
+          user_type: Database["public"]["Enums"]["user_type"]
         }
         Insert: {
           created_at?: string | null
+          email?: string | null
           id: string
           location?: string | null
-          name: string
+          name?: string | null
           phone?: string | null
           updated_at?: string | null
-          user_type?: Database["public"]["Enums"]["user_type"] | null
+          user_type?: Database["public"]["Enums"]["user_type"]
         }
         Update: {
           created_at?: string | null
+          email?: string | null
           id?: string
           location?: string | null
-          name?: string
+          name?: string | null
           phone?: string | null
           updated_at?: string | null
-          user_type?: Database["public"]["Enums"]["user_type"] | null
+          user_type?: Database["public"]["Enums"]["user_type"]
         }
         Relationships: []
       }

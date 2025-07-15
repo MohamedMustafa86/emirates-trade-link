@@ -107,6 +107,7 @@ const Auth = () => {
       });
 
       if (error) {
+        console.log("Registration error:", error);
         if (error.message.includes('already registered')) {
           toast({
             title: "خطأ",
@@ -116,7 +117,7 @@ const Auth = () => {
         } else {
           toast({
             title: "خطأ في التسجيل",
-            description: error.message,
+            description: `${error.message}`,
             variant: "destructive"
           });
         }
