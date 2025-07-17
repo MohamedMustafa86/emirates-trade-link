@@ -9,12 +9,17 @@ import { useNavigate } from 'react-router-dom';
 import { useToast } from "@/hooks/use-toast";
 import { Eye, EyeOff, ArrowLeft, Upload, X } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/hooks/useLanguage";
+import { translations } from "@/utils/translations";
 
 const Auth = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { currentLanguage } = useLanguage();
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  
+  const t = translations[currentLanguage === "العربية" ? "ar" : currentLanguage === "English" ? "en" : "fr"];
   
   const [loginData, setLoginData] = useState({
     email: '',
@@ -165,23 +170,44 @@ const Auth = () => {
       });
 
       if (error) {
-        console.log("Registration error:", error);
-        if (error.message.includes('already registered') || error.message.includes('User already registered')) {
+        console.error("Registration error:", error);
+
+        const message = error.message.toLowerCase();
+
+        if (message.includes('already registered') || message.includes('user already registered')) {
           toast({
-            title: "خطأ",
-            description: "البريد الإلكتروني مسجل مسبقاً",
+            title: "البريد مسجل مسبقاً",
+            description: "يرجى استخدام بريد إلكتروني مختلف أو تسجيل الدخول مباشرة.",
             variant: "destructive"
           });
-        } else if (error.message.includes('Failed to fetch')) {
+        } else if (message.includes('failed to fetch')) {
           toast({
             title: "خطأ في الاتصال",
-            description: "تحقق من اتصال الإنترنت وحاول مرة أخرى",
+            description: "تعذر الاتصال بالخادم، تحقق من الإنترنت وحاول لاحقاً.",
+            variant: "destructive"
+          });
+        } else if (message.includes('email') && message.includes('invalid')) {
+          toast({
+            title: "بريد إلكتروني غير صالح",
+            description: "يرجى إدخال بريد إلكتروني بصيغة صحيحة مثل: name@example.com",
+            variant: "destructive"
+          });
+        } else if (message.includes('password') && message.includes('at least')) {
+          toast({
+            title: "كلمة المرور ضعيفة",
+            description: "يجب أن تكون كلمة المرور 6 أحرف على الأقل.",
+            variant: "destructive"
+          });
+        } else if (message.includes('rate limit')) {
+          toast({
+            title: "محاولات كثيرة",
+            description: "تم تجاوز عدد المحاولات. الرجاء الانتظار قبل المحاولة مرة أخرى.",
             variant: "destructive"
           });
         } else {
           toast({
-            title: "خطأ في التسجيل",
-            description: error.message,
+            title: "فشل التسجيل",
+            description: "حدث خطأ غير متوقع: " + error.message,
             variant: "destructive"
           });
         }
