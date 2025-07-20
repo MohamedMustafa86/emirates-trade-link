@@ -7,7 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Link, useLocation } from "react-router-dom";
-import { getTranslation } from "@/utils/translations";
+import { getTranslation, translations } from "@/utils/translations";
 import { useState } from "react";
 import SearchBar from "./SearchBar";
 
@@ -17,6 +17,7 @@ interface HeaderProps {
 }
 
 const Header = ({ currentLanguage, onLanguageChange }: HeaderProps) => {
+  const t = translations[currentLanguage === "العربية" ? "ar" : currentLanguage === "English" ? "en" : "fr"];
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   
@@ -75,7 +76,7 @@ const Header = ({ currentLanguage, onLanguageChange }: HeaderProps) => {
         <div className="flex items-center justify-center flex-1">
           <img 
             src="/lovable-uploads/8b27315a-9e7d-4683-a231-655339f73994.png" 
-            alt="DUBAIMERX.COM Logo" 
+            alt={`${t.siteName} Logo`} 
             className="h-7 w-auto object-contain"
           />
         </div>

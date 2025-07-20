@@ -4,8 +4,12 @@ import { Card } from "@/components/ui/card";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useLanguage } from "@/hooks/useLanguage";
+import { translations } from "@/utils/translations";
 
 const Navigation = () => {
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage === "العربية" ? "ar" : currentLanguage === "English" ? "en" : "fr"];
   const [isOpen, setIsOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
   const location = useLocation();
@@ -47,7 +51,7 @@ const Navigation = () => {
               alt="Gulf Map" 
               className="h-10 w-10 rounded-lg object-cover"
             />
-            <span className="text-xl font-bold text-orange-500 mr-2">DUBAIMERX.COM</span>
+            <span className="text-xl font-bold text-orange-500 mr-2">{t.siteName}</span>
           </Link>
 
           {/* Desktop Menu */}

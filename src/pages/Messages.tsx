@@ -7,6 +7,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/hooks/useLanguage";
+import { translations } from "@/utils/translations";
 import { 
   Search, 
   Send, 
@@ -44,6 +46,8 @@ interface Message {
 }
 
 const Messages = () => {
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage === "العربية" ? "ar" : currentLanguage === "English" ? "en" : "fr"];
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
   const [newMessage, setNewMessage] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
@@ -142,7 +146,7 @@ const Messages = () => {
         <div className="flex items-center justify-center">
           <img 
             src="/lovable-uploads/8b27315a-9e7d-4683-a231-655339f73994.png" 
-            alt="DUBAIMERX.COM Logo" 
+            alt={`${t.siteName} Logo`} 
             className="h-10 w-auto object-contain"
           />
         </div>

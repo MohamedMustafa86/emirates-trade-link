@@ -252,7 +252,7 @@ const Auth = () => {
           </Link>
           <img 
             src="/lovable-uploads/8b27315a-9e7d-4683-a231-655339f73994.png" 
-            alt="DUBAIMERX.COM Logo" 
+            alt={`${t.siteName} Logo`} 
             className="h-12 mx-auto mb-4"
           />
           <h1 className="text-2xl font-bold text-gray-900">مرحباً بك في دبي ميركس</h1>

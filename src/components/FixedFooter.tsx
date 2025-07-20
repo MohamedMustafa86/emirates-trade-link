@@ -1,19 +1,20 @@
 
 import { Link } from "react-router-dom";
 import { Home, Grid3X3, MessageCircle, ShoppingCart, Lightbulb, User } from "lucide-react";
-import { getTranslation } from "@/utils/translations";
+import { getTranslation, translations } from "@/utils/translations";
 
 interface FixedFooterProps {
   currentLanguage: string;
 }
 
 const FixedFooter = ({ currentLanguage }: FixedFooterProps) => {
+  const t = translations[currentLanguage === "العربية" ? "ar" : currentLanguage === "English" ? "en" : "fr"];
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50">
       {/* Top section with logo - minimal size */}
       <div className="flex justify-center py-0.5 border-b border-gray-100">
         <div className="text-orange-500 font-bold text-xs tracking-wide">
-          DUBAIMERX.COM
+          {t.siteName}
         </div>
       </div>
       

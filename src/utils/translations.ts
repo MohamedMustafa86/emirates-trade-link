@@ -1,6 +1,7 @@
 
 export const translations = {
   ar: {
+    siteName: "دبي ميركس.كوم",
     // Header
     searchPlaceholder: "ما الذي تبحث عنه؟",
     products: "المنتجات",
@@ -100,6 +101,7 @@ export const translations = {
   },
   
   en: {
+    siteName: "DUBAIMERX.COM",
     // Header
     searchPlaceholder: "What are you looking for?",
     products: "Products",
@@ -199,6 +201,7 @@ export const translations = {
   },
   
   fr: {
+    siteName: "DUBAIMERX.COM",
     // Header
     searchPlaceholder: "Que cherchez-vous ?",
     products: "Produits",
