@@ -151,9 +151,24 @@ const Auth = () => {
     }
 
     setIsLoading(true);
+    
+    // Test Supabase connection first
     try {
-      // Use the specific domain instead of window.location.origin
-      const redirectUrl = "https://dubaimerx.online/";
+      const { data: testData, error: testError } = await supabase.auth.getSession();
+      console.log("Supabase connection test:", testData, testError);
+    } catch (testErr) {
+      console.error("Supabase connection failed:", testErr);
+      toast({
+        title: "خطأ في الاتصال",
+        description: "تعذر الاتصال بالخادم. تحقق من الإنترنت وحاول لاحقاً.",
+        variant: "destructive"
+      });
+      setIsLoading(false);
+      return;
+    }
+    
+    try {
+      const redirectUrl = `${window.location.origin}/`;
       
       const { data, error } = await supabase.auth.signUp({
         email: signupData.email,
