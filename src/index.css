@@ -28,6 +28,11 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
+    /* UAE/Gulf Brand Colors */
+    --burgundy: 0 61% 35%; /* #991B1B equivalent in HSL */
+    --burgundy-light: 0 61% 45%;
+    --burgundy-dark: 0 61% 25%;
+
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;

@@ -6,8 +6,11 @@ import { Textarea } from "@/components/ui/textarea";
 import Navigation from "@/components/Navigation";
 import { useState } from "react";
 import { Phone, Mail, MapPin, Clock, MessageCircle, Send, CheckCircle } from "lucide-react";
+import { getTranslation } from "@/utils/translations";
+import { useLanguage } from "@/hooks/useLanguage";
 
 const Contact = () => {
+  const { currentLanguage } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     company: "",
@@ -121,10 +124,10 @@ const Contact = () => {
       
       <main className="container mx-auto px-4 py-8">
         {/* Hero Section */}
-        <section className="text-center py-12 bg-gradient-to-r from-blue-600 to-purple-500 text-white rounded-lg mb-12">
+        <section className="text-center py-12 bg-gradient-to-r from-[hsl(var(--burgundy))] to-[hsl(var(--burgundy-dark))] text-white rounded-lg mb-12">
           <h1 className="text-4xl font-bold mb-4">تواصل معنا</h1>
           <p className="text-xl max-w-3xl mx-auto">
-            نحن في DUBAIMERX.COM هنا لمساعدتكم. تواصلوا معنا لأي استفسارات أو طلبات الخدمة
+            {getTranslation("contactIntro", currentLanguage)}
           </p>
         </section>
 
@@ -285,7 +288,7 @@ const Contact = () => {
 
         {/* Office Locations */}
         <section className="mt-12">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">مكاتب DUBAIMERX.COM</h2>
+          <h2 className="text-3xl font-bold text-[hsl(var(--burgundy))] mb-8 text-center">{getTranslation("officesTitle", currentLanguage)}</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {offices.map((office, index) => (
               <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
@@ -325,7 +328,7 @@ const Contact = () => {
               <div className="bg-gray-200 h-64 flex items-center justify-center">
                 <div className="text-center text-gray-600">
                   <MapPin className="h-12 w-12 mx-auto mb-4" />
-                  <p className="text-lg">خريطة مواقع DUBAIMERX.COM</p>
+                  <p className="text-lg">{getTranslation("officesMap", currentLanguage)}</p>
                   <p className="text-sm">يمكن دمج خريطة Google Maps هنا</p>
                 </div>
               </div>

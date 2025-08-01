@@ -15,12 +15,15 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ArrowLeft } from "lucide-react";
 import { sanitizeFormData, isValidEmail, isValidPhone, sanitizeURL } from "@/utils/security";
+import { getTranslation } from "@/utils/translations";
+import { useLanguage } from "@/hooks/useLanguage";
 
 interface SupplierRegistrationDialogProps {
   children: React.ReactNode;
 }
 
 const SupplierRegistrationDialog = ({ children }: SupplierRegistrationDialogProps) => {
+  const { currentLanguage } = useLanguage();
   const [formData, setFormData] = useState({
     companyName: '',
     contactName: '',
@@ -111,7 +114,7 @@ const SupplierRegistrationDialog = ({ children }: SupplierRegistrationDialogProp
           </DialogTitle>
           <p className="text-lg text-gray-600 text-center mb-2">أنت مصنع أو مورد أو تاجر جملة؟</p>
           <p className="text-sm text-gray-500 text-center">
-            انضم إلى منصة DUBAIMERX.COM وابدأ في بيع منتجاتك للمشترين حول العالم
+            {getTranslation("joinPlatform", currentLanguage)}
           </p>
         </DialogHeader>
 
@@ -404,7 +407,7 @@ const SupplierRegistrationDialog = ({ children }: SupplierRegistrationDialogProp
                   <ArrowLeft className="mr-2 h-5 w-5" />
                 </Button>
                 <p className="text-sm text-gray-500 mt-4">
-                  بالتسجيل، أنت توافق على شروط الخدمة وسياسة الخصوصية الخاصة بـ DUBAIMERX.COM
+                  {getTranslation("termsAgreement", currentLanguage)}
                 </p>
               </div>
             </form>

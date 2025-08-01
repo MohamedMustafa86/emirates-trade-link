@@ -72,6 +72,14 @@ export const translations = {
     tips: "نصائح",
     profile: "الملف",
 
+    // Registration and Terms
+    joinNetwork: "انضم إلى شبكة دبي ميركس.كوم واحصل على إمكانية الوصول المباشر لأفضل المصانع والموردين",
+    joinPlatform: "انضم إلى منصة دبي ميركس.كوم وابدأ في بيع منتجاتك للمشترين حول العالم",
+    termsAgreement: "بالتسجيل، أنت توافق على شروط الخدمة وسياسة الخصوصية الخاصة بـ دبي ميركس.كوم",
+    contactIntro: "نحن في دبي ميركس.كوم هنا لمساعدتكم. تواصلوا معنا لأي استفسارات أو طلبات الخدمة",
+    officesTitle: "مكاتب دبي ميركس.كوم",
+    officesMap: "خريطة مواقع دبي ميركس.كوم",
+
     // About Page
     aboutUsTitle: "من نحن",
     aboutUsHero: "DUBAIMERX.COM - بوابتك لتسويق المنتجات الإماراتية والخليجية إلى الأسواق العالمية والإقليمية",
@@ -172,6 +180,14 @@ export const translations = {
     tips: "Tips",
     profile: "Profile",
 
+    // Registration and Terms
+    joinNetwork: "Join DUBAIMERX.COM network and get direct access to the best factories and suppliers",
+    joinPlatform: "Join DUBAIMERX.COM platform and start selling your products to buyers worldwide",
+    termsAgreement: "By registering, you agree to DUBAIMERX.COM's terms of service and privacy policy",
+    contactIntro: "We at DUBAIMERX.COM are here to help you. Contact us for any inquiries or service requests",
+    officesTitle: "DUBAIMERX.COM Offices",
+    officesMap: "DUBAIMERX.COM Locations Map",
+
     // About Page
     aboutUsTitle: "About Us",
     aboutUsHero: "DUBAIMERX.COM - Your gateway to market UAE and Gulf products to global and regional markets",
@@ -271,6 +287,14 @@ export const translations = {
     cart: "Panier",
     tips: "Conseils",
     profile: "Profil",
+
+    // Registration and Terms
+    joinNetwork: "Rejoignez le réseau DUBAIMERX.COM et obtenez un accès direct aux meilleurs fabricants et fournisseurs",
+    joinPlatform: "Rejoignez la plateforme DUBAIMERX.COM et commencez à vendre vos produits aux acheteurs du monde entier",
+    termsAgreement: "En vous inscrivant, vous acceptez les conditions de service et la politique de confidentialité de DUBAIMERX.COM",
+    contactIntro: "Nous chez DUBAIMERX.COM sommes là pour vous aider. Contactez-nous pour toute demande ou question de service",
+    officesTitle: "Bureaux DUBAIMERX.COM",
+    officesMap: "Carte des emplacements DUBAIMERX.COM",
 
     // About Page
     aboutUsTitle: "À propos de nous",

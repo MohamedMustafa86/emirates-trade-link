@@ -13,12 +13,15 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { ArrowLeft } from "lucide-react";
+import { getTranslation } from "@/utils/translations";
+import { useLanguage } from "@/hooks/useLanguage";
 
 interface RegistrationDialogProps {
   children: React.ReactNode;
 }
 
 const RegistrationDialog = ({ children }: RegistrationDialogProps) => {
+  const { currentLanguage } = useLanguage();
   const [formData, setFormData] = useState({
     companyName: '',
     contactName: '',
@@ -55,7 +58,7 @@ const RegistrationDialog = ({ children }: RegistrationDialogProps) => {
           </DialogTitle>
           <p className="text-lg text-gray-600 text-center mb-2">سجل مجاناً</p>
           <p className="text-sm text-gray-500 text-center">
-            انضم إلى شبكة DUBAIMERX.COM واحصل على إمكانية الوصول المباشر لأفضل المصانع والموردين
+            {getTranslation("joinNetwork", currentLanguage)}
           </p>
         </DialogHeader>
 
@@ -165,7 +168,7 @@ const RegistrationDialog = ({ children }: RegistrationDialogProps) => {
                   <ArrowLeft className="mr-2 h-5 w-5" />
                 </Button>
                 <p className="text-sm text-gray-500 mt-4">
-                  بالتسجيل، أنت توافق على شروط الخدمة وسياسة الخصوصية الخاصة بـ DUBAIMERX.COM
+                  {getTranslation("termsAgreement", currentLanguage)}
                 </p>
               </div>
             </form>
