@@ -114,15 +114,15 @@ const Header = ({ currentLanguage, onLanguageChange }: HeaderProps) => {
       </div>
 
       {/* Navigation Tabs */}
-      <div className="bg-white border-b border-gray-100">
+      <div className="bg-[hsl(var(--burgundy))] border-b border-burgundy-dark">
         <div className="flex justify-center">
           <div className="flex">
             <Link 
               to="/products" 
               className={`px-4 py-2 text-sm font-medium transition-colors ${
                 isActivePath("/products") 
-                  ? "text-[#111418] border-b-2 border-orange-500" 
-                  : "text-[#637488] hover:text-[#111418]"
+                  ? "text-white border-b-2 border-white" 
+                  : "text-white/80 hover:text-white"
               }`}
             >
               {getTranslation("products", currentLanguage)}
@@ -131,8 +131,8 @@ const Header = ({ currentLanguage, onLanguageChange }: HeaderProps) => {
               to="/manufacturers" 
               className={`px-4 py-2 text-sm font-medium transition-colors ${
                 isActivePath("/manufacturers") 
-                  ? "text-[#111418] border-b-2 border-orange-500" 
-                  : "text-[#637488] hover:text-[#111418]"
+                  ? "text-white border-b-2 border-white" 
+                  : "text-white/80 hover:text-white"
               }`}
             >
               {getTranslation("manufacturers", currentLanguage)}
@@ -141,8 +141,8 @@ const Header = ({ currentLanguage, onLanguageChange }: HeaderProps) => {
               to="/suppliers" 
               className={`px-4 py-2 text-sm font-medium transition-colors ${
                 isActivePath("/suppliers") 
-                  ? "text-[#111418] border-b-2 border-orange-500" 
-                  : "text-[#637488] hover:text-[#111418]"
+                  ? "text-white border-b-2 border-white" 
+                  : "text-white/80 hover:text-white"
               }`}
             >
               {getTranslation("suppliers", currentLanguage)}
