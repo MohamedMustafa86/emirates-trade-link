@@ -79,6 +79,8 @@ export const translations = {
     contactIntro: "نحن في دبي ميركس.كوم هنا لمساعدتكم. تواصلوا معنا لأي استفسارات أو طلبات الخدمة",
     officesTitle: "مكاتب دبي ميركس.كوم",
     officesMap: "خريطة مواقع دبي ميركس.كوم",
+    messagesIcon: "المراسلات",
+    quickActions: "إجراءات سريعة",
 
     // About Page
     aboutUsTitle: "من نحن",
@@ -187,6 +189,8 @@ export const translations = {
     contactIntro: "We at DUBAIMERX.COM are here to help you. Contact us for any inquiries or service requests",
     officesTitle: "DUBAIMERX.COM Offices",
     officesMap: "DUBAIMERX.COM Locations Map",
+    messagesIcon: "Messages",
+    quickActions: "Quick Actions",
 
     // About Page
     aboutUsTitle: "About Us",
@@ -295,6 +299,8 @@ export const translations = {
     contactIntro: "Nous chez DUBAIMERX.COM sommes là pour vous aider. Contactez-nous pour toute demande ou question de service",
     officesTitle: "Bureaux DUBAIMERX.COM",
     officesMap: "Carte des emplacements DUBAIMERX.COM",
+    messagesIcon: "Messages",
+    quickActions: "Actions Rapides",
 
     // About Page
     aboutUsTitle: "À propos de nous",
