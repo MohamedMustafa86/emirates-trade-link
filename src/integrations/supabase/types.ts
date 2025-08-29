@@ -325,6 +325,39 @@ export type Database = {
           },
         ]
       }
+      search_queries: {
+        Row: {
+          category_id: string | null
+          created_at: string
+          id: string
+          ip_address: unknown | null
+          query_text: string
+          results_count: number | null
+          user_agent: string | null
+          user_id: string | null
+        }
+        Insert: {
+          category_id?: string | null
+          created_at?: string
+          id?: string
+          ip_address?: unknown | null
+          query_text: string
+          results_count?: number | null
+          user_agent?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          category_id?: string | null
+          created_at?: string
+          id?: string
+          ip_address?: unknown | null
+          query_text?: string
+          results_count?: number | null
+          user_agent?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       shipping_details: {
         Row: {
           address: string
@@ -440,6 +473,51 @@ export type Database = {
         }
         Relationships: []
       }
+      unavailable_products: {
+        Row: {
+          category_id: string | null
+          created_at: string
+          description: string | null
+          id: string
+          notes: string | null
+          product_name: string
+          request_count: number | null
+          requested_by: string | null
+          status: string | null
+          subcategory_id: string | null
+          supplier_contacted: boolean | null
+          updated_at: string
+        }
+        Insert: {
+          category_id?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          notes?: string | null
+          product_name: string
+          request_count?: number | null
+          requested_by?: string | null
+          status?: string | null
+          subcategory_id?: string | null
+          supplier_contacted?: boolean | null
+          updated_at?: string
+        }
+        Update: {
+          category_id?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          notes?: string | null
+          product_name?: string
+          request_count?: number | null
+          requested_by?: string | null
+          status?: string | null
+          subcategory_id?: string | null
+          supplier_contacted?: boolean | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       users: {
         Row: {
           created_at: string | null
@@ -478,7 +556,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      increment_unavailable_product_request: {
+        Args: { product_id: string }
+        Returns: undefined
+      }
     }
     Enums: {
       notification_type: "rfq" | "order" | "message" | "system"
