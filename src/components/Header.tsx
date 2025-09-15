@@ -74,11 +74,16 @@ const Header = ({ currentLanguage, onLanguageChange }: HeaderProps) => {
         
         {/* Logo - Center */}
         <div className="flex items-center justify-center flex-1">
-          <img 
-            src="/lovable-uploads/8b27315a-9e7d-4683-a231-655339f73994.png" 
-            alt={`${t.siteName} Logo`} 
-            className="h-7 w-auto object-contain"
-          />
+          <div className="flex items-center gap-2">
+            <img 
+              src="/lovable-uploads/8b27315a-9e7d-4683-a231-655339f73994.png" 
+              alt={`${t.siteName} Logo`} 
+              className="h-7 w-auto object-contain"
+            />
+            <span className="text-xs font-semibold text-burgundy hidden sm:inline">
+              {t.siteName}
+            </span>
+          </div>
         </div>
         
         {/* Language Dropdown - Right Side */}

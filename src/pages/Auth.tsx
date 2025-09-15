@@ -270,7 +270,7 @@ const Auth = () => {
             alt={`${t.siteName} Logo`} 
             className="h-12 mx-auto mb-4"
           />
-          <h1 className="text-2xl font-bold text-gray-900">مرحباً بك في دبي ميركس</h1>
+          <h1 className="text-2xl font-bold text-gray-900">مرحباً بك في دبي ميركس دوت كوم</h1>
         </div>
 
         <Card>
