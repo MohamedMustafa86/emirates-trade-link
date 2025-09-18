@@ -130,7 +130,7 @@ const About = () => {
                   <div className="grid md:grid-cols-3 gap-8 items-center">
                     <div className="text-center">
                       <img 
-                        src="/lovable-uploads/f4d19333-8a05-44bc-bcfa-76cc5bae4859.png" 
+                        src="/lovable-uploads/founder-image.jpg" 
                         alt={getTranslation("founderName", currentLanguage)} 
                         className="w-48 h-48 object-cover rounded-full mx-auto mb-4 shadow-lg"
                       />
