@@ -22,11 +22,11 @@ const SecurityHeaders = () => {
       document.head.appendChild(noSniffMeta);
     }
 
-    // Set X-Frame-Options
+    // Set X-Frame-Options (SAMEORIGIN instead of DENY to allow Lovable preview)
     if (!document.querySelector('meta[http-equiv="X-Frame-Options"]')) {
       const frameOptionsMeta = document.createElement('meta');
       frameOptionsMeta.httpEquiv = 'X-Frame-Options';
-      frameOptionsMeta.content = 'DENY';
+      frameOptionsMeta.content = 'SAMEORIGIN';
       document.head.appendChild(frameOptionsMeta);
     }
   }, []);
