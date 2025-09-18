@@ -141,10 +141,6 @@ const About = () => {
                       <p className="text-gray-600 leading-relaxed mb-4">
                         {getTranslation("founderDescription", currentLanguage)}
                       </p>
-                      <div className="flex items-center">
-                        <Users className="h-5 w-5 text-green-600 ml-2" />
-                        <span className="text-gray-600">{getTranslation("experienceYears", currentLanguage)}</span>
-                      </div>
                     </div>
                   </div>
                 </div>
